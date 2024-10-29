@@ -454,7 +454,8 @@ default  : "Medium"
 	&lt;/div&gt;\
 &lt;/div&gt;\
 
-</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1800,600" size="200,100">&lt;h2&gt;&#39;&#39;The Bed&#39;&#39;&lt;/h2&gt;\
+</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1800,600" size="200,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;&#39;&#39;The Bed&#39;&#39;&lt;/h2&gt;\
 Here&#39;s the bed. You woke up here. It was very comfortable when you were passed out on it.
 &lt;&lt;if $bedSheet is false&gt;&gt;
 The sheets look clean and fairly new, though the fabric looks rather thick for a [[bedsheet|Bedsheets]]. 
@@ -493,7 +494,12 @@ You start thinking about the pamphlet that you found as well as the torn piece o
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="3" name="Toilet" tags="Toilet" position="2300,800" size="100,200">&lt;h2&gt;The Toilet&lt;/h2&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="3" name="Toilet" tags="Toilet" position="2300,800" size="100,200">&lt;&lt;if $pieceMirror is false&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;else&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;h2&gt;The Toilet&lt;/h2&gt;\
 A simple sink and toilet unit is placed against the [[wall|Wall]]. It seems to be made out metal and looks [[functional|Use Toilet]]. 
 
 &lt;&lt;if $paperRoll is false&gt;&gt;\
@@ -545,7 +551,12 @@ You rack your brain, but don&#39;t remember any reason why you would be on a roo
 &#39;&#39;You need to get out of here.&#39;&#39; 
 
 &lt;center&gt;&#39;&#39;[[Calm down and look around|Door]]&#39;&#39;&lt;/center&gt;\
-&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Door" tags="Door" position="1400,800" size="100,200">&lt;h2&gt;&#39;&#39;The Door&#39;&#39;&lt;/h2&gt; &lt;&lt;if visited(&quot;Door&quot;) is 1&gt;&gt;&lt;&lt;script&gt;&gt;UIBar.unstow();&lt;&lt;/script&gt;&gt;&lt;&lt;/if&gt;&gt;\
+&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Door" tags="Door" position="1400,800" size="100,200">&lt;&lt;if $button is false&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;else&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpDoor2.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;h2&gt;&#39;&#39;The Door&#39;&#39;&lt;/h2&gt; &lt;&lt;if visited(&quot;Door&quot;) is 1&gt;&gt;&lt;&lt;script&gt;&gt;UIBar.unstow();&lt;&lt;/script&gt;&gt;&lt;&lt;/if&gt;&gt;\
 It&#39;s a solid metal door which is currently locked. It has a handle and a keyhole.
 
 There is a small window in the upper middle part of the door that provides some visual to the [[outside|Corridor]].
@@ -617,7 +628,8 @@ There is a [[calendar|Calendar]] on the wall with some pictures on it and a numb
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="7" name="Look around the Bed" tags="Bed" position="1600,400" size="100,100">&lt;h2&gt;Moving around the bed&lt;/h2&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="7" name="Look around the Bed" tags="Bed" position="1600,400" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;Moving around the bed&lt;/h2&gt;\
 The bed is in the corner of the cell, one side is up against the wall while the head rail is against the adjecent wall.
 
 There seems to be a number of deep scratch marks along the wall.
@@ -630,7 +642,8 @@ You try to move the bed but it doesn&#39;t budge. You look down at the legs to s
 	There&#39;s nothing else &#39;&#39;under the bed&#39;&#39;.
 &lt;&lt;/if &gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="8" name="Bed Header" tags="Bed" position="2000,300" size="100,100">&lt;h2&gt;Looking towards the head-end&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="8" name="Bed Header" tags="Bed" position="2000,300" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;Looking towards the head-end&lt;/h2&gt;\
 	You can see the pillow where you were passed out on and the steel head-end of the bed, but now you notice that something is sticking out from &lt;&lt;linkappend &quot;under the pillow.&quot; t8n&gt;&gt;
 
 	It seems to be a small torn piece of paper. There are some letters written on it: &lt;&lt;set $tinyPaper to true&gt;&gt;&lt;&lt;notiTinyPaper&gt;&gt;
@@ -638,7 +651,8 @@ You try to move the bed but it doesn&#39;t budge. You look down at the legs to s
 &lt;center&gt;&lt;em&gt;@@.smear;&quot;... pe you be patie...&quot;@@&lt;/em&gt;&lt;/center&gt;
 That&#39;s all you get to read.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="9" name="Bedsheets" tags="Bed" position="2100,400" size="100,100">&lt;h2&gt;Taking a look a the sheets&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="9" name="Bedsheets" tags="Bed" position="2100,400" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;Taking a look a the sheets&lt;/h2&gt;\
 &lt;&lt;if $hackSawBlade is false&gt;&gt;\
 They are quite long for the bed, also the fabric feels a lot thicker than what you&#39;d expect a sheet to be, you wonder why, since it&#39;s not that chilly in here.
 
@@ -692,8 +706,8 @@ NOTAS:
 /*para que no se vuelva a poder obtener el railing*/
 	&lt;&lt;set $openFloor to false&gt;&gt;\
 
-/*espacio asignado para las notificaciones en la variable $ListaNotificaciones: [notiTinyPaper, notiWound, notiMovementFrontCell, notiPapers, notiBluprint, notiJournal, notiCalendarWatch, notiStool, notiPamphlet, notiFairyTale, notiPencil, notiBrokenWindow, notiPaperRoll, notiPieceMirror, notiBedSheet, notiHackSawBlade, notiSteelRail, notiEscapeKey] */
-&lt;&lt;set $ListaNotificaciones = [ false , false , false , false , false , false , false , false , false , false , false , false, false , false , false , false , false , false , false ]&gt;&gt;
+/*espacio asignado para las notificaciones en la variable $ListaNotificaciones: [notiTinyPaper, notiWound, notiMovementFrontCell, notiPapers, notiBluprint, notiJournal, notiCalendarWatch, notiStool, notiPamphlet, notiFairyTale, notiPencil, notiBrokenWindow, notiPaperRoll, notiPieceMirror, notiBedSheet, notiHackSawBlade, notiSteelRail, notiEscapeKey, notiSocket] */
+&lt;&lt;set $ListaNotificaciones = [ false , false , false , false , false , false , false , false , false , false , false , false, false , false , false , false , false , false , false , false ]&gt;&gt;
 
 AUDIO
 /*cuando vaya a exportar dejarlo como &quot;audio/-----.mp3&quot; */
@@ -730,13 +744,18 @@ And now that you think about it, you don&#39;t really remember how you came here
 You shake your head in confusion and pain. 
 
 &lt;h3&gt;&lt;center&gt;[[It hurts, but you gotta keep looking around|Door]]&lt;/center&gt;&lt;/h3&gt;
-&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Look around the door" tags="Door" position="1200,1000" size="100,100">&lt;h2&gt;Rolling your eyes&lt;/h2&gt;\
+&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Look around the door" tags="Door" position="1200,1000" size="100,100">&lt;&lt;if $button is false&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;else&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpDoor2.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;h2&gt;Rolling your eyes&lt;/h2&gt;\
 The wall, where the door is installed, looks to be made out of concrete and looking around the other walls also seem to be the same.
 
 &lt;&lt;if $button is false&gt;&gt;\
 There is also a light switch to the left of the door and a &lt;&lt;linkappend &quot;button beside it.&quot; t8n&gt;&gt;&lt;&lt;audio &quot;button&quot; volume 0.7 play&gt;&gt; You try the button, but when you press and release, it falls off the socket. Looking inside, you can see how the cables were cut off. &lt;&lt;set $button to true&gt;&gt;
 
-Whatever it was for, is not working now.&lt;&lt;/linkappend&gt;&gt;
+Whatever it was for, is not working now.&lt;&lt;notiSocket&gt;&gt;&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;else&gt;&gt;\
 There is the empty socket where a button used to be.
 &lt;&lt;/if&gt;&gt;\
@@ -745,7 +764,8 @@ Looking more closely to the &lt;&lt;linkappend &quot;frame of the door&quot; t8n
 
 It&#39;s concerning.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="13" name="Wall" tags="Toilet" position="2400,1100" size="100,100">&lt;h2&gt;You look up&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="13" name="Wall" tags="Toilet" position="2400,1100" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;You look up&lt;/h2&gt;\
 &lt;&lt;if $pieceMirror is false&gt;&gt;\
 Looking at the wall, there&#39;s a cracked [[mirror|Mirror]] placed above the toilet unit. 
 
@@ -770,7 +790,8 @@ There also seems to be some scratches on the wall, the length and depth of said 
 	You&#39;ve taken the Toilet Paper with you.
 &lt;&lt;/if&gt;&gt;
 &lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
-</tw-passagedata><tw-passagedata pid="15" name="Look around the toilet" tags="Toilet" position="2300,500" size="100,100">&lt;h2&gt;Looking around&lt;/h2&gt;\
+</tw-passagedata><tw-passagedata pid="15" name="Look around the toilet" tags="Toilet" position="2300,500" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;Looking around&lt;/h2&gt;\
 &lt;&lt;if $steelRail is false and $hackSawBlade is true&gt;&gt;\
     There is just the gap that you made and nothing else.
 
@@ -780,7 +801,12 @@ You take a closer look to the place where the toilet unit &lt;&lt;link [[meets t
 &lt;&lt;/if&gt;&gt;\
 You look at the &lt;&lt;link [[floor|Toilet Floor]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt; where the unit sits.
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="16" name="Service Hatch" tags="Door" position="1200,800" size="100,100">&lt;h2&gt;You squat&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="16" name="Service Hatch" tags="Door" position="1200,800" size="100,100">&lt;&lt;if $button is false&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;else&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpDoor2.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;h2&gt;You squat&lt;/h2&gt;\
 &lt;&lt;if $movementFrontCell is false&gt;&gt;\
 Looking more closely, the lip seems more of a hatch. The way is placed makes you believe that it &lt;&lt;linkappend &quot;opens away from you.&quot; t8n&gt;&gt;&lt;&lt;audio &quot;openHatch&quot; volume 0.7 play&gt;&gt;
 
@@ -805,10 +831,16 @@ You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; and the 
 
 To the &lt;&lt;linkappend &quot;left&quot; t8n&gt;&gt; there&#39;s the other end of the corridor, you can see there&#39;s a window on the wall that doesn&#39;t seem to be barred.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="18" name="Window" tags="Toilet" position="2700,1200" size="100,100">&lt;h2&gt;Looking out the window.&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="18" name="Window" tags="Toilet" position="2700,1200" size="100,100">&lt;&lt;if $stool is true&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/Window.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;elseif $pieceMirror is true&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;else&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;h2&gt;Trying to look out the window.&lt;/h2&gt;\
 &lt;&lt;if $stool is false&gt;&gt;\
 You try to balance yourself by stepping on the edge of the toilet unit, but it is a little too far for you to look outside the window. Maybe having something to step on from right underneath it will work.
-
 &lt;&lt;elseif $stool is true&gt;&gt;\
 	Taking the stool from the desk, you place it right below the window. Stepping on it, you look up and now you are able to see that the window is barred with metal bars and that the glass from the window seems very thick, even then, you are able to see the outside more clearly.
 
@@ -841,7 +873,7 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
     You take a look at what you have gathered and it seems that there is something is missing to help you make a tool that will aid you in escaping this place, better take a look around the room again.&lt;&lt;/linkappend&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;\
-&lt;center&gt;&lt;&lt;link [[Step Back|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="19" name="Mirror" tags="Toilet" position="2600,1000" size="100,100">&lt;h2&gt;You can&#39;t see yourself clearly&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="19" name="Mirror" tags="Toilet" position="2600,1000" size="100,100">&lt;h2&gt;You can&#39;t see yourself clearly&lt;/h2&gt;\
 &lt;&lt;if $pieceMirror is false&gt;&gt;\
 Two cracks travel all the length of the mirror from one corner to the other with some other minor cracks around them. Some small pieces are missing, more than likely they&#39;ve fallen off.  You could slip a finger and detach the large piece of the mirror that the two cracks create.
 
@@ -850,7 +882,8 @@ Two cracks travel all the length of the mirror from one corner to the other with
 There is a huge piece of mirror missing. You&#39;ve taken it with you.
 &lt;&lt;/if&gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back.|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="20" name="Gap" tags="Toilet" position="2500,500" size="100,100">&lt;h2&gt;You put your head against the wall&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back.|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="20" name="Gap" tags="Toilet" position="2500,500" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;You put your head against the wall&lt;/h2&gt;\
 &lt;&lt;if $blueprint is false&gt;&gt;\
 You can see a place that can be open to do maintance on the toilet unit, but a tool is required to open it, there are also some scratch marks on the wall beside it.
 
@@ -871,7 +904,8 @@ You can see a place that can be open to do maintance on the toilet unit, but a t
          
          	&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
    &lt;&lt;/if&gt;&gt;\
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Toilet Floor" tags="Toilet" position="2300,300" size="100,100">&lt;h2&gt;You squint&lt;/h2&gt;\
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Toilet Floor" tags="Toilet" position="2300,300" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;You squint&lt;/h2&gt;\
 There seems to be some marks on the &lt;&lt;linkappend &quot;floor.&quot; t8n&gt;&gt; These seem to look like drag marks that get lost under the toilet unit. It suggests that the toilet was moved at some point. You try moving it, but it is well afixed to the wall.&lt;&lt;/linkappend&gt;&gt;
 
 Apart from that, there&#39;s nothing more worth noting.
@@ -954,7 +988,8 @@ The second drawer is &lt;&lt;link [[open|Drawer Two]]&gt;&gt;&lt;&lt;audio &quot
 You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
 &lt;&lt;/if&gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="26" name="Papers" tags="Desk" position="1600,1200" size="100,100">&lt;h2&gt;Looking more closely...&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="26" name="Papers" tags="Desk" position="1600,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/Papers.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;Looking more closely...&lt;/h2&gt;\
 &lt;&lt;if $blueprint is true or $journal is true&gt;&gt;\
 	There&#39;s now only the other paper with grooves on the desk and the other blank papers.
 &lt;&lt;else&gt;&gt;\    
@@ -1000,6 +1035,10 @@ The stool found near the desk is sturdy enough to withstand your weight and ligh
 &lt;&lt;if hasVisited(&quot;Wound&quot;)&gt;&gt;\
 &lt;li&gt;&#39;&#39;Wound&#39;&#39;&lt;/li&gt;\
 A big gash the right of your torso that almost looks like a giant scratch, you don&#39;t remember how you got it, but the silhouette of a person and the color &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt; comes to mind.
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $button is true&gt;&gt;\
+&lt;li&gt;&#39;&#39;Missing button&#39;&#39;&lt;/li&gt;\
+There is now an empty socket from where a button fell off, next to the door. It seems to have the wires that made it function cut.
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $movementFrontCell is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Movement?&#39;&#39;&lt;/li&gt;\
@@ -1091,7 +1130,7 @@ There seems to be a &lt;&lt;link [[pamphlet|Pamphlet]]&gt;&gt;&lt;&lt;audio &quo
 
 There is also a place within the drawer that loooks like a &lt;&lt;linkappend &quot;built-in box.&quot; t8n&gt;&gt; You open it and it seems that there&#39;s is a small slot with the shape of what you assume is a key, but there&#39;s nothing there.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="31" name="Blueprint" tags="Desk" position="1400,1200" size="100,100">&lt;h2&gt;You take a closer look at the paper&lt;/h2&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="31" name="Blueprint" tags="Desk" position="1400,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/Papers.png&quot;&gt;&lt;/center&gt;\&lt;h2&gt;You take a closer look at the paper&lt;/h2&gt;\
 &lt;&lt;set $blueprint to true&gt;&gt;&lt;&lt;set $papers to false&gt;&gt;&lt;&lt;set $pencil to false&gt;&gt;&lt;&lt;notiBlueprint&gt;&gt;\
  The paper has a drawing of the toilet unit on it, there seems to be some arrows and circles that point to the side of the toilet that conects to the wall. 
  
@@ -1100,7 +1139,8 @@ There is also a place within the drawer that loooks like a &lt;&lt;linkappend &q
  You take it with you.
  
 &lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
-</tw-passagedata><tw-passagedata pid="32" name="Journal" tags="Desk" position="1600,1400" size="100,100">&lt;h2&gt;The note&lt;/h2&gt;\
+</tw-passagedata><tw-passagedata pid="32" name="Journal" tags="Desk" position="1600,1400" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/Papers.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;The note&lt;/h2&gt;\
 &lt;&lt;set $journal to true&gt;&gt;&lt;&lt;set $papers to false&gt;&gt;&lt;&lt;set $pencil to false&gt;&gt;\
  Seems to be written to someone, it &lt;&lt;linkappend &quot;&#39;&#39;says:&#39;&#39;&quot; t8n&gt;&gt;&lt;&lt;notiJournal&gt;&gt;
 &lt;em&gt;
@@ -1552,6 +1592,11 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 	&lt;&lt;if $ListaNotificaciones[18] is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Note Added&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $ListaNotificaciones[18] to true&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="notiSocket" tags="widget nobr" position="200,400" size="100,100">&lt;&lt;widget &quot;notiSocket&quot;&gt;&gt;
+	&lt;&lt;if $ListaNotificaciones[19] is false&gt;&gt;
+    	&lt;&lt;notify&gt;&gt;Note Added&lt;&lt;/notify&gt;&gt;
+        &lt;&lt;set $ListaNotificaciones[19] to true&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
