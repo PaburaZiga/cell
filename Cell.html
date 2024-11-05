@@ -461,7 +461,11 @@ default  : "Medium"
 	&lt;/div&gt;\
 &lt;/div&gt;\
 
-</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1800,600" size="200,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
+</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1800,600" size="200,100">&lt;&lt;if $bedSheet is false&gt;&gt;\
+&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;else&gt;&gt;\
+&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBedNoSheets.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;&#39;&#39;The Bed&#39;&#39;&lt;/h2&gt;\
 Here&#39;s the bed. You woke up here. It was very comfortable when you were passed out on it.
 &lt;&lt;if $bedSheet is false&gt;&gt;
@@ -636,7 +640,7 @@ There is a [[calendar|Calendar]] on the wall with some pictures on it and a numb
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="7" name="Look around the Bed" tags="Bed" position="1600,400" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="7" name="Look around the Bed" tags="Bed" position="1600,400" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBedUnder.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Moving around the bed&lt;/h2&gt;\
 The bed is in the corner of the cell, one side is up against the wall while the head rail is against the adjecent wall.
 
@@ -1179,7 +1183,8 @@ This Interactive fiction uses a &#39;&#39;Notes and Inventory System&#39;&#39; t
 You can access them on the &#39;&#39;Menu Bar&#39;&#39; on the left just click on the arrow in the top left hand corner of the page. 
 
 Have fun!
-&lt;center&gt;&lt;h3&gt;&lt;&lt;return [[Take me to the Main Menu.|Title]]&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="35" name="Under the Bed" tags="Bed" position="1800,300" size="100,100">&lt;h2&gt;You kneel down&lt;/h2&gt;\
+&lt;center&gt;&lt;h3&gt;&lt;&lt;return [[Take me to the Main Menu.|Title]]&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="35" name="Under the Bed" tags="Bed" position="1800,300" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBedUnder.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;You kneel down&lt;/h2&gt;\
 &lt;&lt;if $steelRail is false and $openFloor is false&gt;&gt;\
 Looking under the bed, there is nothing worth noting at first glance, but you look up to the steel railings under the bed and you notice that one seems to be loose, since it&#39;s crooked, while the others are not.
 
@@ -1203,6 +1208,7 @@ Proofing de finales y rutas
 
 &lt;&lt;&lt;Arreglar&gt;&gt;&gt;
 Ver si es posible pasar rápido con un clic the Beginning
+Hightlight en resizing de imagenes no working
 Imagen de Exit en corredor derecho
 
 &lt;&lt;&lt;Agregar&gt;&gt;&gt;
@@ -1401,7 +1407,8 @@ Then everything goes to black.
 
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Forced Enlisting&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
 &lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/endingForced.png&quot;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;\
-</tw-passagedata><tw-passagedata pid="48" name="Open Floor" tags="Bed" position="1600,200" size="100,100">&lt;h2&gt;Using some force&lt;/h2&gt;\
+</tw-passagedata><tw-passagedata pid="48" name="Open Floor" tags="Bed" position="1600,200" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/closeUpBedOpen.png&quot;&gt;&lt;/center&gt;\
+&lt;h2&gt;Using some force&lt;/h2&gt;\
 You use the flat end to break the edges of the &lt;&lt;linkappend &quot;replaced piece of floor&quot; t8n&gt;&gt;&lt;&lt;audio &quot;key&quot; volume 0.7 play&gt;&gt;&lt;&lt;set $openFloor to true&gt;&gt; and after 10 minutes of effort, you succesfully take out the piece at the expense of breaking the end of the railing. On the inside you can see something. 
 
 It&#39;s a key. 
