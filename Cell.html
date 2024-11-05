@@ -211,6 +211,12 @@ h1 {
 		0.2em  0em 0.5em  rgba(255,255,255,0.5);
 }
 
+/*Para que las imagenes sean proporcionales al tamaño del device donde se están viendo*/
+img {
+ 	height: auto;
+  	max-width: 100%;
+}
+
 /*Para tamaño de texto*/
  html.Small body{
     font-size: 15px;
@@ -437,7 +443,7 @@ list     : ["Small", "Medium", "Large"],
 onInit   : textSizeHandler,
 onChange : textSizeHandler,
 default  : "Medium"
- });</script><tw-tag name="Data" color="red"></tw-tag><tw-tag name="Event" color="purple"></tw-tag><tw-tag name="Door" color="orange"></tw-tag><tw-tag name="Bed" color="blue"></tw-tag><tw-tag name="Toilet" color="green"></tw-tag><tw-tag name="Desk" color="yellow"></tw-tag><tw-tag name="Ending" color="purple"></tw-tag><tw-tag name="System" color="red"></tw-tag><tw-passagedata pid="1" name="Title" tags="Title" position="900,300" size="100,100">&lt;center&gt;&lt;img src= &quot;Img/Cover_Pixelart.png&quot;&gt;&lt;/center&gt;\
+ });</script><tw-tag name="Data" color="red"></tw-tag><tw-tag name="Event" color="purple"></tw-tag><tw-tag name="Door" color="orange"></tw-tag><tw-tag name="Bed" color="blue"></tw-tag><tw-tag name="Toilet" color="green"></tw-tag><tw-tag name="Desk" color="yellow"></tw-tag><tw-tag name="Ending" color="purple"></tw-tag><tw-tag name="System" color="red"></tw-tag><tw-passagedata pid="1" name="Title" tags="Title" position="900,300" size="100,100">&lt;center&gt;&lt;img src= &quot;C:/Twine_Proyectos/Cell/Img/Cover_Pixelart.png&quot;&gt;&lt;/center&gt;\
 
 &lt;center&gt;&lt;&lt;button [[Start|Beginning]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;&lt;button [[How to play|About]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
@@ -1161,13 +1167,12 @@ To play this, all you have to do is click on the links
 
 &lt;&lt;linkappend &quot;Like this one!&quot; t8n&gt;&gt; Sometimes it will take you to another screen or will add more text to the current screen, like just now!.&lt;&lt;/linkappend&gt;&gt;
 
-This Interactive fiction uses a &#39;&#39;Notes and Inventory System&#39;&#39; that notifies and compiles important notes for you to review and items that you&#39;ve collected thus far. Remember to read everything in the passage.
+This Interactive fiction uses a &#39;&#39;Notes and Inventory System&#39;&#39; that notifies and compiles important notes for you to review and items that you&#39;ve collected thus far. Remember to read everything in the passage before moving on.
 
 You can access them on the &#39;&#39;Menu Bar&#39;&#39; on the left just click on the arrow in the top left hand corner of the page. 
 
 Have fun!
-
-&lt;&lt;return [[Take me to the Main Menu.|Title]]&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="Under the Bed" tags="Bed" position="1800,300" size="100,100">&lt;h2&gt;You kneel down&lt;/h2&gt;\
+&lt;center&gt;&lt;h3&gt;&lt;&lt;return [[Take me to the Main Menu.|Title]]&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="35" name="Under the Bed" tags="Bed" position="1800,300" size="100,100">&lt;h2&gt;You kneel down&lt;/h2&gt;\
 &lt;&lt;if $steelRail is false and $openFloor is false&gt;&gt;\
 Looking under the bed, there is nothing worth noting at first glance, but you look up to the steel railings under the bed and you notice that one seems to be loose, since it&#39;s crooked, while the others are not.
 
@@ -1477,7 +1482,7 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 
 &lt;center&gt;&lt;a href=&#39;https://ko-fi.com/I3I1GJAVX&#39; target=&#39;_blank&#39;&gt;&lt;img height=&#39;36&#39; style=&#39;border:0px;height:36px;&#39; src=&#39;https://storage.ko-fi.com/cdn/kofi6.png?v=6&#39; border=&#39;0&#39; alt=&#39;Buy Me a Coffee at ko-fi.com&#39; /&gt;&lt;/a&gt;&lt;/center&gt;
 &lt;center&gt;&lt;h2&gt;Credits&lt;/h2&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;h3&gt;&#39;&#39;Written and Created by PaburaZiga&#39;&#39;&lt;/h3&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h3&gt;&#39;&#39;Created by PaburaZiga&#39;&#39;&lt;/h3&gt;&lt;/center&gt;\
 &lt;center&gt;&#39;&#39;Inspired in the &quot;Don&#39;t escape&quot; game by scriptwelder&#39;&#39;&lt;/center&gt;
 
 &lt;&lt;message &quot;&#39;&#39;Sound Efects&#39;&#39;&quot; btn&gt;&gt;
