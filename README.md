@@ -14,3 +14,12 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-----------------------------------------
+IMPORTANT
+
+The RAR has four important elements: 3 folders(audio, fonts, Img) and 1 HTML document (Cell), which is the game itself.
+When extracting the RAR, please maintain all of its contents within the same location/file, 
+so that sounds, fonts and images display correctly inside the game.
+
+-----------------------------------------
