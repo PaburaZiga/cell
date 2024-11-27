@@ -1946,11 +1946,14 @@ First time finding the key to escape&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
 
 &lt;if $LittleBladderAch is true&gt;&gt;\
 # Little Bladder
-Visited the toilet 5 times... You ok there?&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
+... You ok there?
+Visited the toilet 5 times
+&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $SecondThoughtsAch is true&gt;&gt;\
 # Second Thoughts
-You decided to &#39;&#39;return to your cell&#39;&#39; as advised by the eyes in one run and decided to &#39;&#39;stay until morning&#39;&#39; in another.&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
+You like thinking things through it seems
+Decided to &#39;&#39;return to your cell&#39;&#39; as advised by the eyes in one run and decided to &#39;&#39;stay until morning&#39;&#39; in another.&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $OnlyWeaponAch is true&gt;&gt;\
 # There goes my only weapon...
@@ -1994,7 +1997,7 @@ Found all 4 endings&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Ending4" tags="widget nobr" position="600,400" size="100,100">&lt;&lt;widget &quot;Ending4&quot;&gt;&gt;
     &lt;&lt;if $ListaEndings[3] is false&gt;&gt;
        &lt;&lt;notify&gt;&gt;Ending Achieved&lt;&lt;/notify&gt;&gt;
-       &lt;&lt;set $ending4 = &quot;Oops&quot;&gt;&gt;
+       &lt;&lt;set $ending4 = &quot;Stayed until morning&quot;&gt;&gt;
         &lt;&lt;set $ListaEndings[3] to true&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Ach. All Endings" tags="widget nobr" position="100,1600" size="100,100">&lt;&lt;widget &quot;AchAllEndings&quot;&gt;&gt;
