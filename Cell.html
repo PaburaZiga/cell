@@ -153,7 +153,6 @@ body {
   color: #fbf5ef;
   font-family: 'Verdana', monospace;
   font-size: 20px;
-  display: flex;
   justify-content: center;
 }
 
@@ -197,12 +196,6 @@ button:hover {
   margin: 10px 5px;
 }
 
-/*.button:active { efecto de presionar botón
-  background-color: #8b6d9c;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}*/
-
 h1 {
   font-size: 60px;
   text-transform: uppercase;
@@ -240,6 +233,7 @@ img {
    font-size: 25px;
  }
 
+
 /*desaparece el item del UIBar que decía "Saves"
 #menu-item-saves {
 	display:none;
@@ -255,23 +249,24 @@ img {
   display: none;
 }
 
+
+
 /*Hace un contenedor con una tabla para organizar los elementos uno a la par de otro*/
 #title {
   position: relative;
   border-collapse: collapse;
-  width: auto;
+  width: 100%;
 }
 
 #title td {
   border: 1px;
   padding: 30px;
-  text-align: center;
 }  
 
 #container2 { 
   position: relative;
   display: inline-block; 
-  width: 100%;
+  max-width: auto;
 }
 
 .container2center {
@@ -282,26 +277,52 @@ img {
 
 #cover { float:center;}
 
-#table { float:center; }
+#table { float:center;}
 
 /*Para que las imagenes tengan el color de hover*/
 .container {
+  	position: flex;
+  	max-width: 50%;
+    justify-content: space-around;
+}
+
+.containerImage {
   position: relative;
-  max-width: 50%;
+  align-items: center;
+    width: 170px;
+    height: 170px;
+  transition: opacity 0.4s ease;
+}
+
+.imageText {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    /*background-color: #8b6d9c;*/
+    color: #272744;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0; /* Por defecto, el texto está oculto */
+    transition: opacity 0.4s ease;
+}
+
+.containerImage:hover .imageText {
+    opacity: 1; /* Al hacer hover, el texto aparece */
 }
 
 .brightness {
 	background-color: #8b6d9c;
 	display: inline-flex;
-	max-height:93%;
+	max-height:100%;
 }
 
 .brightness img:hover {
-  transition: .4s ease;
+  transition: 0.4s ease;
   opacity: .5;
 }
 
-/* poner imagenes una a la par de la otra en "Go to"*/ 
+/* poner imagenes una a la par de la otra en "Search"*/ 
 
 .row {
   display: flex;
@@ -343,8 +364,12 @@ img {
 #notify.open{right:0}
 /* end notify.min.css */</style><script role="script" id="twine-user-script" type="text/twine-javascript">Config.ui.stowBarInitially = true;
 
-// Setting up a basic header
+////////////////////////////////////
+
+// Setting up a basic header for Settings
 Setting.addHeader("Game Settings");
+
+////////////////////////////////////
 
 // notify.min.js, for SugarCube 2, by Chapel
 (function () {
@@ -445,6 +470,8 @@ Setting.addHeader("Game Settings");
 }());
 // end notify.min.js
 
+////////////////////////////////////
+
 // message macro, by chapel (with help from T.M. Edwards); for sugarcube 2
 // version 1.0.1
 // see the documentation: https://github.com/ChapelR/custom-macros-for-sugarcube-2#message-macro
@@ -489,8 +516,10 @@ Macro.add('message', {
             .appendTo(this.output);
     }
 });
+//////////////////////////////////
 
 // Setting up a list control for the settings property 'font' w/ callbacks
+
 var settingFontNames = ["Verdana", "Courier New", "OpenDyslexic", "Basis33"];
 var settingFontHandler = function () {
    
@@ -524,6 +553,8 @@ Setting.addList("font", {
   	default  : "Courier New"
 });
 
+////////////////////////////////////////
+
 /*Cambiar el tamaño de Funte*/
 var textSizeHandler = function () {
 
@@ -553,6 +584,35 @@ onInit   : textSizeHandler,
 onChange : textSizeHandler,
 default  : "Medium"
  });
+////////////////////////////////////
+
+/*Toggle para Underline*/
+
+function toggleUnderline() {
+    // Primero, eliminamos cualquier estilo anterior
+    $("#linkStyle").remove();
+    
+    // Comprobar si el ajuste "linkUnderline" está activado
+    if (settings.linkUnderline) {
+        // Si está activado, no hacemos nada, ya que el subrayado es el estilo por defecto
+    } else {
+        // Si está desactivado, aplicamos un estilo CSS que elimina el subrayado
+        $('<style id="linkStyle">a { text-decoration: none; }</style>').appendTo('head');
+    }
+}
+
+Setting.addToggle("linkUnderline", {
+    label: "Underline links",
+    default: true,
+    onInit: function() {
+        toggleUnderline();  // Se asegura de aplicar el estilo al inicio del juego
+    },
+    onChange: function() {
+        toggleUnderline();  // Cambia el estilo cuando el jugador modifica la opción
+    }
+});
+
+///////////////////////////////////////////////
 
 /*Continuation macro*/
 (function () {
@@ -734,6 +794,7 @@ default  : "Medium"
 &lt;center&gt;&lt;&lt;button [[How to play|About]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;&lt;button &quot;Settings&quot;&gt;&gt;&lt;&lt;run UI.settings()&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;&lt;button [[Credits]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
+&lt;center&gt;\
 &lt;div id=&quot;container2&quot; &gt;\
 &lt;div class= &quot;container2center&quot;&gt;\
 	&lt;div id=&quot;table&quot;&gt;\
@@ -746,7 +807,8 @@ default  : "Medium"
 		&lt;/table&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/div&gt;\</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1800,600" size="200,100">&lt;&lt;if $bedSheet is false&gt;&gt;\
+&lt;/div&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1800,600" size="200,100">&lt;&lt;if $bedSheet is false&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBedNoSheets.png&quot;&gt;&lt;/center&gt;\
@@ -774,19 +836,28 @@ You start thinking about the pamphlet that you found as well as the torn piece o
 &lt;div class=&quot;container&quot;&gt;
 	&lt;div class=&quot;row&quot; &gt;\
 		&lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/Toiletv2.png][Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-			&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+					&lt;&lt;link [img[Img/Toiletv2.png][Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                	&lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[TOILET|Toilet]]&#39;&#39;&lt;/div&gt;
+    			&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
 		&lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-				&lt;&lt;link [img[Img/Deskv2.png][Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-    		&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/Deskv2.png][Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                	&lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[DESK|Desk]]&#39;&#39;&lt;/div&gt;
+				&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
-        &lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/Doorv2.png][Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-			&lt;/div&gt;\
+		&lt;div class=&quot;column&quot;&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/Doorv2.png][Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                    &lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[DOOR|Door]]&#39;&#39;&lt;/div&gt;
+				&lt;/div&gt;\
+        	&lt;/div&gt;\
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
@@ -811,19 +882,28 @@ A simple sink and toilet unit is placed against the [[wall|Wall]]. It seems to b
 &lt;div class=&quot;container&quot;&gt;
 	&lt;div class=&quot;row&quot; &gt;\
 		&lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/Deskv2.png][Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-			&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/Deskv2.png][Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                	&lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[DESK|Desk]]&#39;&#39;&lt;/div&gt;
+				&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
 		&lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-				&lt;&lt;link [img[Img/Doorv2.png][Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-    		&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/Doorv2.png][Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                    &lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[DOOR|Door]]&#39;&#39;&lt;/div&gt;
+				&lt;/div&gt;\
+        	&lt;/div&gt;\
         &lt;/div&gt;\
         &lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/Bedv2.png][Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-			&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+					&lt;&lt;link [img[Img/Bedv2.png][Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                	&lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[BED|Bed]]&#39;&#39;&lt;/div&gt;
+    			&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
@@ -840,17 +920,14 @@ Feeling your body lethargic and heavy, you roll on your back to sit and make sen
 	
 Now with your sight a little more focused, you can see yourself sitting on a bed in a very small room. There is a toilet in the corner and a desk at the oposite wall from where you are sitting. You look to your right and there is a door. A little confused you stand up and reach for the handle to open it.
 
-//It&#39;s locked. //
+&lt;center&gt;//It&#39;s locked. //&lt;/center&gt;\
 
-You try a couple of times with more force, but it is not budging. You start to realize that something is wrong with this place; this room, feels eerie.
-
-&#39;&#39;Cold sweat trickles down your spine.&#39;&#39; 
+You try a couple of times with more force, but it is not budging. You start to realize that something is wrong with this place; this room, feels eerie. Cold sweat starts forming on your back. 
 
 You rack your brain, but don&#39;t remember any reason why you would be on a room like this. You bang on the door and scream for help, but there is no response or even a sound coming from the other side. You take a step back.
 
-//You need to get out of here. //
-
-&lt;center&gt;&#39;&#39;[[Calm down and look around|Door]]&#39;&#39;&lt;/center&gt;\
+&lt;center&gt;//You need to get out of here. //&lt;/center&gt;\
+&lt;center&gt;&lt;h3&gt;&#39;&#39;[[Calm down and look around|Door]]&#39;&#39;&lt;/h3&gt;&lt;/center&gt;\
 &lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Door" tags="Door" position="1400,800" size="100,200">&lt;&lt;if $button is false&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
@@ -884,19 +961,28 @@ With key in hand, you can escape this cell.
 &lt;div class=&quot;container&quot;&gt;
 	&lt;div class=&quot;row&quot; &gt;\
 		&lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/Bedv2.png][Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/Bedv2.png][Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                    &lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[BED|Bed]]&#39;&#39;&lt;/div&gt;
+                &lt;/div&gt;\
 			&lt;/div&gt;\
         &lt;/div&gt;\
 		&lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-				&lt;&lt;link [img[Img/Toiletv2.png][Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-    		&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+					&lt;&lt;link [img[Img/Toiletv2.png][Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                	&lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[TOILET|Toilet]]&#39;&#39;&lt;/div&gt;
+    			&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
         &lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/Deskv2.png][Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-			&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/Deskv2.png][Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                	&lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[DESK|Desk]]&#39;&#39;&lt;/div&gt;
+				&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
@@ -923,19 +1009,28 @@ There is a calendar on the wall with the 28th, circled.
 &lt;div class=&quot;container&quot;&gt;
 	&lt;div class=&quot;row&quot; &gt;\
 		&lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/Doorv2.png][Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-			&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/Doorv2.png][Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                    &lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[DOOR|Door]]&#39;&#39;&lt;/div&gt;
+				&lt;/div&gt;\
+        	&lt;/div&gt;\
         &lt;/div&gt;\
 		&lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-				&lt;&lt;link [img[Img/Bedv2.png][Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-    		&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+					&lt;&lt;link [img[Img/Bedv2.png][Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                	&lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[BED|Bed]]&#39;&#39;&lt;/div&gt;
+    			&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
         &lt;div class=&quot;column&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/Toiletv2.png][Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-			&lt;/div&gt;\
+        	&lt;div class = &quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/Toiletv2.png][Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+                    &lt;div class=&quot;imageText&quot;&gt;&#39;&#39;[[TOILET|Toilet]]&#39;&#39;&lt;/div&gt;
+				&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
@@ -968,7 +1063,7 @@ That&#39;s all you get to read.&lt;&lt;/linkappend&gt;&gt;
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="9" name="Bedsheets" tags="Bed" position="2100,400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Taking a look a the sheets&lt;/h2&gt;\
-&lt;&lt;if $hackSawBlade is false&gt;&gt;\
+&lt;&lt;if $hackSawBlade is false and $brokenWindow is false&gt;&gt;\
 They are quite long for the bed, also the fabric feels a lot thicker than what you&#39;d expect a sheet to be, you wonder why, since it&#39;s not that chilly in here.
 
 &lt;&lt;else&gt;&gt;\
@@ -1205,9 +1300,9 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
     
     	&lt;&lt;elseif $brokenWindow is true&gt;&gt;\
     Trying to look down from the window, you can see the broken glass on the grass below. At least is one thing less between you and the outside.
-    
     &lt;&lt;/if&gt;&gt;\
     &lt;&lt;/linkappend&gt;&gt;\
+    
 &lt;&lt;/if&gt;&gt;\
 
 &lt;&lt;if $stool is true and $paperRoll is true and $pieceMirror is true and $hackSawBlade is true and $bedSheet is true and $brokenWindow is true&gt;&gt;\
@@ -1215,7 +1310,7 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
 
     You prepare your materials.
 
-	&lt;&lt;linkreplace &quot;Time to make a makeshift Hacksaw and Rope to escape&quot; t8n&gt;&gt;First you take the cardboard roll of the toilet paper, cut it with the sharp piece of mirror to make makeshift handles for the hacksaw blades, using the toilet paper to bind together the handles to the blades, you create a hacksaw that you can grab without hurting yourself. Then with the same piece of mirror you start cutting the bedsheets and tying them up together to make a fabric &quot;rope&quot; to help with the descent. 
+	&lt;&lt;linkreplace &quot;Time to make a makeshift hacksaw and rope to escape.&quot; t8n&gt;&gt;First you take the cardboard roll of the toilet paper, cut it with the sharp piece of mirror to make makeshift handles for the hacksaw blades, using the toilet paper to bind together the handles to the blades, you create a hacksaw that you can grab without hurting yourself. Then with the same piece of mirror you start cutting the bedsheets and tying them up together to make a fabric &quot;rope&quot; to help with the descent. 
 	Now what&#39;s next is to cut the window bars, so you step on the stool and start sawing the 3 middle metal bars of the window with the makeshift hacksaw that you made. Doing so, took you the two sawblades that you prepared, but strangely enough cutting the metal bars didn&#39;t take you that long, maybe the bars weren&#39;t strong in the first place? 
     
 	All that&#39;s left now is to tie the &quot;rope&quot; to one of the metal bars that you left, which you do, and &lt;&lt;link [[hop out|Window Exit]]&gt;&gt;&lt;&lt;audio &quot;windowExit&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;.&lt;&lt;/linkreplace&gt;&gt;
@@ -1223,8 +1318,8 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
     &lt;&lt;linkappend &quot;You think...&quot; t8n&gt;&gt; you can escape through here with the right tools. Maybe something to remove the bars and to help lower yourself out the window. 
     
     You take a look at what you have gathered and it seems that there is still something missing to help you make a tool that will aid you in escaping this place, better take a look around the room again.&lt;&lt;/linkappend&gt;&gt;
-
 &lt;&lt;/if&gt;&gt;\
+
 &lt;center&gt;&lt;&lt;link [[Step Back|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="19" name="Mirror" tags="Toilet" position="2600,1000" size="100,100">&lt;&lt;if $pieceMirror is true&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
@@ -1284,7 +1379,12 @@ You open the faucet to check if the water flows, and almost instantly you feel t
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
 </tw-passagedata><tw-passagedata pid="23" name="StoryCaption" tags="Data" position="300,700" size="100,100">&lt;h2&gt;Menu&lt;/h2&gt;\
-&#39;&#39;What you have:&#39;&#39;
+&lt;&lt;if passage() is &quot;Achievements&quot;&gt;&gt;\
+	&lt;&lt;disable true&gt;&gt;&lt;&lt;button [[Notes]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/disable&gt;&gt;
+&lt;&lt;else&gt;&gt;\
+	&lt;&lt;button [[Notes]]&gt;&gt;&lt;&lt;/button&gt;&gt;
+ &lt;&lt;/if&gt;&gt;\
+&lt;h3&gt;&#39;&#39;What you have:&#39;&#39;&lt;/h3&gt;
 &lt;ul&gt;
 &lt;&lt;if $paperRoll is true&gt;&gt;\
 &lt;li&gt;Toilet Paper&lt;/li&gt;
@@ -1307,13 +1407,7 @@ You open the faucet to check if the water flows, and almost instantly you feel t
 &lt;&lt;if $escapeKey is true&gt;&gt;\
 &lt;li&gt;A Key&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;\
-&lt;/ul&gt;
-&lt;&lt;if passage() is &quot;Achievements&quot;&gt;&gt;\
-	&lt;&lt;disable true&gt;&gt;&lt;&lt;button [[Notes]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/disable&gt;&gt;
-&lt;&lt;else&gt;&gt;\
-	&lt;&lt;button [[Notes]]&gt;&gt;&lt;&lt;/button&gt;&gt;
- &lt;&lt;/if&gt;&gt;\
- 
+&lt;/ul&gt; 
  &lt;&lt;if passage() is &quot;Notes&quot;&gt;&gt;\
     &lt;&lt;disable true&gt;&gt;&lt;div class =&quot;buttonAch&quot;&gt;&lt;&lt;button [[Achievements]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/disable&gt;&gt;
 &lt;&lt;else&gt;&gt;\
@@ -1353,7 +1447,13 @@ The second drawer is &lt;&lt;link [[open|Drawer Two]]&gt;&gt;&lt;&lt;audio &quot
 You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
 &lt;&lt;/if&gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="26" name="Papers" tags="Desk" position="1600,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Papers.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="26" name="Papers" tags="Desk" position="1600,1200" size="100,100">&lt;&lt;if $blueprint is true&gt;&gt;\
+&lt;center&gt;&lt;img src = &quot;Img/PapersBlueprint.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;elseif $journal is true&gt;&gt;\
+&lt;center&gt;&lt;img src = &quot;Img/PapersJournal.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;else&gt;&gt;\
+&lt;center&gt;&lt;img src = &quot;Img/Papers.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/is&gt;&gt;\
 &lt;h2&gt;Looking more closely...&lt;/h2&gt;\
 &lt;&lt;if $blueprint is true or $journal is true&gt;&gt;\
 	There&#39;s now only the other paper with grooves on the desk and the other blank papers.
@@ -1584,7 +1684,7 @@ First, you start walking through the forest, then jogging and then running, your
 
 But that&#39;s when it hits you.
 
-//[[Wasn&#39;t this all too convenient?|Abduction]]//
+&lt;center&gt;//[[Wasn&#39;t this all too convenient?|Abduction]]//&lt;/center&gt;\
 
 
 
@@ -1660,13 +1760,17 @@ Dumbfounded, you prepare yourself for the next step:
 &lt;center&gt;&lt;div class=&quot;container&quot;&gt;\
 	&lt;div class=&quot;rowC&quot; &gt;\
 		&lt;div class=&quot;columnC&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-            	&lt;&lt;link [img[Img/CorridorLeft.png][Corridor left]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
-			&lt;/div&gt;\
+        	&lt;div class=&quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+            		&lt;&lt;link [img[Img/CorridorLeft.png][Corridor left]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+				&lt;/div&gt;\
+            &lt;/div&gt;\
         &lt;/div&gt;\
 		&lt;div class=&quot;columnC&quot;&gt;\
-        	&lt;div class=&quot;brightness&quot;&gt;\
-				&lt;&lt;link [img[Img/CorridorRight.png][Corridor right]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+        	&lt;div class=&quot;containerImage&quot;&gt;\
+        		&lt;div class=&quot;brightness&quot;&gt;\
+					&lt;&lt;link [img[Img/CorridorRight.png][Corridor right]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+            	&lt;/div&gt;\
             &lt;/div&gt;\
         &lt;/div&gt;\
 	&lt;/div&gt;\
@@ -1726,24 +1830,23 @@ You close the door behind you and turn around to look through the window at the 
 
 </tw-passagedata><tw-passagedata pid="46" name="Abduction" tags="Ending" position="3000,1400" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
-&lt;h2&gt;Huh?&lt;/h2&gt;\
+&lt;center&gt;&lt;h2&gt;Huh?&lt;/h2&gt;&lt;/center&gt;\
+&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;center&gt;//The cell looked like it was supose to retain you inside, be secure, but somehow you are here, now, outside. //&lt;/center&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
 
-&lt;&lt;type 60ms&gt;&gt;&lt;center&gt;//The cell looked like it was supose to retain you inside, be secure, but somehow you are here, now, outside. //&lt;/center&gt;&lt;&lt;/type&gt;&gt;
+&lt;&lt;timed 8s t8n&gt;&gt;You stop in your tracks when this realization hits you. You try to retrace why that train of thought came to mind, but there&#39;s not enough time for you to fully understand it you start hearing the sound of footsteps aproaching you, surrounding you, but how?&lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;linkappend&quot;. . .&quot; t8n&gt;&gt; You stop in your tracks when this realization hits you. You try to retrace why that train of thought came to mind, but there&#39;s not enough time for you to fully understand it you start hearing the sound of footsteps aproaching you, surrounding you, but how?
+&lt;&lt;timed 11s t8n&gt;&gt;A voice of a man interrupts your thoughts.
 
-A voice of a man interrupts your &lt;&lt;linkappend &quot;thoughts.&quot;t8n&gt;&gt;
+&gt;&gt;//&lt;span style=&quot;color:red&quot;&gt;-&quot;Hey there, you gave us quite a work out, huh?&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
 
-&gt;&gt;//&lt;span style=&quot;color:red&quot;&gt;-&quot;Hey there, you gave us quite a work out, huh?&quot;&lt;/span&gt;//\
+&lt;&lt;timed 14s t8n&gt;&gt;You step back, but almost in a blink of an eye, he is right beside you, now with a bunch of people you didn&#39;t even see before, all around you.&lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;linkappend&quot;. . .&quot; t8n&gt;&gt;You step back, but almost in a blink of an eye, he is right beside you, now with a bunch of people you didn&#39;t even see before, all around you.
+&lt;&lt;timed 18s t8n&gt;&gt;You hear him click his tongue, but his tone is jovial.
 
-You hear him click his tongue, but his tone is &lt;&lt;linkappend &quot;jovial.&quot; t8n&gt;&gt;
+&gt;&gt;//&lt;span style=&quot;color:red&quot;&gt;-&quot;You are gonna be a great asset for us, but for now, let us go cut the chase.&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
 
-&gt;&gt;//&lt;span style=&quot;color:red&quot;&gt;-&quot;You are gonna be a great asset for us, but for now, let us go cut the chase.&quot;&lt;/span&gt;//
-
-You are about to ask what does he mean, but even before you can open your mouth you feel the powerful impact of a punch in your gut and [[everything goes black.|Wreak Havok]]
-&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="Wreak Havok" tags="Ending" position="3000,1200" size="100,100">&lt;&lt;Ending1&gt;&gt;\
+&lt;&lt;timed 22s t8n&gt;&gt;You are about to ask what does he mean, but even before you can open your mouth you feel the powerful impact of a punch in your gut and [[everything goes black.|Wreak Havok]]&lt;&lt;/timed&gt;&gt;
+</tw-passagedata><tw-passagedata pid="47" name="Wreak Havok" tags="Ending" position="3000,1200" size="100,100">&lt;&lt;Ending1&gt;&gt;\
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;h2&gt;You wake up&lt;/h2&gt;\
@@ -1762,7 +1865,6 @@ You look up to the sky and the magnificence of the full moon turns the pain even
 The last thing you remember is the familiar silhouette of a person, the color &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt; and the desperate screams of people.
 
 Then everything goes to black.
-
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Forced Enlisting&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/endingForced.png&quot;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;\
 </tw-passagedata><tw-passagedata pid="48" name="Open Floor" tags="Bed" position="1600,200" size="100,100">&lt;div id=&quot;closeUpBedUnder&quot;&gt;\
