@@ -167,11 +167,10 @@ a:hover {
 
 button {
   color: #fbf5ef;
-  background-color: #8b6d9c;
+  background-color: #494d7e;
   font-size: 100%;
   font-weight: bold;
-  border-radius: 10px;
-  border-width: 2px
+  border-radius: 6px;
   border-style: outset;
   margin: 10px 2px;/*mantiene espacio entre botones*/
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -179,8 +178,8 @@ button {
 }
 
 button:hover {
-  color: #494d7e;
-  background-color: #c69fa5;
+  color: #f2d3ab;
+  background-color: #8b6d9c;
   font-weight: bold;
   border-color: black;
 }
@@ -233,11 +232,11 @@ img {
    font-size: 25px;
  }
 
-
 /*desaparece el item del UIBar que decía "Saves"
 #menu-item-saves {
 	display:none;
 }*/
+
 
 /*desaparece el item del UIBar que decía "Restart"
 #menu-item-restart {
@@ -614,6 +613,22 @@ Setting.addToggle("linkUnderline", {
 
 ///////////////////////////////////////////////
 
+// Setting up a toggle control for the settings property 'music' w/ callbacks
+var settingMusic = function () {
+	if (! settings.music) { // is false
+		SimpleAudio.stop();
+	}
+};
+
+Setting.addToggle("music", {
+	label    : "Play Audio?",
+	default  : true,
+	onInit   : settingMusic,
+	onChange : settingMusic
+});
+
+///////////////////////////////////////////////
+
 /*Continuation macro*/
 (function () {
     // v1.0.1
@@ -790,10 +805,10 @@ Setting.addToggle("linkUnderline", {
     });
 
 }());</script><tw-tag name="Data" color="red"></tw-tag><tw-tag name="Event" color="purple"></tw-tag><tw-tag name="Door" color="orange"></tw-tag><tw-tag name="Bed" color="blue"></tw-tag><tw-tag name="Toilet" color="green"></tw-tag><tw-tag name="Desk" color="yellow"></tw-tag><tw-tag name="Ending" color="purple"></tw-tag><tw-tag name="System" color="red"></tw-tag><tw-passagedata pid="1" name="Title" tags="Title" position="900,300" size="100,100">&lt;center&gt;&lt;img src= &quot;Img/Cover_Pixelart_v1.png&quot;&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;&lt;button [[Start|Beginning]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;&lt;button [[How to play|About]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;&lt;button &quot;Settings&quot;&gt;&gt;&lt;&lt;run UI.settings()&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;&lt;button [[Credits]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;button [img[Img/StartButton.png][Beginning]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;button [img[Img/HowToPlayButton.png][About]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;button [img[Img/SettingsButton.png]]&gt;&gt;&lt;&lt;run UI.settings()&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;button [img[Img/CreditsButton.png][Credits]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;\
 &lt;center&gt;\
 &lt;div id=&quot;container2&quot; &gt;\
 &lt;div class= &quot;container2center&quot;&gt;\
@@ -801,7 +816,7 @@ Setting.addToggle("linkUnderline", {
     	&lt;table id=&quot;title&quot;&gt;\
     		&lt;tr&gt;\
 				&lt;td&gt;&lt;a href=&#39;https://ko-fi.com/I3I1GJAVX&#39; target=&#39;_blank&#39;&gt;&lt;img height=&#39;36&#39; style=&#39;border:0px;height:36px;&#39; src=&#39;https://storage.ko-fi.com/cdn/kofi6.png?v=6&#39; border=&#39;0&#39; alt=&#39;Buy Me a Coffee at ko-fi.com&#39; /&gt;&lt;/a&gt;&lt;/td&gt;\
-                &lt;td&gt;&lt;&lt;button[[Achievements]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/td&gt;\
+                &lt;td&gt;&lt;&lt;button[img[Img/AchievementsButton.png][Achievements]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/td&gt;\
              	&lt;td&gt;&#39;&#39;ver. 1.0&#39;&#39;&lt;/td&gt;\
 			&lt;/tr&gt;\
 		&lt;/table&gt;\
@@ -941,7 +956,7 @@ There is a small window in the upper middle part of the door that provides some 
 There is a [[small built-in tray and hatch|Service Hatch]] in the lower part of the door. Seems like it is used to slip things through it.
 
 &lt;&lt;if hasVisited(&quot;Bed&quot;, &quot;Toilet&quot;, &quot;Desk&quot;) and not hasVisited(&quot;Wound&quot;)&gt;&gt;\
-     &#39;&#39;[[You feel Pain|Wound]]&#39;&#39;
+&#39;&#39;[[You feel Pain|Wound]]&#39;&#39;
      
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if hasVisited(&quot;Wound&quot;)&gt;&gt;\
@@ -1040,7 +1055,7 @@ There is a calendar on the wall with the 28th, circled.
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBedNoSheets.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;Moving around the bed&lt;/h2&gt;\
-The bed is in the corner of the cell, one side is up against the wall while the head rail is against the adjecent wall.
+The bed is in the corner of the cell, one side is up against the wall while the head end is against the adjecent wall.
 
 There seems to be a number of deep scratch marks along the wall.
  
@@ -1053,8 +1068,8 @@ You try to move the bed but it doesn&#39;t budge. You look down at the legs to s
 &lt;&lt;/if &gt;&gt;\
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="8" name="Bed Header" tags="Bed" position="2000,300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpPillow.png&quot;&gt;&lt;/center&gt;\
-&lt;h2&gt;Looking towards the head-end&lt;/h2&gt;\
-	You can see the pillow where you were passed out on and the steel head-end of the bed, but now you notice that something is sticking out from &lt;&lt;linkappend &quot;under the pillow.&quot; t8n&gt;&gt;
+&lt;h2&gt;Looking towards the head end&lt;/h2&gt;\
+	You can see the pillow where you were passed out on and the steel head end of the bed, but now you notice that something is sticking out from &lt;&lt;linkappend &quot;under the pillow.&quot; t8n&gt;&gt;
 
 	It seems to be a small torn piece of paper. There are some letters written on it: &lt;&lt;set $tinyPaper to true&gt;&gt;&lt;&lt;notiTinyPaper&gt;&gt;&lt;&lt;set $ListaInventarioAch[13] to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;
     
@@ -1085,11 +1100,10 @@ You take the sheets.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;set $ListaNotificaciones = [ false , false , false , false , false , false , false , false , false , false , false , false, false , false , false , false , false , false , false , false ]&gt;&gt;
 
 /*Achievements y endings*/
-&lt;&lt;set $ListaEndings = [ false, false, false, false ]&gt;&gt;
-&lt;&lt;set $ending1 = &quot;???&quot;&gt;&gt;
-&lt;&lt;set $ending2 = &quot;???&quot;&gt;&gt;
-&lt;&lt;set $ending3 = &quot;???&quot;&gt;&gt;
-&lt;&lt;set $ending4 = &quot;???&quot;&gt;&gt;
+&lt;&lt;set $endingAch1 = recall(&#39;endingAch1&#39;, false)&gt;&gt;Forced Enlistment
+&lt;&lt;set $endingAch2 = recall(&#39;endingAch2&#39;, false)&gt;&gt;capture
+&lt;&lt;set $endingAch3 = recall(&#39;endingAch3&#39;, false)&gt;&gt;oops
+&lt;&lt;set $endingAch4 = recall(&#39;endingAch4&#39;, false)&gt;&gt;Stayed until morning
 
 	/*cada espacio representa un item del inventario para el Achievement &quot;Caught &#39;em All&quot; : 0paperRoll, 1bedSheet, 2pieceMirror, 3hackSawBlade, 4pencil, 5blueprint, 6journal, 7steelRail, 8escapeKey, 9calendar, 10watch, 11stool, 12papers, 13tinyPaper, 14brokenWindow, 15movementFrontCell, 16Wound, 17button, 18scribbles, 19pamphlet, 20fairyTale]  */
 &lt;&lt;set $ListaInventarioAch = [ false , false , false , false , false , false , false , false , false , false , false , false , false , false , false , false , false , false , false , false , false]&gt;&gt;
@@ -1170,7 +1184,8 @@ AUDIO
 &lt;&lt;cacheaudio &quot;button&quot; &quot;audio/button.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;openHatch&quot; &quot;audio/small_metal_hatch.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;whiteNoise&quot; &quot;audio/white_noise.mp3&quot;&gt;&gt;\
-&lt;&lt;cacheaudio &quot;railingBreak&quot; &quot;audio/breaking_railing.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1400,600" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+&lt;&lt;cacheaudio &quot;railingBreak&quot; &quot;audio/breaking_railing.mp3&quot;&gt;&gt;\
+&lt;&lt;cacheaudio &quot;nightAmbience&quot; &quot;C:/Twine_Proyectos/Cell/audio/night-ambience.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1400,600" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/wound.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;What&#39;s this?&lt;/h2&gt;\
 &lt;&lt;set $ListaInventarioAch[16] to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiWound&gt;&gt;\
@@ -1189,7 +1204,7 @@ You shake your head in confusion and pain.
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor2.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;Rolling your eyes&lt;/h2&gt;\
-The wall, where the door is installed, looks to be made out of concrete and looking around the other walls also seem to be the same.
+The wall, where the door is installed, looks to be made out of concrete and looking around the other walls, they also look the same.
 
 &lt;&lt;if $button is false&gt;&gt;\
 There is also a light switch to the left of the door and a &lt;&lt;linkappend &quot;button beside it.&quot; t8n&gt;&gt;&lt;&lt;audio &quot;button&quot; volume 0.7 play&gt;&gt; You try the button, but when you press and release, it falls off the socket. Looking inside, you can see how the cables were cut off. &lt;&lt;set $button to true&gt;&gt;
@@ -1256,7 +1271,7 @@ Looking more closely, the lip seems more of a hatch. The way is placed makes you
 
 With little force you open the hatch and slip a hand through it with ease, you try and reach for the handle on the other side, but your arm falls short to reach it. You don&#39;t think this way will work.
 
-When you &lt;&lt;linkappend &quot;open the hatch&quot; t8n&gt;&gt;&lt;&lt;set $movementFrontCell to true&gt;&gt;&lt;&lt;audio &quot;whiteNoise&quot; volume 0.7 play&gt;&gt;, sounds start leaking in, which makes you believe that there&#39;s some degree of soundproofing in the cell. Now with nothing stopping you from making noise, you scream for help, but there is no response. Feeling defeated, you roll your eyes to the cell door in front of you and for a brief second you could swear that you saw &#39;&#39;movement through the window cell&#39;&#39;.&lt;&lt;notiMovementFrontCell&gt;&gt;&lt;&lt;set $ListaInventarioAch[15] to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;
+When you &lt;&lt;linkappend &quot;open the hatch&quot; t8n&gt;&gt;&lt;&lt;set $movementFrontCell to true&gt;&gt;&lt;&lt;audio &quot;whiteNoise&quot; volume 0.7 play&gt;&gt;, sounds start leaking in, which makes you believe that there&#39;s some degree of soundproofing in the cell. Now with nothing stopping you from making noise, you scream for help, but there is no response. Feeling defeated, you roll your eyes to the cell door in front of you and for a brief second you could swear that you saw &#39;&#39;movement through the window cell&#39;&#39;.&lt;&lt;notiMovementFrontCell&gt;&gt;&lt;&lt;set $ListaInventarioAch[15] to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;\
 &lt;&lt;else&gt;&gt;\
 The hatch still opens with little force, but there&#39;s no movement on the other side, for now.
 &lt;&lt;/if&gt;&gt;\
@@ -1270,7 +1285,7 @@ The floor and walls that you see, seem old but clean. It&#39;s obvious that this
 
 With your face entirely against the door:
 
-&lt;&lt;if visited() is 2&gt;&gt;\
+&lt;&lt;if $movementFrontCell is true&gt;&gt;\
 You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; and the corridor extends revealing more doors. At the end of it, there is a steel bar gate separating the corridor from an intersection that goes from side to side, &#39;&#39;but this time you saw the silhouette of someone going to the left&#39;&#39;; there&#39;s definitely people in this facility.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;else&gt;&gt;\
 You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; and the corridor extends revealing more doors. At the end of it, there is a steel bar gate separating the corridor from an intersection that goes from side to side; you can&#39;t see anymore beyond that.&lt;&lt;/linkappend&gt;&gt;
@@ -1302,7 +1317,6 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
     Trying to look down from the window, you can see the broken glass on the grass below. At least is one thing less between you and the outside.
     &lt;&lt;/if&gt;&gt;\
     &lt;&lt;/linkappend&gt;&gt;\
-    
 &lt;&lt;/if&gt;&gt;\
 
 &lt;&lt;if $stool is true and $paperRoll is true and $pieceMirror is true and $hackSawBlade is true and $bedSheet is true and $brokenWindow is true&gt;&gt;\
@@ -1380,14 +1394,14 @@ You open the faucet to check if the water flows, and almost instantly you feel t
 &lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
 </tw-passagedata><tw-passagedata pid="23" name="StoryCaption" tags="Data" position="300,700" size="100,100">&lt;h2&gt;Menu&lt;/h2&gt;\
 &lt;&lt;if passage() is &quot;Achievements&quot;&gt;&gt;\
-	&lt;&lt;disable true&gt;&gt;&lt;&lt;button [[Notes]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/disable&gt;&gt;
+	&lt;&lt;disable true&gt;&gt;&lt;&lt;button [img[Img/NotesButton.png][Notes]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/disable&gt;&gt;
 &lt;&lt;else&gt;&gt;\
-	&lt;&lt;button [[Notes]]&gt;&gt;&lt;&lt;/button&gt;&gt;
+	&lt;&lt;button [img[Img/NotesButton.png][Notes]]&gt;&gt;&lt;&lt;/button&gt;&gt;
  &lt;&lt;/if&gt;&gt;\
-&lt;h3&gt;&#39;&#39;What you have:&#39;&#39;&lt;/h3&gt;
+&lt;h3&gt;&#39;&#39;What you have:&#39;&#39;&lt;/h3&gt;\
 &lt;ul&gt;
 &lt;&lt;if $paperRoll is true&gt;&gt;\
-&lt;li&gt;Toilet Paper&lt;/li&gt;
+&lt;li&gt;Toilet paper&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $pencil is true&gt;&gt;\
 &lt;li&gt;An unsharpened pencil&lt;/li&gt;
@@ -1396,7 +1410,7 @@ You open the faucet to check if the water flows, and almost instantly you feel t
 &lt;li&gt;Railing with a flat end&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $pieceMirror is true&gt;&gt;\
-&lt;li&gt;Piece of a Mirror&lt;/li&gt;
+&lt;li&gt;Piece of a mirror&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $bedSheet is true&gt;&gt;\
 &lt;li&gt;Bedsheets&lt;/li&gt;
@@ -1409,9 +1423,9 @@ You open the faucet to check if the water flows, and almost instantly you feel t
 &lt;&lt;/if&gt;&gt;\
 &lt;/ul&gt; 
  &lt;&lt;if passage() is &quot;Notes&quot;&gt;&gt;\
-    &lt;&lt;disable true&gt;&gt;&lt;div class =&quot;buttonAch&quot;&gt;&lt;&lt;button [[Achievements]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/disable&gt;&gt;
+    &lt;&lt;disable true&gt;&gt;&lt;div class =&quot;buttonAch&quot;&gt;&lt;&lt;button[img[Img/AchievementsButton.png][Achievements]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/disable&gt;&gt;
 &lt;&lt;else&gt;&gt;\
-    &lt;div class =&quot;buttonAch&quot;&gt;&lt;&lt;button [[Achievements]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
+    &lt;div class =&quot;buttonAch&quot;&gt;&lt;&lt;button[img[Img/AchievementsButton.png][Achievements]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
  &lt;&lt;/if&gt;&gt;\
 &lt;a href=&#39;https://ko-fi.com/I3I1GJAVX&#39; target=&#39;_blank&#39;&gt;&lt;img height=&#39;36&#39; style=&#39;border:0px;height:36px;&#39; src=&#39;https://storage.ko-fi.com/cdn/kofi6.png?v=6&#39; border=&#39;0&#39; alt=&#39;Buy Me a Coffee at ko-fi.com&#39; /&gt;&lt;/a&gt;
 </tw-passagedata><tw-passagedata pid="24" name="Look around the desk" tags="Desk" position="2000,1300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Drawers.png&quot;&gt;&lt;/center&gt;\
@@ -1453,7 +1467,7 @@ You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
 &lt;center&gt;&lt;img src = &quot;Img/PapersJournal.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Papers.png&quot;&gt;&lt;/center&gt;\
-&lt;&lt;/is&gt;&gt;\
+&lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;Looking more closely...&lt;/h2&gt;\
 &lt;&lt;if $blueprint is true or $journal is true&gt;&gt;\
 	There&#39;s now only the other paper with grooves on the desk and the other blank papers.
@@ -1666,8 +1680,6 @@ Looking under the bed you see the steel railings and the space where the railing
 Proofing de finales y rutas
 
 &lt;&lt;&lt;Arreglar&gt;&gt;&gt;
-Ver si es posible pasar rápido con un clic the Beginning
-Hightlight en resizing de imagenes no working
 
 &lt;&lt;&lt;Agregar&gt;&gt;&gt;
 
@@ -1675,9 +1687,9 @@ twitter e instagram
 correo (maybe)
 
 
-</tw-passagedata><tw-passagedata pid="37" name="Window Exit" tags="Ending" position="2800,1400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
+</tw-passagedata><tw-passagedata pid="37" name="Window Exit" tags="Ending" position="2800,1400" size="100,100">&lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
+&lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You descent the rope&lt;/h2&gt;\
-
 And with a grunt, your feet land on the ground, right next to the broken window of your cell. You look up and look around you for a moment, in search of movement or stepping sounds. After confirming so, you take a deep breath, choose a direction and start heading that way. 
 
 First, you start walking through the forest, then jogging and then running, your heading towards your freedom afterall, this nightmare is almost over, if only you could reach a town... 
@@ -1715,9 +1727,9 @@ But this time, a couple of eyes look back...
 
 //&#39;&#39;You are in that damn room again.&#39;&#39;//
 
-Your body hurts and a strong smell of iron emanates from you. You look at yourself .
+Your body hurts and a strong smell of iron emanates from you. You look at yourself.
 
-Before you can even look at yourself, someone opens the door and enters the room while whistling to themselves, holding a change of clothes in theirs hands. 
+Before you can even look at yourself, someone opens the door and enters the room while whistling to themselves, holding a change of clothes in their hands. 
 
 Setting said clothes on the desk, they pause, and then look in your direction. A look of surprise flashes on their face before composing themselves, addressing you:
 
@@ -1729,7 +1741,7 @@ The stranger gives you a smirk, turns to the desk and takes the stool, dragging 
 
 With that, you have a feeling that your days of normalcy are over.
 
-&lt;h3&gt;&lt;center&gt;[[Ending &quot;Everything&#39;s changed&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;center&gt;[[Ending &quot;Everything&#39;s changed&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
 &lt;&lt;/type&gt;&gt;\
 </tw-passagedata><tw-passagedata pid="40" name="Stay in the cell" tags="Ending" position="100,1400" size="100,100">&lt;&lt;AchSecondThoughts&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/doorWindow.png&quot;&gt;&lt;/center&gt;\
@@ -1802,9 +1814,9 @@ You don&#39;t know this person, they could very well be an accomplice of your ca
 
 &lt;&lt;timed 17s t8n&gt;&gt;A second passes and you are in excruciating pain, it seems to start from within your bones and is spreading throughout your body. Muscle spasms make your knees buckle. &lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 20s t8n&gt;&gt;You bring your hands to your face in a vain attempt to stop the pain, but that&#39;s when you notice that hair has began to sprout from under your skin, tearing it apart; blood dripping from your hands.&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 20s t8n&gt;&gt;You bring your hands to your face in a vain attempt to stop the pain, but that&#39;s when you notice that something has began to sprout from under your skin, tearing it apart; blood dripping from your hands.&lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 23s t8n&gt;&gt;The last thing that you see through the blood that blocks your vision, is the stranger runnig in your direction with worry in their eyes. &lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 23s t8n&gt;&gt;The last thing that you see through the blood that blocks your vision, is the stranger running in your direction with worry in their eyes. &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 26s t8n&gt;&gt;&lt;center&gt;&#39;&#39;[[Then, everything goes black|Captured]]&#39;&#39;&lt;/center&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="Corridor right" tags="Ending" position="600,1100" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Exit.png&quot;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h2&gt;You run. . .&lt;/h2&gt;&lt;/center&gt;\
@@ -1850,9 +1862,11 @@ You close the door behind you and turn around to look through the window at the 
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;h2&gt;You wake up&lt;/h2&gt;\
-&lt;&lt;type 60ms&gt;&gt;But this is different than last time. there is no unfamiliar ceiling gretting you, just the cold, hard ground of the forest against your face. 
+&lt;&lt;type 60ms&gt;&gt;But this is different than last time. 
 
-The first thing you notice is the taste of dirt and blood in you mouth, then the raging headache settling at the back of your head. You try to move, but soon realize that your hands are bound behind you back, as well as the weight of someone sitting on top of you, holding you in place. Panic starts seeping in, your heartbeat gets loud and your breathing begins to quicken, making it hard for you to hear and understand what is going on.
+There is no unfamiliar ceiling gretting you, just the cold, hard ground of the forest against your face. 
+
+The first thing you notice is the taste of dirt and blood in you mouth, the pain in your stomach, then the raging headache settling at the back of your head. You try to move, but soon realize that your hands are bound behind you back, as well as the weight of someone sitting on top of you, holding you in place. Panic starts seeping in, your heartbeat gets loud and your breathing begins to quicken, making it hard for you to hear and understand what is going on.
 
 Still, some words slip past the loud sounds of your panic. You hear a &lt;span style=&quot;color:red&quot;&gt;familiar voice&lt;/span&gt; and something about a &#39;&#39;bond tonight&#39;&#39;, an &#39;&#39;initiation&#39;&#39; and the &#39;&#39;&quot;children of the moon&quot;&#39;&#39;.
 
@@ -1865,7 +1879,7 @@ You look up to the sky and the magnificence of the full moon turns the pain even
 The last thing you remember is the familiar silhouette of a person, the color &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt; and the desperate screams of people.
 
 Then everything goes to black.
-&lt;h3&gt;&lt;center&gt;[[Ending &quot;Forced Enlisting&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
+&lt;h3&gt;&lt;center&gt;[[Ending &quot;Forced Enlistment&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/endingForced.png&quot;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;\
 </tw-passagedata><tw-passagedata pid="48" name="Open Floor" tags="Bed" position="1600,200" size="100,100">&lt;div id=&quot;closeUpBedUnder&quot;&gt;\
   &lt;center&gt;&lt;img src=&quot;Img/closeUpBedUnder.png&quot; alt=&quot;Closed floor&quot;&gt;&lt;/center&gt;\
@@ -1875,12 +1889,12 @@ You use the flat end to break the edges of the &lt;&lt;linkappend &quot;replaced
 
 It&#39;s a key. 
 
-You take it.
+You take it.&lt;&lt;set $steelRail to false&gt;&gt;&lt;&lt;set $escapeKey to true&gt;&gt;&lt;&lt;notiEscapeKey&gt;&gt;&lt;&lt;AchOnlyWeapon&gt;&gt;&lt;&lt;run UIBar.update()&gt;&gt;
 &lt;&lt;replace &quot;#closeUpBedUnder&quot;&gt;&gt;\
   &lt;center&gt;&lt;img src=&quot;Img/closeUpBedUnderOpen.png&quot; alt=&quot;Open Floor&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/replace&gt;&gt;\
 &lt;&lt;/linkappend&gt;&gt;\
-&lt;&lt;set $steelRail to false&gt;&gt;&lt;&lt;set $escapeKey to true&gt;&gt;&lt;&lt;notiEscapeKey&gt;&gt;&lt;&lt;AchOnlyWeapon&gt;&gt;&lt;&lt;run UIBar.update()&gt;&gt;\
+
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="49" name="Pamphlet" tags="Desk" position="2100,1600" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/pamphletDrawer.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You take the pamphlet&lt;/h2&gt;\
@@ -1956,10 +1970,12 @@ The eyes look at you almost pleadingly, but you don&#39;t look conviced, so they
 &lt;center&gt;&#39;&#39;You need to escape this place.&#39;&#39;&lt;/center&gt;\
 
 &lt;center&gt;&lt;&lt;return [[Go back to what you were doing|Bed]]&gt;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="Credits" tags="" position="900,500" size="100,100">&lt;&lt;AchCompleitionist&gt;&gt;\
+&lt;&lt;audio &quot;nightAmbience&quot; stop&gt;&gt;
+&lt;&lt;unset $paperRoll, $bedSheet, $pieceMirror, $hackSawBlade, $pencil, $blueprint, $journal, $steelRail, $button, $escapeKey, $calendar, $watch, $stool, $tinyPaper, $papers, $stayInCell, $brokenWindow, $movementFrontCell, $openFloor, $notes&gt;&gt;\
 &lt;center&gt;&lt;h1&gt;Thank you for playing&lt;/h1&gt;&lt;/center&gt;\
 If you wish to help me create more stories like this, feel free to visit my ko-fi and leave a tip!
 &lt;center&gt;&lt;a href=&#39;https://ko-fi.com/I3I1GJAVX&#39; target=&#39;_blank&#39;&gt;&lt;img height=&#39;36&#39; style=&#39;border:0px;height:36px;&#39; src=&#39;https://storage.ko-fi.com/cdn/kofi6.png?v=6&#39; border=&#39;0&#39; alt=&#39;Buy Me a Coffee at ko-fi.com&#39; /&gt;&lt;/a&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;h2&gt;Credits&lt;/h2&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h2&gt;[img[Img/CreditsSubTitle.png]]&lt;/h2&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h3&gt;&#39;&#39;Created by PaburaZiga&#39;&#39;&lt;/h3&gt;&lt;/center&gt;\
 &lt;center&gt;&#39;&#39;Inspired in the &quot;Don&#39;t escape&quot; game by scriptwelder&#39;&#39;&lt;/center&gt;\
 
@@ -1972,6 +1988,7 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;li&gt;Book Foley Finger Slide 1, Pencil writing drawing loop 5, by &lt;a href=&quot;https://pixabay.com/users/floraphonic-38928062/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=186130&quot;&gt;floraphonic&lt;/a&gt;&lt;/li&gt;\
 &lt;li&gt;Button by &lt;a href=&quot;https://pixabay.com/users/soundreality-31074404/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=202966&quot;&gt;Jurij&lt;/a&gt;&lt;/li&gt;\
 &lt;li&gt;Footsteps, woodland, forest floor, running past by Fork Media from &lt;a href=&quot;https://www.zapsplat.com/page/3/?s=footsteps+running&amp;post_type=music&amp;sound-effect-category-id&quot;&gt;Zapsplat&lt;/a&gt;&lt;/li&gt;\
+&lt;li&gt;Night Ambience by &lt;a href=&quot;https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=17064&quot;&gt;freesound_community&lt;/a&gt;&lt;/li&gt;\
 &lt;&lt;/message&gt;&gt;\
 
 &lt;&lt;message &quot;&#39;&#39;Fonts&#39;&#39;&quot; btn&gt;&gt;\
@@ -1982,12 +1999,11 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;message &quot;&#39;&#39;Custom Macros&#39;&#39;&quot; btn&gt;&gt;\
 &lt;li&gt;Notify macro for SugarCube 2 by ChapelR. &lt;a href=&quot;https://github.com/ChapelR/custom-macros-for-sugarcube-2.git&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;\
 &lt;li&gt;Message macro for SugarCube 2 by ChapelR (with help from T.M. Edwards). &lt;a href=&quot;https://github.com/ChapelR/custom-macros-for-sugarcube-2.git&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;\
-&lt;li&gt;The Continue Macro Set for SugarCube 2 by ChapelR &lt;a href=&quot;https://github.com/ChapelR/custom-macros-for-sugarcube-2.git&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;\
 &lt;li&gt;Disable macro by ChapelR for sugarcube 2 &lt;a href=&quot;https://github.com/ChapelR/custom-macros-for-sugarcube-2.git&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;\
 &lt;&lt;/message&gt;&gt;\
 
-&lt;center&gt;&lt;h2&gt;&#39;&#39;[[Go back to Title|Title]]&#39;&#39;&lt;/h2&gt;&lt;/center&gt;
-&lt;&lt;unset $paperRoll, $bedSheet, $pieceMirror, $hackSawBlade, $pencil, $blueprint, $journal, $steelRail, $button, $escapeKey, $calendar, $watch, $stool, $tinyPaper, $papers, $stayInCell, $brokenWindow, $movementFrontCell, $openFloor, $notes&gt;&gt;\</tw-passagedata><tw-passagedata pid="54" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL</tw-passagedata><tw-passagedata pid="55" name="notiTinyPaper" tags="widget nobr" position="100,100" size="100,100">&lt;&lt;widget &quot;notiTinyPaper&quot;&gt;&gt;
+&lt;center&gt;&lt;h2&gt;&#39;&#39;[[Go back to Title|Title]]&#39;&#39;&lt;/h2&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="54" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
+</tw-passagedata><tw-passagedata pid="55" name="notiTinyPaper" tags="widget nobr" position="100,100" size="100,100">&lt;&lt;widget &quot;notiTinyPaper&quot;&gt;&gt;
 	&lt;&lt;if $ListaNotificaciones[0] is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Note Added&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $ListaNotificaciones[0] to true&gt;&gt;
@@ -2089,6 +2105,7 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Oops" tags="Ending" position="600,900" size="100,100">&lt;&lt;Ending3&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
+&lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The forest greets you like an old friend. &lt;/h2&gt;\
 &lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;The full moon is almost at its peak in the night sky and is giving you enough light to guide yourself through the trees. 
@@ -2131,60 +2148,62 @@ Now that someone is here, is time for some questions that they must have the ans
 
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Stayed until morning&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;&lt;&lt;/type&gt;&gt;
 </tw-passagedata><tw-passagedata pid="77" name="Achievements" tags="System" position="500,700" size="100,100">&lt;&lt;if UIBar.unstow()&gt;&gt;&lt;&lt;script&gt;&gt;UIBar.stow();&lt;&lt;/script&gt;&gt;&lt;&lt;/if&gt;&gt;\
-&lt;center&gt;&lt;h2&gt;Achievements&lt;/h2&gt;&lt;/center&gt;\
-&lt;h3&gt;Endings&lt;/h3&gt;\
-1. &lt;&lt;print $ending1&gt;&gt;
-2. &lt;&lt;print $ending2&gt;&gt;
-3. &lt;&lt;print $ending3&gt;&gt;
-4. &lt;&lt;print $ending4&gt;&gt;
+&lt;center&gt;&lt;h2&gt;[img[C:/Twine_Proyectos/Cell/Img/AchievementsTitle.png]]&lt;/h2&gt;&lt;/center&gt;\
+&lt;center&gt;\
+[img[C:/Twine_Proyectos/Cell/Img/EndingsSubTitle.png]]
+1. &lt;&lt;if $endingAch1 is true&gt;&gt;&#39;&#39;Forced Enlistment&#39;&#39;&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
+2. &lt;&lt;if $endingAch2 is true&gt;&gt;&#39;&#39;Captured&#39;&#39;&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
+3. &lt;&lt;if $endingAch3 is true&gt;&gt;&#39;&#39;Oops&#39;&#39;&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
+4. &lt;&lt;if $endingAch4 is true&gt;&gt;&#39;&#39;Stayed until morning&#39;&#39;&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
+&lt;/center&gt;\
 
 &lt;ol&gt;\
 ----
 	&lt;&lt;if $SetToEscapeAch is true&gt;&gt;
-*&#39;&#39;Set to Escape&#39;&#39;
+&lt;li&gt;&#39;&#39;Set to Escape&#39;&#39;&lt;/li&gt;
 //Time to go!//
 First time getting all tools to escape through the window.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 	&lt;&lt;if $UnderYourNoseAch is true&gt;&gt;\
-*&#39;&#39;Right under your nose&#39;&#39;
+&lt;li&gt;&#39;&#39;Right under your nose&#39;&#39;&lt;/li&gt;
 //&quot;Didn&#39;t think to search there&quot;// - First time finding the key to escape.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;\
 ----
 	&lt;&lt;if $CapturedAch is true&gt;&gt;\
-*&#39;&#39;Captured&#39;&#39;
+&lt;li&gt;&#39;&#39;Captured&#39;&#39;&lt;/li&gt;
 //&quot;Should&#39;ve ran the other way...&quot;// - First time getting captured within the facility.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;\
 ----
 	&lt;&lt;if $LittleBladderAch is true&gt;&gt;\
-*&#39;&#39;Lil&#39; Bladder&#39;&#39;
+&lt;li&gt;&#39;&#39;Lil&#39; Bladder&#39;&#39;&lt;/li&gt;
 //&quot;... You ok there?&quot;// - Used the toilet 5 times.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;\
 ----
 	&lt;&lt;if $SecondThoughtsAch is true&gt;&gt;\
-*&#39;&#39;Second Thoughts&#39;&#39;
+&lt;li&gt;&#39;&#39;Second Thoughts&#39;&#39;&lt;/li&gt;
 //&quot;You like thinking things through, it seems.&quot;// - Decided to &#39;&#39;return to your cell&#39;&#39; as advised by the eyes in one run and decided to &#39;&#39;stay until morning&#39;&#39; in another.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;\
 ----
 	&lt;&lt;if $OnlyWeaponAch is true&gt;&gt;
-*&#39;&#39;There goes my only weapon...&#39;&#39;
+&lt;li&gt;&#39;&#39;There goes my only weapon...&#39;&#39;&lt;/li&gt;
 //&quot;Well, there&#39;s that one piece of mirror...&quot;// - First time breaking your Steel Railing.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 	&lt;&lt;if $SeeingRed is true&gt;&gt;
-*&#39;&#39;Seeing Red&#39;&#39;
+&lt;li&gt;&#39;&#39;Seeing Red&#39;&#39;&lt;/li&gt;
 //&quot;I&#39;ve seen this color before...&quot;// - Visited all the passages with &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt; words in them. &lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 	&lt;&lt;if $CaughtEmAllAch is true&gt;&gt;
-*&#39;&#39;Got &#39;em All&#39;&#39;
+&lt;li&gt;&#39;&#39;Got &#39;em All&#39;&#39;&lt;/li&gt;
 //&quot;Elementary! dear... player?&quot;// - Got every clue and item the story has. &lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 	&lt;&lt;if $AllEndingsAch is true&gt;&gt;
-*&#39;&#39;All endings&#39;&#39;
+&lt;li&gt;&#39;&#39;All endings&#39;&#39;&lt;/li&gt;
 //&quot;Through all possibilities.&quot;// - Found all 4 endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 	&lt;&lt;if $CompleitionistAch is true&gt;&gt;
-*&#39;&#39;Compleitionist&#39;&#39;
+&lt;li&gt;&#39;&#39;Compleitionist&#39;&#39;&lt;/li&gt;
 Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 &lt;/ol&gt;\
 
 &lt;center&gt;&lt;h3&gt;&#39;&#39;[[Take me to the Title|Title]]&#39;&#39;	&lt;/h3&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;h3&gt;&lt;&lt;return &quot;&#39;&#39;Take me to the last screen visited&#39;&#39;&quot;&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h3&gt;&lt;&lt;return &quot;&#39;&#39;Take me to the Story&#39;&#39;&quot;&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;div class=&quot;buttonAch&quot;&gt;&lt;&lt;button [[Restart Achievements|Title]]&gt;&gt;\
   &lt;&lt;set $AllEndingsAch = false&gt;&gt;&lt;&lt;run memorize(&#39;AllEndingsAch&#39;, false)&gt;&gt;\
   &lt;&lt;set $SetToEscapeAch = false&gt;&gt;&lt;&lt;run memorize(&#39;SetToEscapeAch&#39;, false)&gt;&gt;\
@@ -2196,33 +2215,37 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
   &lt;&lt;set $SeeingRedAch = false&gt;&gt;&lt;&lt;run memorize(&#39;SeeingRedAch&#39;, false)&gt;&gt;\
   &lt;&lt;set $CompleitionistAch = false&gt;&gt;&lt;&lt;run memorize(&#39;CompleitionistAch&#39;, false)&gt;&gt;\
   &lt;&lt;set $CapturedAch = false&gt;&gt;&lt;&lt;run memorize(&#39;CapturedAch&#39;, false)&gt;&gt;\
+  &lt;&lt;set $endingAch1 to false&gt;&gt;&lt;&lt;run memorize (&#39;endingAch1&#39;, false)&gt;&gt;\
+  &lt;&lt;set $endingAch2 to false&gt;&gt;&lt;&lt;run memorize (&#39;endingAch2&#39;, false)&gt;&gt;\
+  &lt;&lt;set $endingAch3 to false&gt;&gt;&lt;&lt;run memorize (&#39;endingAch3&#39;, false)&gt;&gt;\
+  &lt;&lt;set $endingAch4 to false&gt;&gt;&lt;&lt;run memorize (&#39;endingAch4&#39;, false)&gt;&gt;\
   &lt;&lt;notify&gt;&gt;Achievements restarted&lt;&lt;/notify&gt;&gt;\
 &lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="78" name="Ending1" tags="widget nobr" position="300,400" size="100,100">&lt;&lt;widget &quot;Ending1&quot;&gt;&gt;
-	&lt;&lt;if $ListaEndings[0] is false&gt;&gt;
+	&lt;&lt;if $endingAch1 is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Ending Achieved&lt;&lt;/notify&gt;&gt;
-    	&lt;&lt;set $ending1 = &quot;Forced Enlistment&quot;&gt;&gt;
-        &lt;&lt;set $ListaEndings[0] to true&gt;&gt;
+        &lt;&lt;set $endingAch1 to true&gt;&gt;
+        &lt;&lt;run memorize(&#39;endingAch1&#39;, $endingAch1)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="Ending2" tags="widget nobr" position="400,400" size="100,100">&lt;&lt;widget &quot;Ending2&quot;&gt;&gt;
-    &lt;&lt;if $ListaEndings[1] is false&gt;&gt;
+    &lt;&lt;if $endingAch2 is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Ending Achieved&lt;&lt;/notify&gt;&gt;
-        &lt;&lt;set $ending2 = &quot;Everything&#39;s changed&quot;&gt;&gt;
-        &lt;&lt;set $ListaEndings[1] to true&gt;&gt;
+        &lt;&lt;set $endingAch2 to true&gt;&gt;
+        &lt;&lt;run memorize(&#39;endingAch2&#39;, $endingAch2)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Ending3" tags="widget nobr" position="500,400" size="100,100">&lt;&lt;widget &quot;Ending3&quot;&gt;&gt;
-    &lt;&lt;if $ListaEndings[2] is false&gt;&gt;
+    &lt;&lt;if $endingAch3 is false&gt;&gt;
         &lt;&lt;notify&gt;&gt;Ending Achieved&lt;&lt;/notify&gt;&gt;
-        &lt;&lt;set $ending3 = &quot;Oops&quot;&gt;&gt;
-        &lt;&lt;set $ListaEndings[2] to true&gt;&gt;
+        &lt;&lt;set $endingAch3 to true&gt;&gt;
+        &lt;&lt;run memorize(&#39;endingAch3&#39;, $endingAch3)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Ending4" tags="widget nobr" position="600,400" size="100,100">&lt;&lt;widget &quot;Ending4&quot;&gt;&gt;
-    &lt;&lt;if $ListaEndings[3] is false&gt;&gt;
+    &lt;&lt;if $endingAch4 is false&gt;&gt;
        &lt;&lt;notify&gt;&gt;Ending Achieved&lt;&lt;/notify&gt;&gt;
-       &lt;&lt;set $ending4 = &quot;Stayed until morning&quot;&gt;&gt;
-        &lt;&lt;set $ListaEndings[3] to true&gt;&gt;
+       &lt;&lt;set $endingAch4 to true&gt;&gt;
+       &lt;&lt;run memorize(&#39;endingAch4&#39;, $endingAch4)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Ach. All Endings" tags="widget nobr" position="100,1600" size="100,100">&lt;&lt;widget &quot;AchAllEndings&quot;&gt;&gt;
-	&lt;&lt;if $ListaEndings[0,1,2,3] is true&gt;&gt;\
+	&lt;&lt;if $endingAch1 is true and $endingAch2 is true and $endingAch3 is true and $endingAch4 is true&gt;&gt;\
         &lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $AllEndingsAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;AllEndingsAch&#39;, $AllEndingsAch)&gt;&gt;
