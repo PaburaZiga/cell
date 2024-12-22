@@ -554,7 +554,7 @@ Setting.addList("font", {
 
 ////////////////////////////////////////
 
-/*Cambiar el tamaño de Funte*/
+/*Cambiar el tamaño de Fuente*/
 var textSizeHandler = function () {
 
   // cache the jQuery-wrapped <html> element
@@ -613,135 +613,21 @@ Setting.addToggle("linkUnderline", {
 
 ///////////////////////////////////////////////
 
-// Setting up a toggle control for the settings property 'music' w/ callbacks
-var settingMusic = function () {
-	if (! settings.music) { // is false
-		SimpleAudio.stop();
-	}
-};
-
-Setting.addToggle("music", {
-	label    : "Play Audio?",
-	default  : true,
-	onInit   : settingMusic,
-	onChange : settingMusic
-});
+// Setting up a mute control for the settings property 'masterMute' w/ callback
+function masterMuteHandler() {
+    SimpleAudio.mute(settings["masterMute"]);
+}
+Setting.addToggle("masterMute", {
+    label    : "Mute Audio?",
+    desc     : "Mute control for all audio.",
+  	default	 : false,
+    onInit   : masterMuteHandler,
+    onChange : masterMuteHandler,
+}); 
+// default value not defined, so false is used
 
 ///////////////////////////////////////////////
 
-/*Continuation macro*/
-(function () {
-    // v1.0.1
-    'use strict';
-
-    // selectors to ignore
-    var ignored = ['a', ':button', '*[role="button"]', '.continue-macro-ignore', '#ui-bar', '#ui-dialog'];
-
-    var _i = 0;
-
-    prehistory['%%continue-expiration'] = function () {
-        _i = 0;
-    };
-
-    function ns () {
-        // create unique namespace
-        var namespace = '.' + Date.now().toString(36) + '-' + _i;
-        _i++;
-        return namespace;
-    }
-
-    function ignoreMe () {
-        $(document).on('click.continue-macro keyup.continue-macro', ignored.join(', '), function (ev) { 
-            ev.stopPropagation(); 
-        });
-    }
-
-    function addIgnore () {
-        if (State.length > 0) {
-            return false;
-        }
-        var args = [].slice.call(arguments).flat(Infinity);
-        ignored = ignored.concat(args);
-        return true;
-    }
-
-    $(document).one(':passagerender', function () {
-        // on first render, set up the ignore list
-        ignoreMe();
-    });
-
-    // continue functions
-    function cont (press, cb) {
-        var namespace = ns();
-        if (!cb || typeof cb !== 'function') {
-            return;
-        }
-        var events = 'click.continue-macro' + namespace;
-        if (press) {
-            events = events + ' keyup.continue-macro' + namespace;
-        }
-        $(document).one(events, function () {
-            cb.call();
-            // expire all namespaced events
-            $(document).off(namespace);
-        });
-    }
-
-    function reset () {
-        var args = [].slice.call(arguments).flat(Infinity);
-        ignored = ignored.concat(args);
-        $(document).off('.continue-macro');
-        ignoreMe();
-    }
-
-    // macros
-
-    // <<ignore selectors...>>
-    Macro.add('ignore', {
-        handler : function () {
-            var check = addIgnore(this.args);
-            if (!check) {
-                return this.error('the <<ignore>> macro should only be run from StoryInit or equivalent.');
-            }
-        }
-    });
-
-    // <<cont [append] [press]>>Code<</cont>>
-    Macro.add('cont', {
-        tags : null,
-        handler : function () {
-            var append = this.args.includes('append'), // append keyword
-                press = this.args.includesAny('key', 'keypress', 'press', 'button'), // keypress keyword
-                wiki = this.payload[0].contents, // content to wikify
-                $output; // output element (if needed)
-
-            if (append) {
-                // create output element, but only if needed (e.g. if appending content)
-                $output = $(document.createElement('span'))
-                    .addClass('macro-' + this.name)
-                    .appendTo(this.output);
-            }
-
-            cont(press, this.createShadowWrapper( function () {
-                // wikify 
-                if (append && $output && $output instanceof $) {
-                    $output.wiki(wiki);
-                } else {
-                    $.wiki(wiki);
-                }
-            }));
-        }
-    });
-
-    // APIs
-
-    setup.cont = cont;
-    setup.cont.ignore = addIgnore;
-    setup.cont.reset = reset;
-
-    window.cont = window.cont || setup.cont;
-
-}());
 
 /*Macro de DISABLE*/
 (function () {
@@ -925,9 +811,9 @@ A simple sink and toilet unit is placed against the [[wall|Wall]]. It seems to b
 &lt;/center&gt;\</tw-passagedata><tw-passagedata pid="4" name="Beginning" tags="" position="1100,300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Ceiling.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;&#39;&#39;You open your eyes.&#39;&#39;&lt;/h2&gt;\
 &lt;&lt;if visited(&quot;Beginning&quot;) &gt;= 2&gt;&gt;\
-	&lt;center&gt;&#39;&#39;[[Skip|Door]]&#39;&#39;&lt;/center&gt;
+	&lt;center&gt;&#39;&#39;&lt;&lt;link [[Skip|Door]]&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;&lt;&lt;/link&gt;&gt;&#39;&#39;&lt;/center&gt;
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;timed 2s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;Your vision is blurry, making you blink a couple of times. 
+&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;Your vision is blurry, making you blink a couple of times. 
 
 An unfamiliar ceiling welcomes you. 
 
@@ -937,13 +823,15 @@ Now with your sight a little more focused, you can see yourself sitting on a bed
 
 &lt;center&gt;//It&#39;s locked. //&lt;/center&gt;\
 
-You try a couple of times with more force, but it is not budging. You start to realize that something is wrong with this place; this room, feels eerie. Cold sweat starts forming on your back. 
+You try a couple of times with more force, but it is not budging. You start to realize that something is wrong with this place; this room, feels eerie. Cold sweat starts trickling down your back. 
 
 You rack your brain, but don&#39;t remember any reason why you would be on a room like this. You bang on the door and scream for help, but there is no response or even a sound coming from the other side. You take a step back.
 
 &lt;center&gt;//You need to get out of here. //&lt;/center&gt;\
 &lt;center&gt;&lt;h3&gt;&#39;&#39;[[Calm down and look around|Door]]&#39;&#39;&lt;/h3&gt;&lt;/center&gt;\
-&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Door" tags="Door" position="1400,800" size="100,200">&lt;&lt;if $button is false&gt;&gt;\
+&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
+&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="5" name="Door" tags="Door" position="1400,800" size="100,200">&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;\
+&lt;&lt;if $button is false&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor2.png&quot;&gt;&lt;/center&gt;\
@@ -1206,7 +1094,8 @@ AUDIO
 &lt;&lt;cacheaudio &quot;openHatch&quot; &quot;audio/small_metal_hatch.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;whiteNoise&quot; &quot;audio/white_noise.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;railingBreak&quot; &quot;audio/breaking_railing.mp3&quot;&gt;&gt;\
-&lt;&lt;cacheaudio &quot;nightAmbience&quot; &quot;C:/Twine_Proyectos/Cell/audio/night-ambience.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1400,600" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+&lt;&lt;cacheaudio &quot;nightAmbience&quot; &quot;audio/night-ambience.mp3&quot;&gt;&gt;\
+&lt;&lt;cacheaudio &quot;typewriter&quot; &quot;C:/Twine_Proyectos/Cell/audio/typing_typewriter.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1400,600" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/wound.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;What&#39;s this?&lt;/h2&gt;\
 &lt;&lt;set $ListaInventarioAch.push($Wound16)&gt;&gt;&lt;&lt;run memorize(&#39;ListaInventarioAch&#39;, $ListaInventarioAch)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiWound&gt;&gt;\
@@ -1309,12 +1198,12 @@ With your face entirely against the door:
 &lt;&lt;if $movementFrontCell is true&gt;&gt;\
 You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; and the corridor extends revealing more doors. At the end of it, there is a steel bar gate separating the corridor from an intersection that goes from side to side, &#39;&#39;but this time you saw the silhouette of someone going to the left&#39;&#39;; there&#39;s definitely people in this facility.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;else&gt;&gt;\
-You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; and the corridor extends revealing more doors. At the end of it, there is a steel bar gate separating the corridor from an intersection that goes from side to side; you can&#39;t see anymore beyond that.&lt;&lt;/linkappend&gt;&gt;
+You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; and the corridor extends revealing more doors. At the end of it, you can partially see something that looks like a steel bar gate separating the corridor from maybe a intersection, It&#39;s really not clear; you can&#39;t see anymore beyond that.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;/if&gt;&gt;\
 
 To the &lt;&lt;linkappend &quot;left&quot; t8n&gt;&gt; there&#39;s the other end of the corridor, you can see there&#39;s a window on the wall that doesn&#39;t seem to be barred.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="18" name="Window" tags="Toilet" position="2700,1200" size="100,100">&lt;&lt;if $stool is true&gt;&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="18" name="Window" tags="Toilet" position="2600,1200" size="100,100">&lt;&lt;if $stool is true&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/Window.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;elseif $pieceMirror is true&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
@@ -1449,7 +1338,9 @@ You open the faucet to check if the water flows, and almost instantly you feel t
     &lt;div class =&quot;buttonAch&quot;&gt;&lt;&lt;button[img[Img/AchievementsButton.png][Achievements]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
  &lt;&lt;/if&gt;&gt;\
 &lt;a href=&#39;https://ko-fi.com/I3I1GJAVX&#39; target=&#39;_blank&#39;&gt;&lt;img height=&#39;36&#39; style=&#39;border:0px;height:36px;&#39; src=&#39;https://storage.ko-fi.com/cdn/kofi6.png?v=6&#39; border=&#39;0&#39; alt=&#39;Buy Me a Coffee at ko-fi.com&#39; /&gt;&lt;/a&gt;
-</tw-passagedata><tw-passagedata pid="24" name="Look around the desk" tags="Desk" position="2000,1300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Drawers.png&quot;&gt;&lt;/center&gt;\
+&#39;&#39;Socials:&#39;&#39;
+&lt;a href=&#39;https://bsky.app/profile/paburaziga.bsky.social&#39;&gt;&#39;&#39;BlueSky&#39;&#39;&lt;/a&gt;
+&lt;a href=&#39;https://x.com/paburaziga&#39;&gt;&#39;&#39;X&#39;&#39;&lt;/a&gt;</tw-passagedata><tw-passagedata pid="24" name="Look around the desk" tags="Desk" position="2000,1300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Drawers.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;While looking and poking around.&lt;/h2&gt;\
 You put your weight on the desk and it seems to give a little, but remains well bolted to the wall.
 
@@ -1670,7 +1561,7 @@ To play this, all you have to do is click on the links
 
 This Interactive fiction uses a &#39;&#39;Notes and Inventory System&#39;&#39; that notifies and compiles important notes for you to review and items that you&#39;ve collected thus far. Remember to read everything in the passage before moving on.
 
-You can access them on the &#39;&#39;Menu Bar&#39;&#39; on the left just click on the arrow in the top left hand corner of the page. 
+You can access them on the &#39;&#39;Menu Bar&#39;&#39; on the left, just click on the arrow in the top left hand corner of the page. 
 
 Have fun!
 &lt;center&gt;&lt;h3&gt;&lt;&lt;return [[Take me to the Title.|Title]]&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="35" name="Under the Bed" tags="Bed" position="1800,300" size="100,100">&lt;&lt;if $escapeKey is false&gt;&gt;\
@@ -1708,7 +1599,7 @@ twitter e instagram
 correo (maybe)
 
 
-</tw-passagedata><tw-passagedata pid="37" name="Window Exit" tags="Ending" position="2800,1400" size="100,100">&lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="37" name="Window Exit" tags="Ending" position="2700,1400" size="100,100">&lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You descent the rope&lt;/h2&gt;\
 And with a grunt, your feet land on the ground, right next to the broken window of your cell. You look up and look around you for a moment, in search of movement or stepping sounds. After confirming so, you take a deep breath, choose a direction and start heading that way. 
@@ -1721,7 +1612,7 @@ But that&#39;s when it hits you.
 
 
 
-</tw-passagedata><tw-passagedata pid="38" name="Door Exit" tags="Ending" position="100,1000" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="38" name="Door Exit" tags="Ending" position="200,1000" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/CorridorOut.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Stepping out of your cell&lt;/h2&gt;\
 &lt;&lt;set $escapeKey to false&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;\
@@ -1744,7 +1635,7 @@ But this time, a couple of eyes look back...
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Ceiling.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;&#39;&#39;An unfamiliar ceiling welcomes you again.&#39;&#39;&lt;/h2&gt;\
-&lt;&lt;type 60ms&gt;&gt;It takes you a moment but you recognize it. 
+&lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;It takes you a moment but you recognize it. 
 
 //&#39;&#39;You are in that damn room again.&#39;&#39;//
 
@@ -1764,7 +1655,7 @@ With that, you have a feeling that your days of normalcy are over.
 
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Everything&#39;s changed&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
 &lt;&lt;/type&gt;&gt;\
-</tw-passagedata><tw-passagedata pid="40" name="Stay in the cell" tags="Ending" position="100,1400" size="100,100">&lt;&lt;AchSecondThoughts&gt;&gt;\
+&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="40" name="Stay in the cell" tags="Ending" position="200,1400" size="100,100">&lt;&lt;AchSecondThoughts&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/doorWindow.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You lay down on the bed&lt;/h2&gt;\
 And close your eyes. &lt;&lt;timed 2s t8n&gt;&gt;You wait for a deep sleep to take over you, but questions keep popping in your head making you feel restless. You can feel how the pale light of the full moon touches your face, but that doesn&#39;t seem to calm you down. Maybe in the morning someone will tell you why you are here.&lt;&lt;/timed&gt;&gt;
@@ -1808,7 +1699,7 @@ Dumbfounded, you prepare yourself for the next step:
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;&lt;/center&gt;\
-&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Front cell" tags="Ending" position="100,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/doorWindowFront.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Front cell" tags="Ending" position="200,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/doorWindowFront.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The eyes belong to a person&lt;/h2&gt;\
 They look surprised; you are too. The eyes frown and a hand appears inside the small frame the window provides, pointing back to your cell.
 
@@ -1861,7 +1752,7 @@ You close the door behind you and turn around to look through the window at the 
                 
 &lt;&lt;timed 17s t8n&gt;&gt;&lt;center&gt;&#39;&#39;[[After that, everything goes black.|Stayed until morning]]&#39;&#39;&lt;/center&gt;&lt;&lt;/timed&gt;&gt;
 
-</tw-passagedata><tw-passagedata pid="46" name="Abduction" tags="Ending" position="3000,1400" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="46" name="Abduction" tags="Ending" position="2900,1300" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h2&gt;Huh?&lt;/h2&gt;&lt;/center&gt;\
 &lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;center&gt;//The cell looked like it was supose to retain you inside, be secure, but somehow you are here, now, outside. //&lt;/center&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
@@ -1879,11 +1770,11 @@ You close the door behind you and turn around to look through the window at the 
 &gt;&gt;//&lt;span style=&quot;color:red&quot;&gt;-&quot;You are gonna be a great asset for us, but for now, let us go cut the chase.&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
 
 &lt;&lt;timed 22s t8n&gt;&gt;You are about to ask what does he mean, but even before you can open your mouth you feel the powerful impact of a punch in your gut and [[everything goes black.|Wreak Havok]]&lt;&lt;/timed&gt;&gt;
-</tw-passagedata><tw-passagedata pid="47" name="Wreak Havok" tags="Ending" position="3000,1200" size="100,100">&lt;&lt;Ending1&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="47" name="Wreak Havok" tags="Ending" position="2800,1100" size="100,100">&lt;&lt;Ending1&gt;&gt;\
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;h2&gt;You wake up&lt;/h2&gt;\
-&lt;&lt;type 60ms&gt;&gt;But this is different than last time. 
+&lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;But this is different than last time. 
 
 There is no unfamiliar ceiling gretting you, just the cold, hard ground of the forest against your face. 
 
@@ -1902,7 +1793,7 @@ The last thing you remember is the familiar silhouette of a person, the color &l
 Then everything goes black.
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Forced Enlistment&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/endingForced.png&quot;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;\
-</tw-passagedata><tw-passagedata pid="48" name="Open Floor" tags="Bed" position="1600,200" size="100,100">&lt;div id=&quot;closeUpBedUnder&quot;&gt;\
+&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="48" name="Open Floor" tags="Bed" position="1600,200" size="100,100">&lt;div id=&quot;closeUpBedUnder&quot;&gt;\
   &lt;center&gt;&lt;img src=&quot;Img/closeUpBedUnder.png&quot; alt=&quot;Closed floor&quot;&gt;&lt;/center&gt;\
 &lt;/div&gt;\
 &lt;h2&gt;Using some force&lt;/h2&gt;\
@@ -1990,7 +1881,8 @@ The eyes look at you almost pleadingly, but you don&#39;t look conviced, so they
 
 &lt;center&gt;&#39;&#39;You need to escape this place.&#39;&#39;&lt;/center&gt;\
 
-&lt;center&gt;&lt;&lt;return [[Go back to what you were doing|Bed]]&gt;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="Credits" tags="" position="900,500" size="100,100">&lt;&lt;AchCompleitionist&gt;&gt;\
+&lt;center&gt;&lt;&lt;return [[Go back to what you were doing|Bed]]&gt;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="Credits" tags="" position="900,500" size="100,100">&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;\
+&lt;&lt;AchCompleitionist&gt;&gt;\
 &lt;&lt;audio &quot;nightAmbience&quot; stop&gt;&gt;
 &lt;&lt;unset $paperRoll, $bedSheet, $pieceMirror, $hackSawBlade, $pencil, $blueprint, $journal, $steelRail, $button, $escapeKey, $calendar, $watch, $stool, $tinyPaper, $papers, $stayInCell, $brokenWindow, $movementFrontCell, $openFloor, $notes&gt;&gt;\
 &lt;center&gt;&lt;h1&gt;Thank you for playing&lt;/h1&gt;&lt;/center&gt;\
@@ -2129,7 +2021,7 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The forest greets you like an old friend. &lt;/h2&gt;\
-&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;The full moon is almost at its peak in the night sky and is giving you enough light to guide yourself through the trees. 
+&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;The full moon is almost at its peak in the night sky and is giving you enough light to guide yourself through the trees. 
 
 You start running again fearing that whoever put you in that room might&#39;ve already noticed that you escaped.
 
@@ -2144,14 +2036,14 @@ Not understanding what&#39;s happening, and with your consciousness starting to 
 And everything goes to black. . .
 
 &lt;center&gt;&lt;h3&gt;[[Ending &quot;Oops&quot;|Credits]]&lt;/h3&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/endingoops.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;img src = &quot;Img/endingoops.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
-</tw-passagedata><tw-passagedata pid="76" name="Stayed until morning" tags="Ending" position="400,1400" size="100,100">&lt;&lt;Ending4&gt;&gt;\
+&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="76" name="Stayed until morning" tags="Ending" position="400,1400" size="100,100">&lt;&lt;Ending4&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Ceiling.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;&#39;&#39;That unfamiliar ceiling welcomes you again.&#39;&#39;&lt;/h2&gt;\
 
-&lt;&lt;type 60ms&gt;&gt;Struggling to sit on the bed, pain runs through your body and a strong smell of iron emanates from you. You look down at yourself, and all you see are tattered clothes and blood.
+&lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;Struggling to sit on the bed, pain runs through your body and a strong smell of iron emanates from you. You look down at yourself, and all you see are tattered clothes and blood.
 
 While wondering what happend last night, there&#39;s a few knocks on the door and the sound of the hatch openning.
 
@@ -2168,7 +2060,7 @@ Before they move away, the force of your grip tightens on their clothes, which m
 Now that someone is here, is time for some questions that they must have the answers to.
 
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Stayed until morning&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;&lt;&lt;/type&gt;&gt;
-</tw-passagedata><tw-passagedata pid="77" name="Achievements" tags="System" position="500,700" size="100,100">&lt;&lt;if UIBar.unstow()&gt;&gt;&lt;&lt;script&gt;&gt;UIBar.stow();&lt;&lt;/script&gt;&gt;&lt;&lt;/if&gt;&gt;\
+&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="77" name="Achievements" tags="System" position="500,700" size="100,100">&lt;&lt;if UIBar.unstow()&gt;&gt;&lt;&lt;script&gt;&gt;UIBar.stow();&lt;&lt;/script&gt;&gt;&lt;&lt;/if&gt;&gt;\
 &lt;center&gt;&lt;h2&gt;[img[C:/Twine_Proyectos/Cell/Img/AchievementsTitle.png]]&lt;/h2&gt;&lt;/center&gt;\
 &lt;center&gt;\
 [img[C:/Twine_Proyectos/Cell/Img/EndingsSubTitle.png]]
@@ -2222,7 +2114,7 @@ First time getting all tools to escape through the window.&lt;&lt;else&gt;&gt;&l
 Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 &lt;/ol&gt;\
-&lt;center&gt;&lt;h3&gt;&#39;&#39;[[Take me to the Title|Title]]&#39;&#39;	&lt;/h3&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h3&gt;&#39;&#39;[[Take me to the Title Menu|Title]]&#39;&#39;	&lt;/h3&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h3&gt;&lt;&lt;return &quot;&#39;&#39;Take me to the Story&#39;&#39;&quot;&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;div class=&quot;buttonAch&quot;&gt;&lt;&lt;button [[Restart Achievements|Title]]&gt;&gt;\
   &lt;&lt;set $AllEndingsAch = false&gt;&gt;&lt;&lt;run memorize(&#39;AllEndingsAch&#39;, false)&gt;&gt;\
