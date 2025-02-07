@@ -749,7 +749,7 @@ $(document).on('mouseover', 'button, a', function() {
 	&lt;/div&gt;\
 &lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1800,600" size="200,100">&lt;&lt;if $bedSheet is false&gt;&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1900,700" size="200,100">&lt;&lt;if $bedSheet is false&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBedNoSheets.png&quot;&gt;&lt;/center&gt;\
@@ -802,7 +802,7 @@ You start thinking about the pamphlet that you found as well as the torn piece o
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="3" name="Toilet" tags="Toilet" position="2300,800" size="100,200">&lt;&lt;if $pieceMirror is false&gt;&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="3" name="Toilet" tags="Toilet" position="2400,900" size="100,200">&lt;&lt;if $pieceMirror is false&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
@@ -854,7 +854,7 @@ A simple sink and toilet unit is placed against the [[wall|Wall]]. It seems to b
 &lt;&lt;if visited(&quot;Beginning&quot;) &gt;= 2&gt;&gt;\
 	&lt;center&gt;&#39;&#39;&lt;&lt;link [[Skip|Door]]&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;&lt;&lt;/link&gt;&gt;&#39;&#39;&lt;/center&gt;
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;Your vision is blurry, making you blink a couple of times. 
+&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;Your vision is blurry, making you blink a couple of times. 
 
 An unfamiliar ceiling welcomes you. 
 
@@ -872,7 +872,7 @@ You rack your brain, but don&#39;t remember any reason why you would be on a roo
 &lt;center&gt;&lt;h3&gt;&#39;&#39;[[Calm down and look around|Door]]&#39;&#39;&lt;/h3&gt;&lt;/center&gt;\
 &lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
 &lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\
-</tw-passagedata><tw-passagedata pid="5" name="Door" tags="Door" position="1400,800" size="100,200">&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="5" name="Door" tags="Door" position="1500,900" size="100,200">&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;\
 &lt;&lt;if $button is false&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
@@ -884,13 +884,14 @@ It&#39;s a solid metal door which is currently locked. It has a handle and a key
 There is a small window in the upper middle part of the door that provides some visual to the [[outside|Corridor]].
 
 There is a [[small built-in tray and hatch|Service Hatch]] in the lower part of the door. Seems like it is used to slip things through it.
-
 &lt;&lt;if hasVisited(&quot;Bed&quot;, &quot;Toilet&quot;, &quot;Desk&quot;) and not hasVisited(&quot;Wound&quot;)&gt;&gt;\
+
 &#39;&#39;[[You feel Pain|Wound]]&#39;&#39;
 &lt;&lt;elseif hasVisited(&quot;Wound&quot;)&gt;&gt;\
-    The wound &#39;&#39;hurts&#39;&#39;.
     
+    The wound &#39;&#39;hurts&#39;&#39;.
 &lt;&lt;/if&gt;&gt;\
+
 &lt;&lt;link [[Look closely around the frame of the door|Look around the door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;if $escapeKey is true&gt;&gt;\
@@ -929,7 +930,7 @@ With key in hand, you can escape this cell.
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="6" name="Desk" tags="Desk" position="1800,1100" size="200,100">&lt;&lt;if $blueprint is true&gt;&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="6" name="Desk" tags="Desk" position="1900,1200" size="200,100">&lt;&lt;if $blueprint is true&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/PapersBlueprint.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;elseif $journal is true&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/PapersJournal.png&quot;&gt;&lt;/center&gt;\
@@ -977,13 +978,13 @@ There is a calendar on the wall with the 28th, circled.
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="7" name="Look around the Bed" tags="Bed" position="1600,400" size="100,100">&lt;&lt;if $openFloor is false&gt;&gt;\
-&lt;center&gt;&lt;img src = &quot;Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
-&lt;&lt;else&gt;&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="7" name="Look around the Bed" tags="Bed" position="1700,500" size="100,100">&lt;&lt;if $bedSheet is true&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBedNoSheets.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;else&gt;&gt;\
+&lt;center&gt;&lt;img src = &quot;Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;Moving around the bed&lt;/h2&gt;\
-The bed is in the corner of the cell, one side is up against the wall while the head end is against the adjecent wall.
+The bed is in the corner of this place. One side is up against the wall, while the head end is against the adjecent wall.
 
 There seems to be a number of deep scratch marks along the wall.
  
@@ -995,7 +996,7 @@ You try to move the bed but it doesn&#39;t budge. You look down at the legs to s
 	There&#39;s nothing else &#39;&#39;under the bed&#39;&#39;.
 &lt;&lt;/if &gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="8" name="Bed Header" tags="Bed" position="2000,300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpPillow.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="8" name="Bed Header" tags="Bed" position="2100,400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpPillow.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Looking towards the head end&lt;/h2&gt;\
 	You can see the pillow where you were passed out on and the steel head end of the bed, but now you notice that something is sticking out from &lt;&lt;linkappend &quot;under the pillow.&quot; t8n&gt;&gt;
 
@@ -1004,7 +1005,7 @@ You try to move the bed but it doesn&#39;t budge. You look down at the legs to s
 &lt;center&gt;&lt;em&gt;@@.smear;&quot;... pe you be patie...&quot;@@&lt;/em&gt;&lt;/center&gt;
 That&#39;s all you get to read.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="9" name="Bedsheets" tags="Bed" position="2100,400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="9" name="Bedsheets" tags="Bed" position="2200,500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Taking a look a the sheets&lt;/h2&gt;\
 &lt;&lt;if $hackSawBlade is false and $brokenWindow is false&gt;&gt;\
 They are quite long for the bed, also the fabric feels a lot thicker than what you&#39;d expect a sheet to be, you wonder why, since it&#39;s not that chilly in here.
@@ -1059,6 +1060,7 @@ You take the sheets.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;set $SetToEscapeAch = recall(&#39;SetToEscape&#39;, false)&gt;&gt;
 &lt;&lt;set $AllEndingsAch = recall(&#39;AllEndingsAch&#39;, false)&gt;&gt;
 &lt;&lt;set $UnderYourNoseAch = recall(&#39;UnderYourNoseAch&#39;, false)&gt;&gt;
+&lt;&lt;set $TouchingGrassAch = recall(&#39;TouchingGrassAch&#39;, false)&gt;&gt;
 &lt;&lt;set $LittleBladderAch = recall(&#39;LittleBladderAch&#39;, false)&gt;&gt;
 &lt;&lt;set $SecondThoughtsAch = recall(&#39;SecondThoughtsAch&#39;, false)&gt;&gt;
 &lt;&lt;set $OnlyWeaponAch = recall(&#39;OnlyWeaponAch&#39;, false)&gt;&gt;
@@ -1136,7 +1138,7 @@ AUDIO
 &lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;pliers&quot; &quot;audio/pliers.mp3&quot;&gt;&gt;\
-&lt;&lt;cacheaudio &quot;button-hover&quot; &quot;audio/button-hover.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1400,600" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+&lt;&lt;cacheaudio &quot;button-hover&quot; &quot;audio/button-hover.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1500,700" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/wound.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;What&#39;s this?&lt;/h2&gt;\
 &lt;&lt;set $Wound16 to true&gt;&gt;&lt;&lt;run memorize(&#39;Wound16&#39;, $Wound16)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiWound&gt;&gt;\
@@ -1144,12 +1146,12 @@ You feel a burning sensation on the right side of your &lt;&lt;linkappend &quot;
 
 Lifting your shirt and lightly touching the place, you are met with a big gash that almost looks like a giant scratch, it also seems to be made quite recently. You don&#39;t really remember how you got it.
 
-And now that you think about it, you don&#39;t really remember how you came here. All you do remember is trying to enter your car after work and hearing some noises behind you, turning around to see what made those noises and then what you saw was the silhouette of a person and something &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt;, after that, nothing.
+And now that you think about it, you don&#39;t really remember how you came here. All you do remember is trying to enter your car after work and hearing some noises behind you, turning around to see what made those noises and then, what you saw, was the silhouette of a person and something &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt;, after that, nothing.
 
 You shake your head in confusion and pain. 
 
-&lt;h3&gt;&lt;center&gt;[[It hurts, but you gotta keep calm|Door]]&lt;/center&gt;&lt;/h3&gt;
-&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Look around the door" tags="Door" position="1200,1000" size="100,100">&lt;&lt;if $button is false&gt;&gt;\
+&lt;h3&gt;&lt;center&gt;[[It hurts, but you gotta keep calm|Door]]&lt;/center&gt;&lt;/h3&gt;\
+&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Look around the door" tags="Door" position="1300,1100" size="100,100">&lt;&lt;if $button is false&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor2.png&quot;&gt;&lt;/center&gt;\
@@ -1169,10 +1171,10 @@ Looking more closely to the &lt;&lt;linkappend &quot;frame of the door&quot; t8n
 
 It&#39;s concerning.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="13" name="Wall" tags="Toilet" position="2400,1100" size="100,100">&lt;&lt;if $pieceMirror is true&gt;&gt;\
-	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="13" name="Wall" tags="Toilet" position="2500,1200" size="100,100">&lt;&lt;if $pieceMirror is true&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
-	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
+	&lt;center&gt;&lt;img src = &quot;Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;You look up&lt;/h2&gt;\
 &lt;&lt;if $pieceMirror is false&gt;&gt;\
@@ -1186,7 +1188,7 @@ Higher up and a little to the side, there&#39;s a barred up [[window|Window]].
 
 There also seems to be some scratches on the wall, the length and depth of said scratches are both considerably large.
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="14" name="Toilet Paper" tags="Toilet" position="2600,800" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/ToiletPaper.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="14" name="Toilet Paper" tags="Toilet" position="2700,900" size="100,100">&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/ToiletPaper.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;So...&lt;/h2&gt;\
 &lt;&lt;if $paperRoll is false&gt;&gt;\
     This toilet paper looks fairly clean. 
@@ -1200,7 +1202,7 @@ There also seems to be some scratches on the wall, the length and depth of said 
 	You&#39;ve taken the Toilet Paper with you.
 &lt;&lt;/if&gt;&gt;
 &lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
-</tw-passagedata><tw-passagedata pid="15" name="Look around the toilet" tags="Toilet" position="2300,500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
+</tw-passagedata><tw-passagedata pid="15" name="Look around the toilet" tags="Toilet" position="2400,600" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Looking around&lt;/h2&gt;\
 &lt;&lt;if $steelRail is false and $hackSawBlade is true&gt;&gt;\
     There is just the gap that you made and nothing else.
@@ -1211,7 +1213,7 @@ You take a closer look to the place where the toilet unit &lt;&lt;link [[meets t
 &lt;&lt;/if&gt;&gt;\
 You look at the &lt;&lt;link [[floor|Toilet Floor]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt; where the unit sits.
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="16" name="Service Hatch" tags="Door" position="1200,800" size="100,100">&lt;&lt;if $button is false&gt;&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="16" name="Service Hatch" tags="Door" position="1300,900" size="100,100">&lt;&lt;if $button is false&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor2.png&quot;&gt;&lt;/center&gt;\
@@ -1228,7 +1230,7 @@ The hatch still opens with little force, but there&#39;s no movement on the othe
 &lt;&lt;/if&gt;&gt;\
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;
-</tw-passagedata><tw-passagedata pid="17" name="Corridor" tags="Door" position="1200,600" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/doorWindow.png&quot;&gt;&lt;/center&gt;\
+</tw-passagedata><tw-passagedata pid="17" name="Corridor" tags="Door" position="1300,700" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/doorWindow.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You get closer to the window&lt;/h2&gt;\
 Through the window you can see a dimly lit corridor. Across from you, there&#39;s a door just like this one. For now you can&#39;t see any movement in there nor on the corridor; no sound either.
 
@@ -1237,14 +1239,14 @@ The floor and walls that you see, seem old but clean. It&#39;s obvious that this
 With your face entirely against the door:
 
 &lt;&lt;if $movementFrontCell is true&gt;&gt;\
-You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; and the corridor extends revealing more doors. At the end of it, there is a steel bar gate separating the corridor from an intersection that goes from side to side, &#39;&#39;but this time you saw the silhouette of someone going to the left&#39;&#39;; there&#39;s definitely people in this facility.&lt;&lt;/linkappend&gt;&gt;
+You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt;. The corridor extends revealing more doors. At the end of it, you can partially see something that looks like a steel bar gate separating the corridor from maybe a intersection, &#39;&#39;but this time you definitely saw the silhouette of someone going to the left&#39;&#39;; there&#39;s definitely people in this facility.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;else&gt;&gt;\
 You try to look to the &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; and the corridor extends revealing more doors. At the end of it, you can partially see something that looks like a steel bar gate separating the corridor from maybe a intersection, It&#39;s really not clear; you can&#39;t see anymore beyond that.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;/if&gt;&gt;\
 
 To the &lt;&lt;linkappend &quot;left&quot; t8n&gt;&gt; there&#39;s the other end of the corridor, you can see there&#39;s a window on the wall that doesn&#39;t seem to be barred.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="18" name="Window" tags="Toilet" position="2600,1200" size="100,100">&lt;&lt;if $stool is true&gt;&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="18" name="Window" tags="Toilet" position="2700,1300" size="100,100">&lt;&lt;if $stool is true&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/Window.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;elseif $pieceMirror is true&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
@@ -1255,21 +1257,19 @@ To the &lt;&lt;linkappend &quot;left&quot; t8n&gt;&gt; there&#39;s the other end
 &lt;&lt;if $stool is false&gt;&gt;\
 You try to balance yourself by stepping on the edge of the toilet unit, but it is a little too far for you to look outside the window. Maybe having something to step on from right underneath it will work.
 &lt;&lt;elseif $stool is true&gt;&gt;\
-	Taking the stool from the desk, you place it right below the window. Stepping on it, you look up and now you are able to see that the window is barred with metal bars and that the glass from the window seems very thick, even then, you are able to see the outside more clearly.
+	You take the stool from the desk and place it right below the window. Stepping on it, you look up and now you are able to see that the window is barred with metal bars and that the glass from the window seems very thick, even then, you are able to see the outside more clearly.
 
 	It is dark outside and it seems that this place is surrounded by a forest because of the large trees that block your sight. The sky looks to be heavily clouded, but there is still some light the filters through the &lt;&lt;linkappend &quot;clouds&quot; t8n&gt;&gt;.
     
 		&lt;&lt;if $brokenWindow is false&gt;&gt;\
 	You try the bars and they are well afixed to the frame but at the same time they feel and sound hollow.
     
-    Trying to look down from the window, you realize that the base of the window glass is very dirty and can&#39;t be seen through easily, so you try to rub some of that off with your fingers, but when your hand presses against the glass it gives out a little. Seeing this, you press harder and almost as if it was just placed, it falls down and breaks into pieces on the outside. You wonder if that noise caught the attention anyone.&lt;&lt;set $brokenWindow to true&gt;&gt;&lt;&lt;notiBrokenWindow&gt;&gt;&lt;&lt;set $brokenWindow14 to true&gt;&gt;&lt;&lt;run memorize(&#39;brokenWindow14&#39;, $brokenWindow14)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;
-    
+    Trying to look down from the window, you realize that the base of the window glass is very dirty and can&#39;t be seen through easily, so you try to rub some of that off with your fingers, but when your hand presses against the glass it gives out a little. Seeing this, you press harder and almost as if it was just placed, it falls down and breaks into pieces on the outside. You wonder if the noise caught the attention of anyone.&lt;&lt;set $brokenWindow to true&gt;&gt;&lt;&lt;notiBrokenWindow&gt;&gt;&lt;&lt;set $brokenWindow14 to true&gt;&gt;&lt;&lt;run memorize(&#39;brokenWindow14&#39;, $brokenWindow14)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;
     	&lt;&lt;elseif $brokenWindow is true&gt;&gt;\
     Trying to look down from the window, you can see the broken glass on the grass below. At least is one thing less between you and the outside.
-    &lt;&lt;/if&gt;&gt;\
+    	&lt;&lt;/if&gt;&gt;\
     &lt;&lt;/linkappend&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-
 &lt;&lt;if $stool is true and $paperRoll is true and $pieceMirror is true and $hackSawBlade is true and $bedSheet is true and $brokenWindow is true&gt;&gt;\
 &lt;&lt;AchSetToEscape&gt;&gt;\
 
@@ -1279,16 +1279,17 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
 	Now what&#39;s next is to cut the window bars, so you step on the stool and start sawing the 3 middle metal bars of the window with the makeshift hacksaw that you made. Doing so, took you the two sawblades that you prepared, but strangely enough cutting the metal bars didn&#39;t take you that long, maybe the bars weren&#39;t strong in the first place? 
     
 	All that&#39;s left now is to tie the &quot;rope&quot; to one of the metal bars that you left, which you do, and &lt;&lt;link [[hop out|Window Exit]]&gt;&gt;&lt;&lt;audio &quot;windowExit&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;.&lt;&lt;/linkreplace&gt;&gt;
-&lt;&lt;elseif $brokenWindow is true&gt;&gt;\	
+&lt;&lt;elseif $brokenWindow is true&gt;&gt;\	 
+    
     &lt;&lt;linkappend &quot;You think...&quot; t8n&gt;&gt; you can escape through here with the right tools. Maybe something to remove the bars and to help lower yourself out the window. 
     
-    You take a look at what you have gathered and it seems that there is still something missing to help you make a tool that will aid you in escaping this place, better take a look around the room again.&lt;&lt;/linkappend&gt;&gt;
+    You take a look at what you have gathered and it seems that there is still something missing to help you make a tool that will aid you in escaping this place, better take a look around the room again.|	&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;/if&gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="19" name="Mirror" tags="Toilet" position="2600,1000" size="100,100">&lt;&lt;if $pieceMirror is true&gt;&gt;\
-	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="19" name="Mirror" tags="Toilet" position="2700,1100" size="100,100">&lt;&lt;if $pieceMirror is true&gt;&gt;\
+	&lt;center&gt;&lt;img src = &quot;Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
-	&lt;center&gt;&lt;img src = &quot;C:/Twine_Proyectos/Cell/Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
+	&lt;center&gt;&lt;img src = &quot;Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;You can&#39;t see yourself clearly&lt;/h2&gt;\
 &lt;&lt;if $pieceMirror is false&gt;&gt;\
@@ -1299,15 +1300,14 @@ Two cracks travel all the length of the mirror from one corner to the other with
 There is a huge piece of mirror missing. You&#39;ve taken it with you.
 &lt;&lt;/if&gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back.|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="20" name="Gap" tags="Toilet" position="2500,400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back.|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="20" name="Gap" tags="Toilet" position="2600,500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You put your head against the wall&lt;/h2&gt;\
 &lt;&lt;if $blueprint is false&gt;&gt;\
 You can see a place that can be open to do maintance on the toilet unit, but a tool is required to open it, there are also some scratch marks on the wall beside it.
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Look around the toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
 
-&lt;&lt;else&gt;&gt;\
-	&lt;&lt;if $blueprint is true and $steelRail is true&gt;&gt;\
+&lt;&lt;elseif $blueprint is true and $steelRail is true&gt;&gt;\
 		&lt;&lt;set $hackSawBlade to true&gt;&gt;&lt;&lt;set $hackSawBlade3 to true&gt;&gt;&lt;&lt;run memorize(&#39;hackSawBlade3&#39;, $hackSawBlade3)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;\
 			You compare the place with the picture on the paper and it seems to match perfectly. You take the flatten end railing and ram it on the side where the &lt;&lt;linkappend &quot;scratch marks are.&quot; t8n&gt;&gt;&lt;&lt;notiHackSawBlade&gt;&gt;&lt;&lt;audio &quot;railingBreak&quot; volume 0.7 play&gt;&gt;
             
@@ -1316,18 +1316,17 @@ You can see a place that can be open to do maintance on the toilet unit, but a t
 
 			&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
             &lt;&lt;/linkappend&gt;&gt;\
-   &lt;&lt;elseif $blueprint is true and $steelRail is false&gt;&gt;\      
+&lt;&lt;elseif $blueprint is true and $steelRail is false&gt;&gt;\      
          You compare the place with the picture on the paper and it seems to match perfectly, but you don&#39;t think you have the tool that is required to open it.
          
          	&lt;center&gt;&lt;&lt;link [[Step Back|Toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
-   &lt;&lt;/if&gt;&gt;\
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Toilet Floor" tags="Toilet" position="2300,300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="21" name="Toilet Floor" tags="Toilet" position="2400,400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You squint&lt;/h2&gt;\
 There seems to be some marks on the &lt;&lt;linkappend &quot;floor.&quot; t8n&gt;&gt; These seem to look like drag marks that get lost under the toilet unit. It suggests that the toilet was moved at some point. You try moving it, but it is well afixed to the wall.&lt;&lt;/linkappend&gt;&gt;
 
 Apart from that, there&#39;s nothing more worth noting.
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Look around the toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="22" name="Use Toilet" tags="Toilet" position="2500,600" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToiletSeat.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Look around the toilet]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="22" name="Use Toilet" tags="Toilet" position="2600,700" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToiletSeat.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Testing around&lt;/h2&gt;\
 &lt;&lt;if $hackSawBlade is true&gt;&gt;\
 You don&#39;t want to test if the toilet works now, partly because you forcibly teared it off the wall.
@@ -1382,19 +1381,19 @@ You open the faucet to check if the water flows, and almost instantly you feel t
 
 &#39;&#39;Socials:&#39;&#39;
 &lt;a href=&#39;https://bsky.app/profile/paburaziga.bsky.social&#39;&gt;&#39;&#39;BlueSky&#39;&#39;&lt;/a&gt;
-&lt;a href=&#39;https://x.com/paburaziga&#39;&gt;&#39;&#39;X&#39;&#39;&lt;/a&gt;</tw-passagedata><tw-passagedata pid="24" name="Look around the desk" tags="Desk" position="2000,1300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Drawers.png&quot;&gt;&lt;/center&gt;\
+&lt;a href=&#39;https://x.com/paburaziga&#39;&gt;&#39;&#39;X&#39;&#39;&lt;/a&gt;</tw-passagedata><tw-passagedata pid="24" name="Look around the desk" tags="Desk" position="2100,1400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Drawers.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;While looking and poking around.&lt;/h2&gt;\
 You put your weight on the desk and it seems to give a little, but remains well bolted to the wall.
 
 &lt;&lt;if $stool is false&gt;&gt;\
-	You look &lt;&lt;linkreplace &quot;under the desk.&quot; t8n&gt;&gt;&lt;&lt;set $stool to true&gt;&gt;&lt;&lt;set $stool11 to true&gt;&gt;&lt;&lt;run memorize(&#39;stool11&#39;, $stool11)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;There&#39;s a &#39;&#39;stool&#39;&#39; tucked right underneath the desk, you could have missed if you didn&#39;t look for it, looks fairly new, just like everything else in this cell.&lt;&lt;notiStool&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+	You look &lt;&lt;linkreplace &quot;under the desk.&quot; t8n&gt;&gt;&lt;&lt;set $stool to true&gt;&gt;&lt;&lt;set $stool11 to true&gt;&gt;&lt;&lt;run memorize(&#39;stool11&#39;, $stool11)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;There&#39;s a &#39;&#39;stool&#39;&#39; tucked right underneath the desk, you could have missed if you didn&#39;t look for it, looks fairly new, just like everything else in this place.&lt;&lt;notiStool&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;else&gt;&gt;\
 	You can see a &#39;&#39;stool&#39;&#39; under the desk now.
 &lt;&lt;/if&gt;&gt;\
 
 Looking to the right of the desk there are some &lt;&lt;linkappend &quot;scribblings on the wall.&quot; t8n&gt;&gt;&lt;&lt;set $scribbles to true&gt;&gt;&lt;&lt;set $scribbles18 to true&gt;&gt;&lt;&lt;run memorize(&#39;scribbles18&#39;, $scribbles18)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt; Most are illegible but there&#39;s one that is somewhat clear: it says ==&quot;children of the moon&quot;==.&lt;&lt;notiScribbles&gt;&gt;&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="25" name="Drawers" tags="Desk" position="2200,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Drawers.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="25" name="Drawers" tags="Desk" position="2300,1300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Drawers.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You try the drawers&lt;/h2&gt;\
 &lt;&lt;if $steelRail is false&gt;&gt;\
 	You start from &lt;&lt;linkappend &quot;the first one.&quot; t8n&gt;&gt;&lt;&lt;audio &quot;lockedDrawer&quot; volume 0.7 play&gt;&gt; It doesn&#39;t budge, seems to be blocked by something but it does slide a little. Maybe if you wedge something into the edge and push, you might be able to open it. &lt;&lt;/linkappend&gt;&gt;
@@ -1402,7 +1401,7 @@ Looking to the right of the desk there are some &lt;&lt;linkappend &quot;scribbl
 	&lt;&lt;if not hasVisited(&quot;Drawer One&quot;)&gt;&gt;\
     	You see the width of the edges of the drawer and look at the railing that you have. It seems that the flatten end is the right size to force open the drawer.
         
-        &lt;&lt;linkreplace &quot;Use the flatten end railing to open the first drawer?&quot; t8n&gt;&gt;&lt;&lt;audio &quot;metalRailing&quot; volume 0.7 play&gt;&gt;Using the railing as a crowbar and all the weight of your body, you succesfully &lt;&lt;link [[open the first drawer|Drawer One]]&gt;&gt;&lt;&lt;audio &quot;openDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;.&lt;&lt;/linkreplace&gt;&gt;\
+        &lt;&lt;linkreplace &quot;Use the flatten end railing to open the first drawer?&quot; t8n&gt;&gt;&lt;&lt;audio &quot;metalRailing&quot; volume 0.7 play&gt;&gt;Using the railing as a crowbar and all the weight of your body, you succesfully &lt;&lt;link [[open the first drawer|Drawer One]]&gt;&gt; but you can see that there is a crack forming on metal&lt;&lt;audio &quot;openDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;.&lt;&lt;/linkreplace&gt;&gt;\
 
     &lt;&lt;else&gt;&gt;\
     	Open the &lt;&lt;link [[first drawer|Drawer One]]&gt;&gt;&lt;&lt;audio &quot;openDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;.
@@ -1415,7 +1414,7 @@ The second drawer is &lt;&lt;link [[open|Drawer Two]]&gt;&gt;&lt;&lt;audio &quot
 You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
 &lt;&lt;/if&gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="26" name="Papers" tags="Desk" position="1600,1200" size="100,100">&lt;&lt;if $blueprint is true&gt;&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="26" name="Papers" tags="Desk" position="1700,1300" size="100,100">&lt;&lt;if $blueprint is true&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/PapersBlueprint.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;elseif $journal is true&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/PapersJournal.png&quot;&gt;&lt;/center&gt;\
@@ -1430,9 +1429,8 @@ You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
     &lt;&lt;set $papers to true&gt;&gt;\
 		There are some blank &#39;&#39;papers&#39;&#39; on the desk scattered about.
 
-		&lt;&lt;linkreplace &quot;Keep looking.&quot;&gt;&gt;&lt;&lt;notiPapers&gt;&gt;&lt;&lt;audio &quot;rustlingPaper&quot; volume 0.7 play&gt;&gt;&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;set $papers12)
-         to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;run memorize(&#39;papers12&#39;, $papers12)&gt;&gt; At first glance they seem kind of random, but with futher inspection you can feel some &#39;&#39;grooves&#39;&#39; on &#39;&#39;two of the papers&#39;&#39;, indicating that something was written on top of them. You wonder if there is a way to read what was written on them.&lt;&lt;/timed&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
-	&lt;&lt;else&gt;&gt;\
+		&lt;&lt;linkreplace &quot;Keep looking.&quot;&gt;&gt;&lt;&lt;notiPapers&gt;&gt;&lt;&lt;audio &quot;rustlingPaper&quot; volume 0.7 play&gt;&gt;&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;set $papers12 to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;run memorize(&#39;papers12&#39;, $papers12)&gt;&gt; At first glance they seem kind of random, but with futher inspection you can feel some &#39;&#39;grooves&#39;&#39; on &#39;&#39;two of the papers&#39;&#39;, indicating that something was written on top of them. You wonder if there is a way to read what was written on them.&lt;&lt;/timed&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+	&lt;&lt;elseif $pencil is true&gt;&gt;\
 		The papers are still scattered in the table. You look at the pencil in your posession: there&#39;s not enough graphite for the two papers of interest.
 
 		&#39;&#39;Which paper will you use the pencil on?&#39;&#39;
@@ -1443,7 +1441,7 @@ You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
 &lt;&lt;/if&gt;&gt;\
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
-</tw-passagedata><tw-passagedata pid="27" name="Calendar" tags="Desk" position="1800,1300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Calendar.png&quot;&gt;&lt;/center&gt;\
+</tw-passagedata><tw-passagedata pid="27" name="Calendar" tags="Desk" position="1900,1400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Calendar.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Looking more closely...&lt;/h2&gt;\
 This calendar seems to be of this year. 
 
@@ -1551,7 +1549,7 @@ A steel bed railing with one of the ends flattened out.
 A key found under a piece of floor. This might be the key to the door of the room.
 &lt;&lt;/if&gt;&gt;\
 
-&lt;center&gt;&lt;h3&gt;&lt;&lt;return &quot;Back to story&quot;&gt;&gt;&lt;/h3&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="29" name="Drawer Two" tags="Desk" position="2400,1400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/DrawerTwo.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h3&gt;&lt;&lt;return &quot;Back to story&quot;&gt;&gt;&lt;/h3&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="29" name="Drawer Two" tags="Desk" position="2500,1500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/DrawerTwo.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Inside the drawer&lt;/h2&gt;\
 &lt;&lt;if $pencil is false&gt;&gt;\
 There nothing much here, just an old unsharpened pencil.
@@ -1562,13 +1560,13 @@ There nothing much here, just an old unsharpened pencil.
 Nothing else to see or take here.
 
 &lt;&lt;/if&gt;&gt;\
-&lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="30" name="Drawer One" tags="Desk" position="2200,1400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/DrawerOne.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="30" name="Drawer One" tags="Desk" position="2300,1500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/DrawerOne.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You slide open de drawer&lt;/h2&gt;\
 There seems to be a &lt;&lt;link [[pamphlet|Pamphlet]]&gt;&gt;&lt;&lt;audio &quot;pamphlet&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt; of some sort and there&#39;s also a &lt;&lt;link [[book|Fairy tale Book]]&gt;&gt;&lt;&lt;audio &quot;book&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt; that you find familiar.
 
 There is also a place within the drawer that looks like a &lt;&lt;linkappend &quot;built-in box.&quot; t8n&gt;&gt; You open it and it seems that there&#39;s is a small slot with the shape of what you assume is a key, but there&#39;s nothing there.&lt;&lt;/linkappend&gt;&gt;
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="31" name="Blueprint" tags="Desk" position="1400,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/PapersBlueprint.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="31" name="Blueprint" tags="Desk" position="1500,1300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/PapersBlueprint.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You take a closer look at the paper&lt;/h2&gt;\
 &lt;&lt;set $blueprint to true&gt;&gt;&lt;&lt;set $papers to false&gt;&gt;&lt;&lt;set $pencil to false&gt;&gt;&lt;&lt;set $blueprint5 to true&gt;&gt;&lt;&lt;run memorize(&#39;blueprint5&#39;, $blueprint5)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiBlueprint&gt;&gt;\
  The paper has a drawing of the toilet unit on it, there seems to be some arrows and circles that point to the side of the toilet that conects to the wall. 
@@ -1578,7 +1576,7 @@ There is also a place within the drawer that looks like a &lt;&lt;linkappend &qu
 Seems to be important, you take it note of it.
  
 &lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
-</tw-passagedata><tw-passagedata pid="32" name="Journal" tags="Desk" position="1600,1400" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/PapersJournal.png&quot;&gt;&lt;/center&gt;\
+</tw-passagedata><tw-passagedata pid="32" name="Journal" tags="Desk" position="1700,1500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/PapersJournal.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The note&lt;/h2&gt;\
 &lt;&lt;set $journal to true&gt;&gt;&lt;&lt;set $papers to false&gt;&gt;&lt;&lt;set $pencil to false&gt;&gt;&lt;&lt;set $journal6 to true&gt;&gt;&lt;&lt;run memorize(&#39;journal6&#39;, $journal6)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;\
  Seems to be written to someone, it &lt;&lt;linkappend &quot;&#39;&#39;says:&#39;&#39;&quot; t8n&gt;&gt;&lt;&lt;notiJournal&gt;&gt;
@@ -1592,7 +1590,7 @@ Seems to be important, you take it note of it.
 Seems to be important, you take note of it.
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
-&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Used" tags="Toilet" position="2700,600" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToiletSeat.png&quot;&gt;&lt;/center&gt;\
+&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Used" tags="Toilet" position="2800,700" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToiletSeat.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Well...&lt;/h2&gt;\
 At least now you&#39;re feeling much better.
 
@@ -1607,10 +1605,10 @@ This Interactive fiction uses a &#39;&#39;Notes and Inventory System&#39;&#39; t
 You can access them on the &#39;&#39;Menu Bar&#39;&#39; on the left, just click on the arrow in the top left hand corner of the page. 
 
 Have fun!
-&lt;center&gt;&lt;h3&gt;&lt;&lt;return [[Take me to the Title.|Title]]&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="35" name="Under the Bed" tags="Bed" position="1800,300" size="100,100">&lt;&lt;if $escapeKey is false&gt;&gt;\
+&lt;center&gt;&lt;h3&gt;&lt;&lt;return [[Take me to the Title.|Title]]&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="35" name="Under the Bed" tags="Bed" position="1900,400" size="100,100">&lt;&lt;if $escapeKey is false&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBedUnder.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
-&lt;center&gt;&lt;img src = &quot;Img/closeUpBedOpen.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;img src = &quot;Img/closeUpBedUnderOpen.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;You kneel down&lt;/h2&gt;\
 &lt;&lt;if $steelRail is false and $openFloor is false&gt;&gt;\
@@ -1623,13 +1621,13 @@ Looking under the bed, there is nothing worth noting at first glance, but you lo
 &lt;&lt;elseif $journal is true and $steelRail is true&gt;&gt;\
 You look for the place the papers mentioned under the bed. Even with the information you can&#39;t pin point the location that easily, but you still managed. Now all you need to do is take out the piece of the floor somehow.
 
-&lt;&lt;link [[Use the flattened end steel rail?|Open Floor]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link [[Use the flattened end of the steel rail?|Open Floor]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;else&gt;&gt;\
 Looking under the bed you see the steel railings and the space where the railing you took used to be. For the moment, there&#39;s nothing else worth noting.
 
 &lt;&lt;/if&gt;&gt;\
-&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="36" name="Window Exit" tags="Ending" position="2700,1400" size="100,100">&lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="36" name="Window Exit" tags="Ending" position="2800,1500" size="100,100">&lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You descent the rope&lt;/h2&gt;\
 And with a grunt, your feet land on the ground, right next to the broken window of your cell. You look up and look around you for a moment, in search of movement or stepping sounds. After confirming so, you take a deep breath, choose a direction and start heading that way. 
@@ -1644,7 +1642,7 @@ But that&#39;s when it hits you.
 
 </tw-passagedata><tw-passagedata pid="37" name="Door Exit" tags="Ending" position="200,1000" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/CorridorOut.png&quot;&gt;&lt;/center&gt;\
-&lt;h2&gt;Stepping out of your cell&lt;/h2&gt;\
+&lt;h2&gt;Stepping out of your room. . .&lt;/h2&gt;\
 &lt;&lt;set $escapeKey to false&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;\
 To your &lt;&lt;linkappend &quot;left&quot; t8n&gt;&gt; you are met with the end of the corridor and a wide window that shows the outside forest. Looking through it from where you are standing, you can see how the tree line extends and blends in with the horizon. It seems that civilization is going to be a long way from here.&lt;&lt;/linkappend&gt;&gt;
 
@@ -1652,14 +1650,14 @@ To your &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; you can now see more cl
 
 It is longer that you thought. 
 
-It extends and culminates in the steel bar gate that you saw previously through your cell window, but now there&#39;s a static &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt; light turned on at the end of the corridor, there&#39;s no sound but you know that someone has been alerted and now your time is ticking&lt;&lt;/linkappend&gt;&gt;
+It extends and culminates in the steel bar gate that you saw previously through the small window, but now there&#39;s a static &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt; light turned on at the end of the corridor, there&#39;s no sound but you know that someone has been alerted and now your time is ticking&lt;&lt;/linkappend&gt;&gt;
 
 And for the last time, your eyes turn to the &lt;&lt;linkappend &quot;front cell door.&quot; t8n&gt;&gt;
 
 But this time, a couple of eyes look back...
 
 &lt;center&gt;&lt;li&gt;Approach &lt;&lt;link [[the door of the cell.|Front cell]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/center&gt;
-&lt;center&gt;&lt;li&gt;You don&#39;t care, &lt;&lt;link [[you run for the gate.|Steel gate]]&gt;&gt;&lt;&lt;audio &quot;runningAway&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/center&gt;&lt;&lt;/linkappend&gt;&gt;\
+&lt;center&gt;&lt;li&gt;You don&#39;t care, &lt;&lt;link [[run for the gate.|Steel gate]]&gt;&gt;&lt;&lt;audio &quot;runningAway&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/center&gt;&lt;&lt;/linkappend&gt;&gt;\
 </tw-passagedata><tw-passagedata pid="38" name="Captured" tags="Ending" position="900,1200" size="100,100">&lt;&lt;Ending2&gt;&gt;\
 &lt;&lt;Autoscroll&gt;&gt;\
 &lt;&lt;AchCaptured&gt;&gt;\
@@ -1732,17 +1730,17 @@ Dumbfounded, you prepare yourself for the next step:
 &lt;/div&gt;&lt;/center&gt;\
 &lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Front cell" tags="Ending" position="200,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/doorWindowFront.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The eyes belong to a person&lt;/h2&gt;\
-They look surprised; you are too. The eyes frown and a hand appears inside the small frame the window provides, pointing back to your cell.
+They look surprised; you are too. The eyes frown and a hand appears inside the small frame the window provides, pointing back to your room.
 
-You don&#39;t understand or have time for this, you need to leave before your captors notice you are not in your cell anymore.
+You don&#39;t understand or have time for this, you need to leave before your captors notice you are not in your room anymore.
 
 You turn to leave but a bang resonates in the corridor. Again you turn to look at the window and the eyes look at you confused and exasperated, they disappear for a second and then appear back, but this time the same hand is holding a paper moving it frantically.
 
-You don&#39;t know this person, they could very well be an accomplice of your captors or they could also be a captive just like yourself, but one thing is &lt;&lt;linkappend &quot;clear:&quot; t8n&gt;&gt;&lt;&lt;audio &quot;clockSound&quot; volume 0.7 play&gt;&gt; &#39;&#39;Your time is ticking&#39;&#39;.
+You don&#39;t know this person, they could very well be an accomplice of your captors or they could also be a captive just like yourself, but one thing is &lt;&lt;linkappend &quot;clear:&quot; t8n&gt;&gt;&lt;&lt;audio &quot;clockSound&quot; volume 0.7 loop play&gt;&gt; &#39;&#39;Your time is ticking&#39;&#39;.
 
-&lt;center&gt;&lt;&lt;linkreplace &quot;. . .&quot; t8n&gt;&gt; Ignore them and run to the &lt;&lt;link [[steel gate.|Steel gate]]&gt;&gt;&lt;&lt;audio &quot;runningAway&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;linkreplace &quot;. . .&quot; t8n&gt;&gt; Ignore them and run to the &lt;&lt;link [[steel gate.|Steel gate]]&gt;&gt;&lt;&lt;audio &quot;clockSound&quot; stop&gt;&gt;&lt;&lt;audio &quot;runningAway&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;/center&gt;\
 
-&lt;center&gt;&lt;&lt;linkreplace &quot;. . .&quot; t8n&gt;&gt;Stay and try to understand what they are &lt;&lt;link [[trying to say.|Some exposure]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;linkreplace &quot;. . .&quot; t8n&gt;&gt;Stay and try to understand what they are &lt;&lt;link [[trying to say.|Some exposure]]&gt;&gt;&lt;&lt;audio &quot;clockSound&quot; stop&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;/center&gt;\
 &lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Corridor left" tags="Ending" position="800,1000" size="100,100">&lt;center&gt;&lt;img src= &quot;Img/CorridorOutLeft.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;After running for a while&lt;/h2&gt;\
 &lt;&lt;timed 2s t8n&gt;&gt;You start hearing someone whistling. &lt;&lt;/timed&gt;&gt;
@@ -1770,10 +1768,10 @@ It feels like it&#39;s taking you ages to reach the end, but before you know it,
 &lt;center&gt;&lt;h3&gt;[[Keep going|Oops]]&lt;/h3&gt;&lt;/center&gt;
 &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="Back in cell" tags="Ending" position="700,1300" size="100,100">&lt;&lt;AchSecondThoughts&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/doorWindow.png&quot;&gt;&lt;/center&gt;\
-&lt;h2&gt;Back to the cell&lt;/h2&gt;\
-You close the door behind you and turn around to look through the window at the other cell. &lt;&lt;timed 2s t8n&gt;&gt;The person behind it nods at you and gives you a thumbs up as well as a gesture for you to calm down.&lt;&lt;/timed&gt;&gt;
+&lt;h2&gt;Back inside the room&lt;/h2&gt;\
+You close the door behind you and turn around to look at the other room through the window. &lt;&lt;timed 2s t8n&gt;&gt;The person behind it nods at you and gives you a thumbs up as well as a gesture for you to calm down.&lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 5s t8n&gt;&gt;You nod back and take a deep breath, then you turn to look at the bed. Maybe some sleep will help you clear your mind and serve you to pass the time. You lay on the bed and close your eyes, you can feel the pale light of the moon shine on you through the window of the cell.&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 5s t8n&gt;&gt;You nod back and take a deep breath, then you turn to look at the bed. Maybe some sleep will help you clear your mind and serve you to pass the time. You lay on the bed and close your eyes, you can feel the pale light of the moon shine on you through the window of the room.&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 8s t8n&gt;&gt;After sometime, you start feeling uncomfortable and itchy all over your body, but in a matter of seconds an excruciating pain that started from within your bones starts spreading all over your body. Spasms start shaking your limbs, almost as if your muscles are stretching to its utmost and not being able to keep up with the changes they&#39;re going through.&lt;&lt;/timed&gt;&gt;
     
@@ -1783,7 +1781,7 @@ You close the door behind you and turn around to look through the window at the 
                 
 &lt;&lt;timed 17s t8n&gt;&gt;&lt;center&gt;&#39;&#39;[[After that, everything goes black.|Stayed until morning]]&#39;&#39;&lt;/center&gt;&lt;&lt;/timed&gt;&gt;
 
-</tw-passagedata><tw-passagedata pid="45" name="Abduction" tags="Ending" position="2900,1300" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="45" name="Abduction" tags="Ending" position="3000,1400" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h2&gt;Huh?&lt;/h2&gt;&lt;/center&gt;\
 &lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;center&gt;//The cell looked like it was supose to retain you inside, be secure, but somehow you are here, now, outside. //&lt;/center&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
@@ -1801,7 +1799,7 @@ You close the door behind you and turn around to look through the window at the 
 &gt;&gt;//&lt;span style=&quot;color:red&quot;&gt;-&quot;You are gonna be a great asset for us, but for now, let us go cut the chase.&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
 
 &lt;&lt;timed 22s t8n&gt;&gt;You are about to ask what does he mean, but even before you can open your mouth you feel the powerful impact of a punch in your gut and [[everything goes black.|Wreak Havok]]&lt;&lt;/timed&gt;&gt;
-</tw-passagedata><tw-passagedata pid="46" name="Wreak Havok" tags="Ending" position="2800,1100" size="100,100">&lt;&lt;Ending1&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="46" name="Wreak Havok" tags="Ending" position="2900,1200" size="100,100">&lt;&lt;Ending1&gt;&gt;\
 &lt;&lt;Autoscroll&gt;&gt;\
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
@@ -1825,22 +1823,21 @@ The last thing you remember is the familiar silhouette of a person, the color &l
 Then everything goes black.
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Forced Enlistment&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/endingForced.png&quot;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;\
-&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="47" name="Open Floor" tags="Bed" position="1600,200" size="100,100">&lt;div id=&quot;closeUpBedUnder&quot;&gt;\
+&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="47" name="Open Floor" tags="Bed" position="1700,300" size="100,100">&lt;div id=&quot;closeUpBedUnder&quot;&gt;\
   &lt;center&gt;&lt;img src=&quot;Img/closeUpBedUnder.png&quot; alt=&quot;Closed floor&quot;&gt;&lt;/center&gt;\
 &lt;/div&gt;\
 &lt;h2&gt;Using some force&lt;/h2&gt;\
 You use the flat end to break the edges of the &lt;&lt;linkappend &quot;replaced piece of floor&quot; t8n&gt;&gt;&lt;&lt;audio &quot;key&quot; volume 0.7 play&gt;&gt;&lt;&lt;set $openFloor to true&gt;&gt;&lt;&lt;set $escapeKey8 to true&gt;&gt;&lt;&lt;run memorize(&#39;escapeKey8&#39;, $escapeKey8)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt; and after 10 minutes of effort, you succesfully take out the piece at the expense of breaking the end of the railing. On the inside you can see something. 
 
-It&#39;s a key. 
+&lt;center&gt;It&#39;s a key.&lt;/center&gt;\
 
-You take it.&lt;&lt;set $steelRail to false&gt;&gt;&lt;&lt;set $escapeKey to true&gt;&gt;&lt;&lt;notiEscapeKey&gt;&gt;&lt;&lt;AchOnlyWeapon&gt;&gt;&lt;&lt;run UIBar.update()&gt;&gt;
+&lt;center&gt;You take it.&lt;/center&gt;&lt;&lt;set $steelRail to false&gt;&gt;&lt;&lt;set $escapeKey to true&gt;&gt;&lt;&lt;notiEscapeKey&gt;&gt;&lt;&lt;AchOnlyWeapon&gt;&gt;&lt;&lt;AchUnderYourNose&gt;&gt;&lt;&lt;run UIBar.update()&gt;&gt;
 &lt;&lt;replace &quot;#closeUpBedUnder&quot;&gt;&gt;\
   &lt;center&gt;&lt;img src=&quot;Img/closeUpBedUnderOpen.png&quot; alt=&quot;Open Floor&quot;&gt;&lt;/center&gt;\
 &lt;&lt;/replace&gt;&gt;\
 &lt;&lt;/linkappend&gt;&gt;\
 
-
-&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="48" name="Pamphlet" tags="Desk" position="2100,1600" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/pamphletDrawer.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="48" name="Pamphlet" tags="Desk" position="2200,1700" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/pamphletDrawer.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You take the pamphlet&lt;/h2&gt;\
 &lt;&lt;set $stayInCell to true&gt;&gt;\
 &lt;&lt;set $pamphlet to true&gt;&gt;&lt;&lt;set $pamphlet19 to true&gt;&gt;&lt;&lt;run memorize(&#39;pamphlet19&#39;, $pamphlet19)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;\
@@ -1867,7 +1864,7 @@ It &lt;&lt;linkappend &quot;reads:&quot; t8n&gt;&gt;&lt;&lt;audio &quot;pamphlet
 It seems this was supposed to be somewhere visible.
 &lt;&lt;/linkappend&gt;&gt;\
 
-&lt;center&gt;&lt;&lt;link [[Step Back|Drawer One]]&gt;&gt;&lt;&lt;audio &quot;rustlingPaper&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="49" name="Fairy tale Book" tags="Desk" position="2300,1600" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/bookDrawer.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Drawer One]]&gt;&gt;&lt;&lt;audio &quot;rustlingPaper&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="49" name="Fairy tale Book" tags="Desk" position="2400,1700" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/bookDrawer.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You know this book&lt;/h2&gt;\
 It&#39;s a fairy tale book that you&#39;ve seen since you were a kid. It is about a beast that terrorized a village, being once a villager themselves. It&#39;s pretty much a cautionary tale about not going home on time and not obeying your parents or guardians.
 
@@ -1899,23 +1896,23 @@ You still have doubts about it, &lt;&lt;linkappend &quot;but. . .&quot; t8n&gt;&
 &lt;&lt;else&gt;&gt;\
 It looks like a pamphlet but is in another language, so you can´t read it. 
 
-The eyes look at you almost pleadingly, but you don&#39;t look conviced, so they mouth something you don&#39;t quite understand and step back tugging at their shirt collar, showing a scar similiar to your wound, then they look at you again. 
+The eyes look at you almost pleadingly, but you don&#39;t look conviced, so they mouth something you don&#39;t quite understand and also step back a little, tugging at their shirt collar, showing a scar similiar to your wound, then they look at you again. 
 
-&lt;&lt;linkappend &quot;So you gather your thoughts:&quot; t8n&gt;&gt;
+&lt;&lt;linkappend &quot;So, you gather your thoughts:&quot; t8n&gt;&gt;
 
-&#39;&#39;First&#39;&#39; they have a paper you can&#39;t read, &#39;&#39;second&#39;&#39; they have a scar that looks similiar to your wound; they also seemed to be telling you to stay in the cell when you first started this exchange and they seem to be doing ok. That being said, you think they are trying to tell you to go back to your cell. &lt;&lt;linkappend &quot;So...&quot; t8n&gt;&gt;
+&#39;&#39;First&#39;&#39; they have a paper you can&#39;t read, &#39;&#39;second&#39;&#39; they have a scar that looks similiar to your wound; they also seemed to be telling you to stay in the room when you first started this exchange and they seem to be doing ok. That being said, you think they are trying to tell you to go back inside. &lt;&lt;linkappend &quot;So...&quot; t8n&gt;&gt;
 
-&lt;li&gt;&lt;&lt;link [[They might be trying to help, so you head back to the cell.|Back in cell]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\
+&lt;li&gt;&lt;&lt;link [[They might be trying to help, so you head back inside the room.|Back in cell]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\
 
 &lt;li&gt;&lt;&lt;link [[You don&#39;t buy it, run to the steel bar gate.|Steel gate]]&gt;&gt;&lt;&lt;audio &quot;runningAway&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;\
-&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="51" name="This might be a trap, keep working on an exit." tags="Bed" position="2100,600" size="100,100">&lt;h2&gt;You shake your head&lt;/h2&gt;\
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="51" name="This might be a trap, keep working on an exit." tags="Bed" position="2200,700" size="100,100">&lt;h2&gt;You shake your head&lt;/h2&gt;\
 &lt;&lt;type 60ms&gt;&gt;&lt;&lt;set $stayInCell to false&gt;&gt;You gotta focus on what you are doing.
 
 &lt;center&gt;&#39;&#39;You need to escape this place.&#39;&#39;&lt;/center&gt;\
 
 &lt;center&gt;&lt;&lt;return [[Go back to what you were doing|Bed]]&gt;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Credits" tags="" position="900,500" size="100,100">&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;\
 &lt;&lt;AchCompleitionist&gt;&gt;\
-&lt;&lt;audio &quot;nightAmbience&quot; stop&gt;&gt;
+&lt;&lt;audio &quot;nightAmbience&quot; stop&gt;&gt;\
 &lt;&lt;unset $paperRoll, $bedSheet, $pieceMirror, $hackSawBlade, $pencil, $blueprint, $journal, $steelRail, $button, $escapeKey, $calendar, $watch, $stool, $tinyPaper, $papers, $stayInCell, $brokenWindow, $movementFrontCell, $openFloor, $notes&gt;&gt;\
 
 &lt;center&gt;&lt;h1&gt;Thank you for playing&lt;/h1&gt;&lt;/center&gt;\
@@ -2054,6 +2051,7 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Oops" tags="Ending" position="600,900" size="100,100">&lt;&lt;Ending3&gt;&gt;\
 &lt;&lt;Autoscroll&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
+&lt;&lt;AchTouchingGrassAch&gt;&gt;\
 &lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The forest greets you like an old friend. &lt;/h2&gt;\
@@ -2079,7 +2077,6 @@ And everything goes to black. . .
 &lt;&lt;Autoscroll&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Ceiling.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;&#39;&#39;That unfamiliar ceiling welcomes you again.&#39;&#39;&lt;/h2&gt;\
-
 &lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;Struggling to sit on the bed, pain runs through your body and a strong smell of iron emanates from you. You look down at yourself, and all you see are tattered clothes and blood.
 
 While wondering what happend last night, there&#39;s a few knocks on the door and the sound of the hatch openning.
@@ -2094,7 +2091,7 @@ Wasting no time, you hear a couple of clicks and the door opens. The person appr
 
 Before they move away, the force of your grip tightens on their clothes, which makes them stop on their tracks and look back at you.
 
-Now that someone is here, is time for some questions that they must have the answers to.
+Now that someone is here, it&#39;s time for some questions that they must have the answers to.
 
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Stayed until morning&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;&lt;&lt;/type&gt;&gt;
 &lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="76" name="Achievements" tags="System" position="500,700" size="100,100">&lt;&lt;if UIBar.unstow()&gt;&gt;&lt;&lt;script&gt;&gt;UIBar.stow();&lt;&lt;/script&gt;&gt;&lt;&lt;/if&gt;&gt;\
@@ -2119,11 +2116,15 @@ First time getting all tools to escape through the window.&lt;&lt;else&gt;&gt;&l
 ----
 	&lt;&lt;if $UnderYourNoseAch is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Right under your nose&#39;&#39;&lt;/li&gt;
-//&quot;Didn&#39;t think to search there&quot;// - First time finding the key to escape.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;\
+//&quot;Didn&#39;t think to search there?&quot;// - First time finding the key to escape.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;\
 ----
 	&lt;&lt;if $CapturedAch is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Captured&#39;&#39;&lt;/li&gt;
 //&quot;Should&#39;ve ran the other way...&quot;// - First time getting captured within the facility.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;\
+----
+&lt;&lt;if $TouchingGrassAch is true&gt;&gt;\
+&lt;li&gt;&#39;&#39;Touching grass&#39;&#39;&lt;/li&gt;
+//&quot;It&#39;s been a long time!&quot;// - First time escaping the facility.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;\
 ----
 	&lt;&lt;if $LittleBladderAch is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Lil&#39; Bladder&#39;&#39;&lt;/li&gt;
@@ -2168,6 +2169,7 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
   &lt;&lt;set $SeeingRedAch = false&gt;&gt;&lt;&lt;run memorize(&#39;SeeingRedAch&#39;, false)&gt;&gt;\
   &lt;&lt;set $CompleitionistAch = false&gt;&gt;&lt;&lt;run memorize(&#39;CompleitionistAch&#39;, false)&gt;&gt;\
   &lt;&lt;set $CapturedAch = false&gt;&gt;&lt;&lt;run memorize(&#39;CapturedAch&#39;, false)&gt;&gt;\
+  &lt;&lt;set $TouchingGrassAch = false&gt;&gt;&lt;&lt;run memorize(&#39;TouchingGrassAch&#39;, false)&gt;&gt;\
   &lt;&lt;set $endingAch1 to false&gt;&gt;&lt;&lt;run memorize (&#39;endingAch1&#39;, false)&gt;&gt;\
   &lt;&lt;set $endingAch2 to false&gt;&gt;&lt;&lt;run memorize (&#39;endingAch2&#39;, false)&gt;&gt;\
   &lt;&lt;set $endingAch3 to false&gt;&gt;&lt;&lt;run memorize (&#39;endingAch3&#39;, false)&gt;&gt;\
@@ -2219,65 +2221,65 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
        &lt;&lt;set $endingAch4 to true&gt;&gt;
        &lt;&lt;run memorize(&#39;endingAch4&#39;, $endingAch4)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Ach. All Endings" tags="widget nobr" position="900,1400" size="100,100">&lt;&lt;widget &quot;AchAllEndings&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Ach. All Endings" tags="widget nobr" position="1300,0" size="100,100">&lt;&lt;widget &quot;AchAllEndings&quot;&gt;&gt;
 	&lt;&lt;if $endingAch1 is true and $endingAch2 is true and $endingAch3 is true and $endingAch4 is true&gt;&gt;\
         &lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $AllEndingsAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;AllEndingsAch&#39;, $AllEndingsAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Ach. Set to escape" tags="widget nobr" position="1000,1400" size="100,100">&lt;&lt;widget &quot;AchSetToEscape&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Ach. Set to escape" tags="widget nobr" position="1400,0" size="100,100">&lt;&lt;widget &quot;AchSetToEscape&quot;&gt;&gt;
 	&lt;&lt;if $SetToEscapeAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $SetToEscapeAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;SetToEscape&#39;, $SetToEscape)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-</tw-passagedata><tw-passagedata pid="83" name="Ach. Second Thoughts" tags="widget nobr" position="1100,1400" size="100,100">&lt;&lt;widget &quot;AchSecondThoughts&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="83" name="Ach. Second Thoughts" tags="widget nobr" position="1500,0" size="100,100">&lt;&lt;widget &quot;AchSecondThoughts&quot;&gt;&gt;
 	&lt;&lt;if hasVisited(&quot;Back in cell&quot;, &quot;Stay in Cell&quot;) and $SecondThoughtsAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $SecondThoughtsAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;SecondThoughtsAch&#39;, $SecondThoughtsAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Ach. Little Bladder" tags="nobr widget" position="1200,1400" size="100,100">&lt;&lt;widget &quot;AchLittleBladder&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Ach. Little Bladder" tags="nobr widget" position="1500,200" size="100,100">&lt;&lt;widget &quot;AchLittleBladder&quot;&gt;&gt;
 	&lt;&lt;if visited(&quot;Used&quot;) is 5 and $LittleBladderAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $LittleBladderAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;LittleBladderAch&#39;, $LittleBladderAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Ach. There goes my only weapon" tags="nobr widget" position="1300,1400" size="100,100">&lt;&lt;widget &quot;AchOnlyWeapon&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Ach. There goes my only weapon" tags="nobr widget" position="1300,300" size="100,100">&lt;&lt;widget &quot;AchOnlyWeapon&quot;&gt;&gt;
 	&lt;&lt;if $OnlyWeaponAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $OnlyWeaponAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;OnlyWeaponAch&#39;, $OnlyWeaponAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Ach. Caught &#39;em all" tags="widget nobr" position="900,1500" size="100,100">&lt;&lt;widget &quot;AchCaughtEmAll&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Ach. Caught &#39;em all" tags="widget nobr" position="1300,100" size="100,100">&lt;&lt;widget &quot;AchCaughtEmAll&quot;&gt;&gt;
 	&lt;&lt;if $paperRoll0 is true and $bedSheet1 is true and $pieceMirror2 is true and $hackSawBlade3 is true and $pencil4 is true and $blueprint5 is true and $journal6 is true and $steelRail7 is true and $escapeKey8 is true and $calendar9 is true and $watch10 is true and $stool11 is true and $papers12 is true and $tinyPaper13 is true and $brokenWindow14 is true and $movementFrontCell15 is true and $Wound16 is true and $button17 is true and $scribbles18 is true and $pamphlet19 is true and $fairyTale20 is true and $CaughtEmAllAch is false&gt;&gt;
     	&lt;&lt;notify 3s&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $CaughtEmAllAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;CaughtEmAllAch&#39;, $CaughtEmAllAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Ach. Seeing Red" tags="widget nobr" position="1000,1500" size="100,100">&lt;&lt;widget &quot;AchSeeingRed&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Ach. Seeing Red" tags="widget nobr" position="1400,100" size="100,100">&lt;&lt;widget &quot;AchSeeingRed&quot;&gt;&gt;
 	&lt;&lt;if hasVisited(&quot;Wound&quot;, &quot;Abduction&quot;, &quot;Wreak Havok&quot;, &quot;Door Exit&quot;, &quot;Notes&quot; ) and $SeeingRedAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $SeeingRedAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;SeeingRedAch&#39;, $SeeingRedAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-</tw-passagedata><tw-passagedata pid="88" name="Ach. Compleitionist" tags="widget nobr" position="1200,1500" size="100,100">&lt;&lt;widget &quot;AchCompleitionist&quot;&gt;&gt;
-	&lt;&lt;if $SetToEscapeAch is true and $AllEndingsAch is true and $UnderYourNoseAch is true and $LittleBladderAch is true and SecondThoughtsAch is true and OnlyWeaponAch is true and $CaughtEmAllAch is true and $SeeingRedAch is true and $CapturedAch is true and $CompleitionistAch is false&gt;&gt;
+</tw-passagedata><tw-passagedata pid="88" name="Ach. Compleitionist" tags="widget nobr" position="1400,200" size="100,100">&lt;&lt;widget &quot;AchCompleitionist&quot;&gt;&gt;
+	&lt;&lt;if $SetToEscapeAch is true and $AllEndingsAch is true and $UnderYourNoseAch is true and $TouchingGrassAch is true and $LittleBladderAch is true and SecondThoughtsAch is true and OnlyWeaponAch is true and $CaughtEmAllAch is true and $SeeingRedAch is true and $CapturedAch is true and $CompleitionistAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $CompleitionistAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;CompleitionistAch&#39;, $CompleitionistAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-</tw-passagedata><tw-passagedata pid="89" name="Ach. Captured" tags="widget nobr" position="1100,1500" size="100,100">&lt;&lt;widget &quot;AchCaptured&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="89" name="Ach. Captured" tags="widget nobr" position="1500,100" size="100,100">&lt;&lt;widget &quot;AchCaptured&quot;&gt;&gt;
 	&lt;&lt;if $CapturedAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $CapturedAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;CapturedAch&#39;, $CapturedAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-</tw-passagedata><tw-passagedata pid="90" name="Autoscroll" tags="nobr widget" position="1300,200" size="100,100">&lt;&lt;widget &quot;Autoscroll&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="90" name="Autoscroll" tags="nobr widget" position="1500,300" size="100,100">&lt;&lt;widget &quot;Autoscroll&quot;&gt;&gt;
 	&lt;&lt;script&gt;&gt;
     $(document).on(&#39;:passagedisplay&#39;, function () {
     var previousHeight = 0;
@@ -2293,6 +2295,18 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
     }, 60000);
 });
 	&lt;&lt;/script&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Ach. Under your nose" tags="nobr widget" position="1400,300" size="100,100">&lt;&lt;widget &quot;AchUnderYourNose&quot;&gt;&gt;
+	&lt;&lt;if $UnderYourNoseAch is false&gt;&gt;
+		&lt;&lt;notify 3s&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
+        &lt;&lt;set $UnderYourNoseAch to true&gt;&gt;
+        &lt;&lt;run memorize(&#39;UnderYourNoseAch&#39;, $UnderYourNoseAch)&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Ach. Touching Grass" tags="nobr widget" position="1300,200" size="100,100">&lt;&lt;widget &quot;AchTouchingGrass&quot;&gt;&gt;
+	&lt;&lt;if $TouchingGrassAch is false&gt;&gt;
+		&lt;&lt;notify 3s&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
+        &lt;&lt;set $TouchingGrassAch to true&gt;&gt;
+        &lt;&lt;run memorize(&#39;TouchingGrassAch&#39;, $TouchingGrassAch)&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
