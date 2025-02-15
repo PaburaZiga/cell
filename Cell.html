@@ -1804,7 +1804,7 @@ You close the door behind you and turn around to look at the other room through 
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;h2&gt;You wake up&lt;/h2&gt;\
-&lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;But this is different than last time. 
+&lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;But this is different than last time. 
 
 There is no unfamiliar ceiling gretting you, just the cold, hard ground of the forest against your face. 
 
@@ -1913,8 +1913,26 @@ The eyes look at you almost pleadingly, but you don&#39;t look conviced, so they
 &lt;center&gt;&lt;&lt;return [[Go back to what you were doing|Bed]]&gt;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Credits" tags="" position="900,500" size="100,100">&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;\
 &lt;&lt;AchCompleitionist&gt;&gt;\
 &lt;&lt;audio &quot;nightAmbience&quot; stop&gt;&gt;\
-&lt;&lt;unset $paperRoll, $bedSheet, $pieceMirror, $hackSawBlade, $pencil, $blueprint, $journal, $steelRail, $button, $escapeKey, $calendar, $watch, $stool, $tinyPaper, $papers, $stayInCell, $brokenWindow, $movementFrontCell, $openFloor, $notes&gt;&gt;\
-
+/*&lt;&lt;unset $paperRoll, $bedSheet, $pieceMirror, $hackSawBlade, $button, $pencil, $blueprint, $journal, $steelRail, $escapeKey, $calendar, $watch, $stool, $tinyPaper, $papers, $stayInCell, $brokenWindow, $movementFrontCell, $openFloor, $notes&gt;&gt;\*/
+&lt;&lt;set $button to false&gt;&gt;\
+&lt;&lt;set $paperRoll to false&gt;&gt;\
+&lt;&lt;set $bedSheet to false&gt;&gt;\
+&lt;&lt;set $pieceMirror to false&gt;&gt;\
+&lt;&lt;set $hackSawBlade to false&gt;&gt;\
+&lt;&lt;set $pencil to false&gt;&gt;\
+&lt;&lt;set $blueprint to false&gt;&gt;\
+&lt;&lt;set $journal to false&gt;&gt;\
+&lt;&lt;set $steelRail to false&gt;&gt;\
+&lt;&lt;set $escapeKey to false&gt;&gt;\
+&lt;&lt;set $calendar to false&gt;&gt;\
+&lt;&lt;set $watch to false&gt;&gt;\
+&lt;&lt;set $stool to false&gt;&gt;\
+&lt;&lt;set $tinyPaper to false&gt;&gt;\
+&lt;&lt;set $stayInCell to false&gt;&gt;\
+&lt;&lt;set $brokenWindow to false&gt;&gt;\
+&lt;&lt;set $movementFrontCell to false&gt;&gt;\
+&lt;&lt;set $openFloor to false&gt;&gt;\
+&lt;&lt;set $notes to false&gt;&gt;\
 &lt;center&gt;&lt;h1&gt;Thank you for playing&lt;/h1&gt;&lt;/center&gt;\
 If you wish to help me create more stories like this, feel free to visit my ko-fi and leave a tip!
 &lt;center&gt;&lt;a href=&#39;https://ko-fi.com/I3I1GJAVX&#39; target=&#39;_blank&#39;&gt;&lt;img height=&#39;36&#39; style=&#39;border:0px;height:36px;&#39; src=&#39;https://storage.ko-fi.com/cdn/kofi6.png?v=6&#39; border=&#39;0&#39; alt=&#39;Buy Me a Coffee at ko-fi.com&#39; /&gt;&lt;/a&gt;&lt;/center&gt;\
@@ -2095,9 +2113,9 @@ Now that someone is here, it&#39;s time for some questions that they must have t
 
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Stayed until morning&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;&lt;&lt;/type&gt;&gt;
 &lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="76" name="Achievements" tags="System" position="500,700" size="100,100">&lt;&lt;if UIBar.unstow()&gt;&gt;&lt;&lt;script&gt;&gt;UIBar.stow();&lt;&lt;/script&gt;&gt;&lt;&lt;/if&gt;&gt;\
-&lt;center&gt;&lt;h2&gt;[img[C:/Twine_Proyectos/Cell/Img/AchievementsTitle.png]]&lt;/h2&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h2&gt;[img[Img/AchievementsTitle.png]]&lt;/h2&gt;&lt;/center&gt;\
 &lt;center&gt;\
-[img[C:/Twine_Proyectos/Cell/Img/EndingsSubTitle.png]]
+[img[Img/EndingsSubTitle.png]]
 1. &lt;&lt;if $endingAch1 is true&gt;&gt;&#39;&#39;Forced Enlistment&#39;&#39;&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
 2. &lt;&lt;if $endingAch2 is true&gt;&gt;&#39;&#39;Captured&#39;&#39;&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
 3. &lt;&lt;if $endingAch3 is true&gt;&gt;&#39;&#39;Oops&#39;&#39;&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
