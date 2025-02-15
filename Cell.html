@@ -1024,6 +1024,7 @@ You take the sheets.&lt;&lt;/linkappend&gt;&gt;
 </tw-passagedata><tw-passagedata pid="10" name="StoryInit" tags="Data" position="400,600" size="100,100">&#39;&#39;Menu&#39;&#39;
 &lt;&lt;set $notes to true&gt;&gt;
 &lt;&lt;set $button to false&gt;&gt;
+&lt;&lt;set $pencilIsUsed to false&gt;&gt;
 
 /*espacio asignado para las notificaciones en la variable $ListaNotificaciones: [notiTinyPaper, notiWound, notiMovementFrontCell, notiPapers, notiBluprint, notiJournal, notiCalendarWatch, notiStool, notiPamphlet, notiFairyTale, notiPencil, notiBrokenWindow, notiPaperRoll, notiPieceMirror, notiBedSheet, notiHackSawBlade, notiSteelRail, notiEscapeKey, notiSocket] */
 &lt;&lt;set $ListaNotificaciones = [ false , false , false , false , false , false , false , false , false , false , false , false, false , false , false , false , false , false , false , false ]&gt;&gt;
@@ -1118,7 +1119,6 @@ NOTAS:
     &lt;&lt;set $scribbles to false&gt;&gt;\
     &lt;&lt;set $pamphlet to false&gt;&gt;\
     &lt;&lt;set $fairytale to false&gt;&gt;\
-
 
 AUDIO
 /*cuando vaya a exportar dejarlo como &quot;audio/-----.mp3&quot; */
@@ -1365,7 +1365,7 @@ You open the faucet to check if the water flows, and almost instantly you feel t
 &lt;&lt;if $paperRoll is true&gt;&gt;\
 &lt;li&gt;Toilet paper&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;if $pencil is true&gt;&gt;\
+&lt;&lt;if $pencil is true and $pencilIsUsed is false&gt;&gt;\
 &lt;li&gt;An unsharpened pencil&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $steelRail is true&gt;&gt;\
@@ -1437,12 +1437,12 @@ You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
 &lt;&lt;if $blueprint is true or $journal is true&gt;&gt;\
 	There&#39;s now only the other paper with grooves on the desk and the other blank papers.
 &lt;&lt;else&gt;&gt;\    
-	&lt;&lt;if $pencil is false&gt;&gt;\
+	&lt;&lt;if $pencil is false and $pencilIsUsed is false&gt;&gt;\
     &lt;&lt;set $papers to true&gt;&gt;\
 		There are some blank &#39;&#39;papers&#39;&#39; on the desk scattered about.
 
 		&lt;&lt;linkreplace &quot;Keep looking.&quot;&gt;&gt;&lt;&lt;notiPapers&gt;&gt;&lt;&lt;audio &quot;rustlingPaper&quot; volume 0.7 play&gt;&gt;&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;set $papers12 to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;run memorize(&#39;papers12&#39;, $papers12)&gt;&gt; At first glance they seem kind of random, but with futher inspection you can feel some &#39;&#39;grooves&#39;&#39; on &#39;&#39;two of the papers&#39;&#39;, indicating that something was written on top of them. You wonder if there is a way to read what was written on them.&lt;&lt;/timed&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
-	&lt;&lt;elseif $pencil is true&gt;&gt;\
+	&lt;&lt;else&gt;&gt;\
 		The papers are still scattered in the table. You look at the pencil in your posession: there&#39;s not enough graphite for the two papers of interest.
 
 		&#39;&#39;Which paper will you use the pencil on?&#39;&#39;
@@ -1567,7 +1567,7 @@ A key found under a piece of floor. This might be the key to the door of the roo
 &lt;&lt;if $pencil is false&gt;&gt;\
 There nothing much here, just an old unsharpened pencil.
 
-	&lt;&lt;linkreplace &quot;Take the pencil?&quot; t8n&gt;&gt;&lt;&lt;set $pencil to true&gt;&gt;You take the pencil with you.&lt;&lt;set $pencil4 to true&gt;&gt;&lt;&lt;run memorize(&#39;pencil4&#39;, $pencil4)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiPencil&gt;&gt;&lt;&lt;run UIBar.update()&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+	&lt;&lt;linkreplace &quot;Take the pencil?&quot; t8n&gt;&gt;&lt;&lt;set $pencil to true&gt;&gt;&lt;&lt;set $tookPencil to true&gt;&gt;You take the pencil with you.&lt;&lt;set $pencil4 to true&gt;&gt;&lt;&lt;run memorize(&#39;pencil4&#39;, $pencil4)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiPencil&gt;&gt;&lt;&lt;run UIBar.update()&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
     
 &lt;&lt;else&gt;&gt;
 Nothing else to see or take here.
@@ -1581,7 +1581,7 @@ There is also a place within the drawer that looks like a &lt;&lt;linkappend &qu
 
 &lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="31" name="Blueprint" tags="Desk" position="1500,1300" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/PapersBlueprint.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You take a closer look at the paper&lt;/h2&gt;\
-&lt;&lt;set $blueprint to true&gt;&gt;&lt;&lt;set $papers to false&gt;&gt;&lt;&lt;set $pencil to false&gt;&gt;&lt;&lt;set $blueprint5 to true&gt;&gt;&lt;&lt;run memorize(&#39;blueprint5&#39;, $blueprint5)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiBlueprint&gt;&gt;\
+&lt;&lt;set $blueprint to true&gt;&gt;&lt;&lt;set $papers to false&gt;&gt;&lt;&lt;set $pencilIsUsed to true&gt;&gt;&lt;&lt;set $blueprint5 to true&gt;&gt;&lt;&lt;run memorize(&#39;blueprint5&#39;, $blueprint5)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiBlueprint&gt;&gt;\
  The paper has a drawing of the toilet unit on it, there seems to be some arrows and circles that point to the side of the toilet that conects to the wall. 
  
  They especifically point to the place were you would do the maintenance of the unit, seems that there&#39;s something of importance there. 
@@ -1591,7 +1591,7 @@ Seems to be important, you take it note of it.
 &lt;center&gt;&lt;&lt;link [[Step Back|Desk]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
 </tw-passagedata><tw-passagedata pid="32" name="Journal" tags="Desk" position="1700,1500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/PapersJournal.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The note&lt;/h2&gt;\
-&lt;&lt;set $journal to true&gt;&gt;&lt;&lt;set $papers to false&gt;&gt;&lt;&lt;set $pencil to false&gt;&gt;&lt;&lt;set $journal6 to true&gt;&gt;&lt;&lt;run memorize(&#39;journal6&#39;, $journal6)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;\
+&lt;&lt;set $journal to true&gt;&gt;&lt;&lt;set $papers to false&gt;&gt;&lt;&lt;set $pencilIsUsed to true&gt;&gt;&lt;&lt;set $journal6 to true&gt;&gt;&lt;&lt;run memorize(&#39;journal6&#39;, $journal6)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;\
  Seems to be written to someone, it &lt;&lt;linkappend &quot;&#39;&#39;says:&#39;&#39;&quot; t8n&gt;&gt;&lt;&lt;notiJournal&gt;&gt;
 &lt;em&gt;
 &gt;&gt;&gt;It&#39;s done. 
@@ -1983,7 +1983,8 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;set $brokenWindow to false&gt;&gt;\
 &lt;&lt;set $movementFrontCell to false&gt;&gt;\
 &lt;&lt;set $openFloor to false&gt;&gt;\
-&lt;&lt;set $notes to false&gt;&gt;\</tw-passagedata><tw-passagedata pid="53" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
+&lt;&lt;set $notes to false&gt;&gt;\
+&lt;&lt;set $pencilIsUsed to false&gt;&gt;\</tw-passagedata><tw-passagedata pid="53" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
 </tw-passagedata><tw-passagedata pid="54" name="notiTinyPaper" tags="widget nobr" position="100,100" size="100,100">&lt;&lt;widget &quot;notiTinyPaper&quot;&gt;&gt;
 	&lt;&lt;if $ListaNotificaciones[0] is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Note Added&lt;&lt;/notify&gt;&gt;
