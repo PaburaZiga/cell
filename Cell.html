@@ -749,7 +749,8 @@ $(document).on('mouseover', 'button, a', function() {
 	&lt;/div&gt;\
 &lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1900,700" size="200,100">&lt;&lt;if $bedSheet is false&gt;&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="2" name="Bed" tags="Bed" position="1900,700" size="200,100">&lt;&lt;set $BedVisited to true&gt;&gt;\
+&lt;&lt;if $bedSheet is false&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBed.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/closeUpBedNoSheets.png&quot;&gt;&lt;/center&gt;\
@@ -802,7 +803,8 @@ You start thinking about the pamphlet that you found as well as the torn piece o
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="3" name="Toilet" tags="Toilet" position="2400,900" size="100,200">&lt;&lt;if $pieceMirror is false&gt;&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="3" name="Toilet" tags="Toilet" position="2400,900" size="100,200">&lt;&lt;set $ToiletVisited to true&gt;&gt;\
+&lt;&lt;if $pieceMirror is false&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/wallMirror.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/wallMirror2.png&quot;&gt;&lt;/center&gt;\
@@ -884,10 +886,10 @@ It&#39;s a solid metal door which is currently locked. It has a handle and a key
 There is a small window in the upper middle part of the door that provides some visual to the [[outside|Corridor]].
 
 There is a [[small built-in tray and hatch|Service Hatch]] in the lower part of the door. Seems like it is used to slip things through it.
-&lt;&lt;if hasVisited(&quot;Bed&quot;, &quot;Toilet&quot;, &quot;Desk&quot;) and not hasVisited(&quot;Wound&quot;)&gt;&gt;\
+&lt;&lt;if $BedVisited is true and $ToiletVisited is true and $DeskVisited is true and $WoundVisited is false&gt;&gt;\
 
 &#39;&#39;[[You feel Pain|Wound]]&#39;&#39;
-&lt;&lt;elseif hasVisited(&quot;Wound&quot;)&gt;&gt;\
+&lt;&lt;elseif $WoundVisited is true&gt;&gt;\
     
     The wound &#39;&#39;hurts&#39;&#39;.
 &lt;&lt;/if&gt;&gt;\
@@ -930,7 +932,8 @@ With key in hand, you can escape this cell.
         &lt;/div&gt;\
 	&lt;/div&gt;\
 &lt;/div&gt;\
-&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="6" name="Desk" tags="Desk" position="1900,1200" size="200,100">&lt;&lt;if $blueprint is true&gt;&gt;\
+&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="6" name="Desk" tags="Desk" position="1900,1200" size="200,100">&lt;&lt;set $DeskVisited to true&gt;&gt;\
+&lt;&lt;if $blueprint is true&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/PapersBlueprint.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;elseif $journal is true&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/PapersJournal.png&quot;&gt;&lt;/center&gt;\
@@ -1025,6 +1028,12 @@ You take the sheets.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;set $notes to true&gt;&gt;
 &lt;&lt;set $button to false&gt;&gt;
 &lt;&lt;set $pencilIsUsed to false&gt;&gt;
+
+/*Para que el pasaje de Wound se abra y cierre*/
+&lt;&lt;set $ToiletVisited to false&gt;&gt;\
+&lt;&lt;set $DeskVisited to false&gt;&gt;\
+&lt;&lt;set $BedVisited to false&gt;&gt;\
+&lt;&lt;set $WoundVisited to false&gt;&gt;\
 
 /*espacio asignado para las notificaciones en la variable $ListaNotificaciones: [notiTinyPaper, notiWound, notiMovementFrontCell, notiPapers, notiBluprint, notiJournal, notiCalendarWatch, notiStool, notiPamphlet, notiFairyTale, notiPencil, notiBrokenWindow, notiPaperRoll, notiPieceMirror, notiBedSheet, notiHackSawBlade, notiSteelRail, notiEscapeKey, notiSocket] */
 &lt;&lt;set $ListaNotificaciones = [ false , false , false , false , false , false , false , false , false , false , false , false, false , false , false , false , false , false , false , false ]&gt;&gt;
@@ -1149,7 +1158,8 @@ AUDIO
 &lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;pliers&quot; &quot;audio/pliers.mp3&quot;&gt;&gt;\
-&lt;&lt;cacheaudio &quot;button-hover&quot; &quot;audio/button-hover.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1500,700" size="100,100">&lt;&lt;set $WoundRed to true&gt;&gt;&lt;&lt;run memorize(&#39;WoundRed&#39;, $WoundRed)&gt;&gt;\
+&lt;&lt;cacheaudio &quot;button-hover&quot; &quot;audio/button-hover.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1500,700" size="100,100">&lt;&lt;set $WoundVisited to true&gt;&gt;\
+&lt;&lt;set $WoundRed to true&gt;&gt;&lt;&lt;run memorize(&#39;WoundRed&#39;, $WoundRed)&gt;&gt;\
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/wound.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;What&#39;s this?&lt;/h2&gt;\
@@ -1272,20 +1282,20 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
 	You take the stool from the desk and place it right below the window. Stepping on it, you look up and now you are able to see that the window is barred with metal bars and that the glass from the window seems very thick, even then, you are able to see the outside more clearly.
 
 	It is dark outside and it seems that this place is surrounded by a forest because of the large trees that block your sight. The sky looks to be heavily clouded, but there is still some light the filters through the &lt;&lt;linkappend &quot;clouds&quot; t8n&gt;&gt;.
-    
 		&lt;&lt;if $brokenWindow is false&gt;&gt;\
+        
 	You try the bars and they are well afixed to the frame but at the same time they feel and sound hollow.
     
     Trying to look down from the window, you realize that the base of the window glass is very dirty and can&#39;t be seen through easily, so you try to rub some of that off with your fingers, but when your hand presses against the glass it gives out a little. Seeing this, you press harder and almost as if it was just placed, it falls down and breaks into pieces on the outside. You wonder if the noise caught the attention of anyone.&lt;&lt;set $brokenWindow to true&gt;&gt;&lt;&lt;notiBrokenWindow&gt;&gt;&lt;&lt;set $brokenWindow14 to true&gt;&gt;&lt;&lt;run memorize(&#39;brokenWindow14&#39;, $brokenWindow14)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;
     	&lt;&lt;elseif $brokenWindow is true&gt;&gt;\
+        
     Trying to look down from the window, you can see the broken glass on the grass below. At least is one thing less between you and the outside.
     	&lt;&lt;/if&gt;&gt;\
     &lt;&lt;/linkappend&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;if $stool is true and $paperRoll is true and $pieceMirror is true and $hackSawBlade is true and $bedSheet is true and $brokenWindow is true&gt;&gt;\
-&lt;&lt;AchSetToEscape&gt;&gt;\
 
-    You prepare your materials.
+&lt;&lt;if $stool is true and $paperRoll is true and $pieceMirror is true and $hackSawBlade is true and $bedSheet is true and $brokenWindow is true&gt;&gt;\
+    You prepare your materials.&lt;&lt;AchSetToEscape&gt;&gt;
 
 	&lt;&lt;linkreplace &quot;Time to make a makeshift hacksaw and rope to escape.&quot; t8n&gt;&gt;First you take the cardboard roll of the toilet paper, cut it with the sharp piece of mirror to make makeshift handles for the hacksaw blades, using the toilet paper to bind together the handles to the blades, you create a hacksaw that you can grab without hurting yourself. Then with the same piece of mirror you start cutting the bedsheets and tying them up together to make a fabric &quot;rope&quot; to help with the descent. 
 	Now what&#39;s next is to cut the window bars, so you step on the stool and start sawing the 3 middle metal bars of the window with the makeshift hacksaw that you made. Doing so, took you the two sawblades that you prepared, but strangely enough cutting the metal bars didn&#39;t take you that long, maybe the bars weren&#39;t strong in the first place? 
@@ -1643,13 +1653,13 @@ Looking under the bed you see the steel railings and the space where the railing
 &lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="36" name="Window Exit" tags="Ending" position="2800,1500" size="100,100">&lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You descent the rope&lt;/h2&gt;\
-And with a grunt, your feet land on the ground, right next to the broken window of your cell. You look up and look around you for a moment, in search of movement or stepping sounds. After confirming so, you take a deep breath, choose a direction and start heading that way. 
+&lt;&lt;timed 1s t8n&gt;&gt;And with a grunt, your feet land on the ground, right next to the broken window of your cell. You look up and look around you for a moment, in search of movement or stepping sounds. After confirming so, you take a deep breath, choose a direction and start heading that way. &lt;&lt;/timed&gt;&gt;
 
-First, you start walking through the forest, then jogging and then running, your heading towards your freedom afterall, this nightmare is almost over, if only you could reach a town... 
+&lt;&lt;timed 3s t8n&gt;&gt;First, you start walking through the forest, then jogging and then running, your heading towards your freedom afterall, this nightmare is almost over, if only you could reach a town... &lt;&lt;/timed&gt;&gt;
 
-But that&#39;s when it hits you.
+&lt;&lt;timed 5s t8n&gt;&gt;But that&#39;s when it hits you.&lt;&lt;/timed&gt;&gt;
 
-&lt;center&gt;//[[Wasn&#39;t this all too convenient?|Abduction]]//&lt;/center&gt;\
+&lt;&lt;timed 7s t8n&gt;&gt;&lt;center&gt;//[[Wasn&#39;t this all too convenient?|Abduction]]//&lt;/center&gt;&lt;&lt;/timed&gt;&gt;\
 
 
 
@@ -1803,7 +1813,7 @@ You close the door behind you and turn around to look at the other room through 
 &lt;center&gt;&lt;h2&gt;Huh?&lt;/h2&gt;&lt;/center&gt;\
 &lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;center&gt;//The cell looked like it was supose to retain you inside, be secure, but somehow you are here, now, outside. //&lt;/center&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
 
-&lt;&lt;timed 8s t8n&gt;&gt;You stop in your tracks when this realization hits you. You try to retrace why that train of thought came to mind, but there&#39;s not enough time for you to fully understand it you start hearing the sound of footsteps aproaching you, surrounding you, but how?&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 8s t8n&gt;&gt;You stop in your tracks when this realization hits you. You try to retrace why that train of thought came to mind, but there&#39;s not enough time for you to fully understand it, you start hearing the sound of footsteps aproaching you, surrounding you, but how?&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 11s t8n&gt;&gt;A voice of a man interrupts your thoughts.
 
@@ -1973,6 +1983,8 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;set $pencil to false&gt;&gt;\
 &lt;&lt;set $blueprint to false&gt;&gt;\
 &lt;&lt;set $journal to false&gt;&gt;\
+&lt;&lt;set $pamphlet to false&gt;&gt;\
+&lt;&lt;set $fairyTale to false&gt;&gt;\
 &lt;&lt;set $steelRail to false&gt;&gt;\
 &lt;&lt;set $escapeKey to false&gt;&gt;\
 &lt;&lt;set $calendar to false&gt;&gt;\
@@ -1984,7 +1996,12 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;set $movementFrontCell to false&gt;&gt;\
 &lt;&lt;set $openFloor to false&gt;&gt;\
 &lt;&lt;set $notes to false&gt;&gt;\
-&lt;&lt;set $pencilIsUsed to false&gt;&gt;\</tw-passagedata><tw-passagedata pid="53" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
+&lt;&lt;set $scribbles to false&gt;&gt;\
+&lt;&lt;set $pencilIsUsed to false&gt;&gt;\
+&lt;&lt;set $ToiletVisited to false&gt;&gt;\
+&lt;&lt;set $DeskVisited to false&gt;&gt;\
+&lt;&lt;set $BedVisited to false&gt;&gt;\
+&lt;&lt;set $WoundVisited to false&gt;&gt;\</tw-passagedata><tw-passagedata pid="53" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
 </tw-passagedata><tw-passagedata pid="54" name="notiTinyPaper" tags="widget nobr" position="100,100" size="100,100">&lt;&lt;widget &quot;notiTinyPaper&quot;&gt;&gt;
 	&lt;&lt;if $ListaNotificaciones[0] is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Note Added&lt;&lt;/notify&gt;&gt;
@@ -2148,8 +2165,7 @@ Now that someone is here, it&#39;s time for some questions that they must have t
 ----
 	&lt;&lt;if $SetToEscapeAch is true&gt;&gt;
 &lt;li&gt;&#39;&#39;Set to Escape&#39;&#39;&lt;/li&gt;
-//Time to go!//
-First time getting all tools to escape through the window.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
+//Time to go!// - First time getting all tools to escape through the window.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 	&lt;&lt;if $UnderYourNoseAch is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Right under your nose&#39;&#39;&lt;/li&gt;
@@ -2283,13 +2299,13 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
         &lt;&lt;set $SecondThoughtsAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;SecondThoughtsAch&#39;, $SecondThoughtsAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Ach. Little Bladder" tags="nobr widget" position="1500,200" size="100,100">&lt;&lt;widget &quot;AchLittleBladder&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Ach. Little Bladder" tags="nobr widget" position="1600,0" size="100,100">&lt;&lt;widget &quot;AchLittleBladder&quot;&gt;&gt;
 	&lt;&lt;if visited(&quot;Used&quot;) is 5 and $LittleBladderAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $LittleBladderAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;LittleBladderAch&#39;, $LittleBladderAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Ach. There goes my only weapon" tags="nobr widget" position="1300,300" size="100,100">&lt;&lt;widget &quot;AchOnlyWeapon&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Ach. There goes my only weapon" tags="nobr widget" position="1200,100" size="100,100">&lt;&lt;widget &quot;AchOnlyWeapon&quot;&gt;&gt;
 	&lt;&lt;if $OnlyWeaponAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $OnlyWeaponAch to true&gt;&gt;
@@ -2308,7 +2324,7 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
         &lt;&lt;run memorize(&#39;SeeingRedAch&#39;, $SeeingRedAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-</tw-passagedata><tw-passagedata pid="88" name="Ach. Compleitionist" tags="widget nobr" position="1400,200" size="100,100">&lt;&lt;widget &quot;AchCompleitionist&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="88" name="Ach. Compleitionist" tags="widget nobr" position="1600,100" size="100,100">&lt;&lt;widget &quot;AchCompleitionist&quot;&gt;&gt;
 	&lt;&lt;if $SetToEscapeAch is true and $AllEndingsAch is true and $UnderYourNoseAch is true and $TouchingGrassAch is true and $LittleBladderAch is true and SecondThoughtsAch is true and OnlyWeaponAch is true and $CaughtEmAllAch is true and $SeeingRedAch is true and $CapturedAch is true and $CompleitionistAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $CompleitionistAch to true&gt;&gt;
@@ -2322,7 +2338,7 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
         &lt;&lt;run memorize(&#39;CapturedAch&#39;, $CapturedAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-</tw-passagedata><tw-passagedata pid="90" name="Autoscroll" tags="nobr widget" position="1500,300" size="100,100">&lt;&lt;widget &quot;Autoscroll&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="90" name="Autoscroll" tags="nobr widget" position="1500,200" size="100,100">&lt;&lt;widget &quot;Autoscroll&quot;&gt;&gt;
 	&lt;&lt;script&gt;&gt;
     $(document).on(&#39;:passagedisplay&#39;, function () {
     var previousHeight = 0;
@@ -2338,13 +2354,13 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
     }, 60000);
 });
 	&lt;&lt;/script&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Ach. Under your nose" tags="nobr widget" position="1400,300" size="100,100">&lt;&lt;widget &quot;AchUnderYourNose&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Ach. Under your nose" tags="nobr widget" position="1300,200" size="100,100">&lt;&lt;widget &quot;AchUnderYourNose&quot;&gt;&gt;
 	&lt;&lt;if $UnderYourNoseAch is false&gt;&gt;
 		&lt;&lt;notify 3s&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $UnderYourNoseAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;UnderYourNoseAch&#39;, $UnderYourNoseAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Ach. Touching Grass" tags="nobr widget" position="1300,200" size="100,100">&lt;&lt;widget &quot;AchTouchingGrass&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Ach. Touching Grass" tags="nobr widget" position="1200,0" size="100,100">&lt;&lt;widget &quot;AchTouchingGrass&quot;&gt;&gt;
 	&lt;&lt;if $TouchingGrassAch is false&gt;&gt;
 		&lt;&lt;notify 3s&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $TouchingGrassAch to true&gt;&gt;
