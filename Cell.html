@@ -1678,7 +1678,7 @@ But this time, a couple of eyes look back...
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Ceiling.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;&#39;&#39;An unfamiliar ceiling welcomes you again.&#39;&#39;&lt;/h2&gt;\
-&lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;It takes you a moment, but you recognize it. 
+&lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;It takes you a moment, but you recognize it. 
 
 //&#39;&#39;You are in that damn room again.&#39;&#39;//
 
@@ -1931,26 +1931,6 @@ The eyes look at you almost pleadingly, but you don&#39;t look conviced, so they
 &lt;center&gt;&lt;&lt;return [[Go back to what you were doing|Bed]]&gt;&gt;&lt;/center&gt;&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Credits" tags="" position="900,500" size="100,100">&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;\
 &lt;&lt;AchCompleitionist&gt;&gt;\
 &lt;&lt;audio &quot;nightAmbience&quot; stop&gt;&gt;\
-/*&lt;&lt;unset $paperRoll, $bedSheet, $pieceMirror, $hackSawBlade, $button, $pencil, $blueprint, $journal, $steelRail, $escapeKey, $calendar, $watch, $stool, $tinyPaper, $papers, $stayInCell, $brokenWindow, $movementFrontCell, $openFloor, $notes&gt;&gt;\*/
-&lt;&lt;set $button to false&gt;&gt;\
-&lt;&lt;set $paperRoll to false&gt;&gt;\
-&lt;&lt;set $bedSheet to false&gt;&gt;\
-&lt;&lt;set $pieceMirror to false&gt;&gt;\
-&lt;&lt;set $hackSawBlade to false&gt;&gt;\
-&lt;&lt;set $pencil to false&gt;&gt;\
-&lt;&lt;set $blueprint to false&gt;&gt;\
-&lt;&lt;set $journal to false&gt;&gt;\
-&lt;&lt;set $steelRail to false&gt;&gt;\
-&lt;&lt;set $escapeKey to false&gt;&gt;\
-&lt;&lt;set $calendar to false&gt;&gt;\
-&lt;&lt;set $watch to false&gt;&gt;\
-&lt;&lt;set $stool to false&gt;&gt;\
-&lt;&lt;set $tinyPaper to false&gt;&gt;\
-&lt;&lt;set $stayInCell to false&gt;&gt;\
-&lt;&lt;set $brokenWindow to false&gt;&gt;\
-&lt;&lt;set $movementFrontCell to false&gt;&gt;\
-&lt;&lt;set $openFloor to false&gt;&gt;\
-&lt;&lt;set $notes to false&gt;&gt;\
 &lt;center&gt;&lt;h1&gt;Thank you for playing&lt;/h1&gt;&lt;/center&gt;\
 If you wish to help me create more stories like this, feel free to visit my ko-fi and leave a tip!
 &lt;center&gt;&lt;a href=&#39;https://ko-fi.com/I3I1GJAVX&#39; target=&#39;_blank&#39;&gt;&lt;img height=&#39;36&#39; style=&#39;border:0px;height:36px;&#39; src=&#39;https://storage.ko-fi.com/cdn/kofi6.png?v=6&#39; border=&#39;0&#39; alt=&#39;Buy Me a Coffee at ko-fi.com&#39; /&gt;&lt;/a&gt;&lt;/center&gt;\
@@ -1983,7 +1963,27 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;li&gt;Disable macro by ChapelR for sugarcube 2 &lt;a href=&quot;https://github.com/ChapelR/custom-macros-for-sugarcube-2.git&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;\
 &lt;&lt;/message&gt;&gt;\
 
-&lt;center&gt;&lt;h2&gt;&#39;&#39;[[Go back to Title|Title]]&#39;&#39;&lt;/h2&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="53" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
+&lt;center&gt;&lt;h2&gt;&#39;&#39;[[Go back to Title|Title]]&#39;&#39;&lt;/h2&gt;&lt;/center&gt;
+/*&lt;&lt;unset $paperRoll, $bedSheet, $pieceMirror, $hackSawBlade, $button, $pencil, $blueprint, $journal, $steelRail, $escapeKey, $calendar, $watch, $stool, $tinyPaper, $papers, $stayInCell, $brokenWindow, $movementFrontCell, $openFloor, $notes&gt;&gt;\*/
+&lt;&lt;set $button to false&gt;&gt;\
+&lt;&lt;set $paperRoll to false&gt;&gt;\
+&lt;&lt;set $bedSheet to false&gt;&gt;\
+&lt;&lt;set $pieceMirror to false&gt;&gt;\
+&lt;&lt;set $hackSawBlade to false&gt;&gt;\
+&lt;&lt;set $pencil to false&gt;&gt;\
+&lt;&lt;set $blueprint to false&gt;&gt;\
+&lt;&lt;set $journal to false&gt;&gt;\
+&lt;&lt;set $steelRail to false&gt;&gt;\
+&lt;&lt;set $escapeKey to false&gt;&gt;\
+&lt;&lt;set $calendar to false&gt;&gt;\
+&lt;&lt;set $watch to false&gt;&gt;\
+&lt;&lt;set $stool to false&gt;&gt;\
+&lt;&lt;set $tinyPaper to false&gt;&gt;\
+&lt;&lt;set $stayInCell to false&gt;&gt;\
+&lt;&lt;set $brokenWindow to false&gt;&gt;\
+&lt;&lt;set $movementFrontCell to false&gt;&gt;\
+&lt;&lt;set $openFloor to false&gt;&gt;\
+&lt;&lt;set $notes to false&gt;&gt;\</tw-passagedata><tw-passagedata pid="53" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
 </tw-passagedata><tw-passagedata pid="54" name="notiTinyPaper" tags="widget nobr" position="100,100" size="100,100">&lt;&lt;widget &quot;notiTinyPaper&quot;&gt;&gt;
 	&lt;&lt;if $ListaNotificaciones[0] is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Note Added&lt;&lt;/notify&gt;&gt;
@@ -2091,7 +2091,7 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The forest greets you like an old friend. &lt;/h2&gt;\
-&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;The full moon is almost at its peak in the night sky and is giving you enough light to guide yourself through the trees. 
+&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;The full moon is almost at its peak in the night sky and is giving you enough light to guide yourself through the trees. 
 
 You start running again fearing that whoever put you in that room might&#39;ve already noticed that you escaped.
 
@@ -2113,7 +2113,7 @@ And everything goes to black. . .
 &lt;&lt;Autoscroll&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Ceiling.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;&#39;&#39;That unfamiliar ceiling welcomes you again.&#39;&#39;&lt;/h2&gt;\
-&lt;&lt;type 60ms&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;Struggling to sit on the bed, pain runs through your body and a strong smell of iron emanates from you. You look down at yourself, and all you see are tattered clothes and blood.
+&lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;Struggling to sit on the bed, pain runs through your body and a strong smell of iron emanates from you. You look down at yourself, and all you see are tattered clothes and blood.
 
 While wondering what happend last night, there&#39;s a few knocks on the door and the sound of the hatch openning.
 
@@ -2140,8 +2140,8 @@ Now that someone is here, it&#39;s time for some questions that they must have t
 4. &lt;&lt;if $endingAch4 is true&gt;&gt;&#39;&#39;Stayed until morning&#39;&#39;&lt;&lt;else&gt;&gt;???&lt;&lt;/if&gt;&gt;
 &lt;/center&gt;\
 
-&lt;center&gt;&lt;h3&gt;&#39;&#39;[[Take me to the Title Menu|Title]]&#39;&#39;	&lt;/h3&gt;&lt;/center&gt;\
-&lt;center&gt;&lt;h3&gt;&lt;&lt;return &quot;&#39;&#39;Take me to the Story&#39;&#39;&quot;&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h3&gt;&lt;&lt;return &quot;Take me to the Story&quot;&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h3&gt;[[Take me to the Title Menu|Title]]&lt;/h3&gt;&lt;/center&gt;\
 
 &lt;ol&gt;\
 ----
@@ -2191,8 +2191,8 @@ First time getting all tools to escape through the window.&lt;&lt;else&gt;&gt;&l
 Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 &lt;/ol&gt;\
-&lt;center&gt;&lt;h3&gt;&#39;&#39;[[Take me to the Title Menu|Title]]&#39;&#39;	&lt;/h3&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h3&gt;&lt;&lt;return &quot;&#39;&#39;Take me to the Story&#39;&#39;&quot;&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;h3&gt;&#39;&#39;[[Take me to the Title Menu|Title]]&#39;&#39;	&lt;/h3&gt;&lt;/center&gt;\
 /*&lt;&lt;if $CompleitionistAch is true&gt;&gt;*/
 &lt;center&gt;&lt;div class=&quot;buttonAch&quot;&gt;&lt;&lt;button [[Restart Achievements|Title]]&gt;&gt;\
   &lt;&lt;set $AllEndingsAch = false&gt;&gt;&lt;&lt;run memorize(&#39;AllEndingsAch&#39;, false)&gt;&gt;\
