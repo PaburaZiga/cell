@@ -1034,7 +1034,18 @@ You take the sheets.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;set $endingAch3 = recall(&#39;endingAch3&#39;, false)&gt;&gt;/*oops*/
 &lt;&lt;set $endingAch4 = recall(&#39;endingAch4&#39;, false)&gt;&gt;/*Stayed until morning*/
 
-	/*cada variable representa un item del inventario para el Achievement &quot;Caught &#39;em All&quot; */
+/*Para el Ach. de Seeing Red*/
+&lt;&lt;set $WreakHavokRed  = recall(&#39;WreakHavokRed&#39;, false)&gt;&gt;
+&lt;&lt;set $AbductionRed   = recall(&#39;AbductionRed&#39;, false)&gt;&gt;
+&lt;&lt;set $DoorExitRed  = recall(&#39;DoorExitRed&#39;, false)&gt;&gt;
+&lt;&lt;set $NotesRed  = recall(&#39;NotesRed&#39;, false)&gt;&gt;
+&lt;&lt;set $WoundRed  = recall(&#39;WoundRed&#39;, false)&gt;&gt;
+
+/*Para Ach. SecondThoughts*/
+&lt;&lt;set $BackInCellAch = recall(&#39;BackInCellAch&#39;, false)&gt;&gt;
+&lt;&lt;set $StayInCellAch  = recall(&#39;StayInCellAch&#39;, false)&gt;&gt;
+
+/*cada variable representa un item del inventario para el Achievement &quot;Caught &#39;em All&quot; */
     &lt;&lt;set $paperRoll0 = recall(&#39;paperRoll0&#39;, false)&gt;&gt;
     &lt;&lt;set $bedSheet1= recall(&#39;bedSheet1&#39;, false)&gt;&gt;
     &lt;&lt;set $pieceMirror2 = recall(&#39;pieceMirror2&#39;, false)&gt;&gt;
@@ -1138,7 +1149,8 @@ AUDIO
 &lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;pliers&quot; &quot;audio/pliers.mp3&quot;&gt;&gt;\
-&lt;&lt;cacheaudio &quot;button-hover&quot; &quot;audio/button-hover.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1500,700" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+&lt;&lt;cacheaudio &quot;button-hover&quot; &quot;audio/button-hover.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1500,700" size="100,100">&lt;&lt;set $WoundRed to true&gt;&gt;&lt;&lt;run memorize(&#39;WoundRed&#39;, $WoundRed)&gt;&gt;\
+&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/wound.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;What&#39;s this?&lt;/h2&gt;\
 &lt;&lt;set $Wound16 to true&gt;&gt;&lt;&lt;run memorize(&#39;Wound16&#39;, $Wound16)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;notiWound&gt;&gt;\
@@ -1469,6 +1481,7 @@ The stool found near the desk is sturdy enough to withstand your weight and ligh
 &lt;&lt;if hasVisited(&quot;Wound&quot;)&gt;&gt;\
 &lt;li&gt;&#39;&#39;Wound&#39;&#39;&lt;/li&gt;\
 A big gash the right of your torso that almost looks like a giant scratch, you don&#39;t remember how you got it, but the silhouette of a person and the color &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt; comes to mind.
+&lt;&lt;set $NotesRed to true&gt;&gt;&lt;&lt;run memorize(&#39;NotesRed&#39;, $NotesRed)&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $button is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Missing button&#39;&#39;&lt;/li&gt;\
@@ -1640,7 +1653,8 @@ But that&#39;s when it hits you.
 
 
 
-</tw-passagedata><tw-passagedata pid="37" name="Door Exit" tags="Ending" position="200,1000" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="37" name="Door Exit" tags="Ending" position="200,1000" size="100,100">&lt;&lt;set $DoorExitRed to true&gt;&gt;&lt;&lt;run memorize(&#39;DoorExitRed&#39;, $DoorExitRed)&gt;&gt;\
+&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/CorridorOut.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Stepping out of your room. . .&lt;/h2&gt;\
 &lt;&lt;set $escapeKey to false&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;\
@@ -1684,7 +1698,8 @@ With that, you have a feeling that your days of normalcy are over.
 
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Everything&#39;s changed&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
 &lt;&lt;/type&gt;&gt;\
-&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="39" name="Stay in the cell" tags="Ending" position="200,1400" size="100,100">&lt;&lt;AchSecondThoughts&gt;&gt;\
+&lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="39" name="Stay in the cell" tags="Ending" position="200,1400" size="100,100">&lt;&lt;set $StayInCellAch to true&gt;&gt;&lt;&lt;run memorize(&#39;StayInCellAch&#39;, $StayInCellAch)&gt;&gt;\
+&lt;&lt;AchSecondThoughts&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/doorWindow.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You lay down on the bed&lt;/h2&gt;\
 And close your eyes. &lt;&lt;timed 2s t8n&gt;&gt;You wait for a deep sleep to take over you, but questions keep popping in your head making you feel restless. You can feel how the pale light of the full moon touches your face, but that doesn&#39;t seem to calm you down. Maybe in the morning someone will tell you why you are here.&lt;&lt;/timed&gt;&gt;
@@ -1766,7 +1781,8 @@ You don&#39;t know this person, they could very well be an accomplice of your ca
 It feels like it&#39;s taking you ages to reach the end, but before you know it, you are in front of the exit door. You stop to catch some air, your lungs hurt from running and your throat burns from breathing hard, but you steel yourself and open the door.
 
 &lt;center&gt;&lt;h3&gt;[[Keep going|Oops]]&lt;/h3&gt;&lt;/center&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="Back in cell" tags="Ending" position="700,1300" size="100,100">&lt;&lt;AchSecondThoughts&gt;&gt;\
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="Back in cell" tags="Ending" position="700,1300" size="100,100">&lt;&lt;set $BackInCellAch to true&gt;&gt;&lt;&lt;run memorize(&#39;BackInCellAch&#39;, $BackInCellAch)&gt;&gt;\
+&lt;&lt;AchSecondThoughts&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/doorWindow.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;Back inside the room&lt;/h2&gt;\
 You close the door behind you and turn around to look at the other room through the window. &lt;&lt;timed 2s t8n&gt;&gt;The person behind it nods at you and gives you a thumbs up as well as a gesture for you to calm down.&lt;&lt;/timed&gt;&gt;
@@ -1781,7 +1797,8 @@ You close the door behind you and turn around to look at the other room through 
                 
 &lt;&lt;timed 17s t8n&gt;&gt;&lt;center&gt;&#39;&#39;[[After that, everything goes black.|Stayed until morning]]&#39;&#39;&lt;/center&gt;&lt;&lt;/timed&gt;&gt;
 
-</tw-passagedata><tw-passagedata pid="45" name="Abduction" tags="Ending" position="3000,1400" size="100,100">&lt;&lt;AchSeeingRed&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="45" name="Abduction" tags="Ending" position="3000,1400" size="100,100">&lt;&lt;set $AbductionRed to true&gt;&gt;&lt;&lt;run memorize(&#39;AbductionRed&#39;, $AbductionRed)&gt;&gt;\
+&lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h2&gt;Huh?&lt;/h2&gt;&lt;/center&gt;\
 &lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;center&gt;//The cell looked like it was supose to retain you inside, be secure, but somehow you are here, now, outside. //&lt;/center&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
@@ -1801,6 +1818,7 @@ You close the door behind you and turn around to look at the other room through 
 &lt;&lt;timed 22s t8n&gt;&gt;You are about to ask what does he mean, but even before you can open your mouth you feel the powerful impact of a punch in your gut and [[everything goes black.|Wreak Havok]]&lt;&lt;/timed&gt;&gt;
 </tw-passagedata><tw-passagedata pid="46" name="Wreak Havok" tags="Ending" position="2900,1200" size="100,100">&lt;&lt;Ending1&gt;&gt;\
 &lt;&lt;Autoscroll&gt;&gt;\
+&lt;&lt;set $WreakHavokRed to false&gt;&gt;&lt;&lt;run memorize(&#39;WreakHavokRed&#39;, $WreakHavokRed)&gt;&gt;\
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;h2&gt;You wake up&lt;/h2&gt;\
@@ -2213,6 +2231,12 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
   &lt;&lt;set $scribbles18 = false&gt;&gt;&lt;&lt;run memorize(&#39;scribbles18&#39;, false)&gt;&gt;\
   &lt;&lt;set $pamphlet19 = false&gt;&gt;&lt;&lt;run memorize(&#39;pamphlet19&#39;, false)&gt;&gt;\
   &lt;&lt;set $fairyTale20 = false&gt;&gt;&lt;&lt;run memorize(&#39;fairyTale20&#39;, false)&gt;&gt;\
+  &lt;&lt;set $WreakHavokRed = false&gt;&gt;&lt;&lt;run memorize(&#39;WreakHavokRed&#39;, false)&gt;&gt;\
+  &lt;&lt;set $AbductionRed = false&gt;&gt;&lt;&lt;run memorize(&#39;AbductionRed&#39;, false)&gt;&gt;\
+  &lt;&lt;set $DoorExitRed = false&gt;&gt;&lt;&lt;run memorize(&#39;DoorExitRed&#39;, false)&gt;&gt;\
+  &lt;&lt;set $NotesRed = false&gt;&gt;&lt;&lt;run memorize(&#39;NotesRed&#39;, false)&gt;&gt;\
+  &lt;&lt;set $BackInCellAch = false&gt;&gt;&lt;&lt;run memorize(&#39;BackInCellAch&#39;, false)&gt;&gt;\
+  &lt;&lt;set $StayInCellAch = false&gt;&gt;&lt;&lt;run memorize(&#39;StayInCellAch&#39;, false)&gt;&gt;\
   &lt;&lt;notify&gt;&gt;Achievements restarted&lt;&lt;/notify&gt;&gt;\
 &lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;/center&gt;\
 /*&lt;&lt;/if&gt;&gt;\*/</tw-passagedata><tw-passagedata pid="77" name="Ending1" tags="widget nobr" position="300,400" size="100,100">&lt;&lt;widget &quot;Ending1&quot;&gt;&gt;
@@ -2253,7 +2277,7 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 </tw-passagedata><tw-passagedata pid="83" name="Ach. Second Thoughts" tags="widget nobr" position="1500,0" size="100,100">&lt;&lt;widget &quot;AchSecondThoughts&quot;&gt;&gt;
-	&lt;&lt;if hasVisited(&quot;Back in cell&quot;, &quot;Stay in Cell&quot;) and $SecondThoughtsAch is false&gt;&gt;
+	&lt;&lt;if $BackInCellAch is true and $StayInCellAch is true and $SecondThoughtsAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $SecondThoughtsAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;SecondThoughtsAch&#39;, $SecondThoughtsAch)&gt;&gt;
@@ -2277,7 +2301,7 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
         &lt;&lt;run memorize(&#39;CaughtEmAllAch&#39;, $CaughtEmAllAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Ach. Seeing Red" tags="widget nobr" position="1400,100" size="100,100">&lt;&lt;widget &quot;AchSeeingRed&quot;&gt;&gt;
-	&lt;&lt;if hasVisited(&quot;Wound&quot;, &quot;Abduction&quot;, &quot;Wreak Havok&quot;, &quot;Door Exit&quot;, &quot;Notes&quot; ) and $SeeingRedAch is false&gt;&gt;
+	&lt;&lt;if $WoundRed is true and $AbductionRed is true and $WreakHavokRed is true and $DoorExitRed is true and $NotesRed is true and $SeeingRedAch is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $SeeingRedAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;SeeingRedAch&#39;, $SeeingRedAch)&gt;&gt;
