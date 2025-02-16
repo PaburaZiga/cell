@@ -897,7 +897,7 @@ There is a [[small built-in tray and hatch|Service Hatch]] in the lower part of 
 &lt;&lt;link [[Look closely around the frame of the door|Look around the door]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;if $escapeKey is true&gt;&gt;\
-With key in hand, you can escape this cell.
+With key in hand, you can escape this room.
 
 &lt;center&gt;&lt;h3&gt;&lt;&lt;link [[Insert the key and open the door.|Door Exit]]&gt;&gt;&lt;&lt;audio &quot;unlockDoor&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/h3&gt;&lt;/center&gt;\
 
@@ -1014,7 +1014,7 @@ That&#39;s all you get to read.&lt;&lt;/linkappend&gt;&gt;
 They are quite long for the bed, also the fabric feels a lot thicker than what you&#39;d expect a sheet to be, you wonder why, since it&#39;s not that chilly in here.
 
 &lt;&lt;else&gt;&gt;\
-Now knowing that you can escape through the window, you remember that the bedsheets are conveniently very thick, everything points at someone trying to help you or whoever was going to be in this cell. You think that maybe you can make a rope out of them that will perhaps withstand your weight for you to descent through the window. 
+Now knowing that you can escape through the window, you remember that the bedsheets are conveniently very thick, everything points at someone trying to help you or whoever was going to be in this room. You think that maybe you can make a rope out of them that will perhaps withstand your weight for you to descent through the window. 
 
 Maybe.
 
@@ -1247,7 +1247,7 @@ Looking more closely, the lip seems more of a hatch. The way is placed makes you
 
 With little force you open the hatch and slip a hand through it with ease, you try and reach for the handle on the other side, but your arm falls short to reach it. You don&#39;t think this way will work.
 
-When you &lt;&lt;linkappend &quot;open the hatch&quot; t8n&gt;&gt;&lt;&lt;set $movementFrontCell to true&gt;&gt;&lt;&lt;audio &quot;whiteNoise&quot; volume 0.7 play&gt;&gt;, sounds start leaking in, which makes you believe that there&#39;s some degree of soundproofing in the cell. Now with nothing stopping you from making noise, you scream for help, but there is no response. Feeling defeated, you roll your eyes to the cell door in front of you and for a brief second you could swear that you saw &#39;&#39;movement through the window cell&#39;&#39;.&lt;&lt;notiMovementFrontCell&gt;&gt;&lt;&lt;set $movementFrontCell15 to true &gt;&gt;&lt;&lt;run memorize(&#39;movementFrontCell15&#39;, $movementFrontCell15)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;\
+When you &lt;&lt;linkappend &quot;open the hatch&quot; t8n&gt;&gt;&lt;&lt;set $movementFrontCell to true&gt;&gt;&lt;&lt;audio &quot;whiteNoise&quot; volume 0.7 play&gt;&gt;, sounds start leaking in, which makes you believe that there&#39;s some degree of soundproofing in the room. Now with nothing stopping you from making noise, you scream for help, but there is no response. Feeling defeated, you roll your eyes to the front room&#39;s door and for a brief second you could swear that you saw &#39;&#39;movement through the small window&#39;&#39;.&lt;&lt;notiMovementFrontCell&gt;&gt;&lt;&lt;set $movementFrontCell15 to true &gt;&gt;&lt;&lt;run memorize(&#39;movementFrontCell15&#39;, $movementFrontCell15)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;\
 &lt;&lt;else&gt;&gt;\
 The hatch still opens with little force, but there&#39;s no movement on the other side, for now.
 &lt;&lt;/if&gt;&gt;\
@@ -1446,20 +1446,20 @@ You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
 &lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;Looking more closely...&lt;/h2&gt;\
 &lt;&lt;if $blueprint is true or $journal is true&gt;&gt;\
-	There&#39;s now only the other paper with grooves on the desk and the other blank papers.
+	There&#39;s now only the other paper with recesses on the desk and the other blank papers.
 &lt;&lt;else&gt;&gt;\    
 	&lt;&lt;if $pencil is false and $pencilIsUsed is false&gt;&gt;\
     &lt;&lt;set $papers to true&gt;&gt;\
 		There are some blank &#39;&#39;papers&#39;&#39; on the desk scattered about.
 
-		&lt;&lt;linkreplace &quot;Keep looking.&quot;&gt;&gt;&lt;&lt;notiPapers&gt;&gt;&lt;&lt;audio &quot;rustlingPaper&quot; volume 0.7 play&gt;&gt;&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;set $papers12 to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;run memorize(&#39;papers12&#39;, $papers12)&gt;&gt; At first glance they seem kind of random, but with futher inspection you can feel some &#39;&#39;grooves&#39;&#39; on &#39;&#39;two of the papers&#39;&#39;, indicating that something was written on top of them. You wonder if there is a way to read what was written on them.&lt;&lt;/timed&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+		&lt;&lt;linkreplace &quot;Keep looking.&quot;&gt;&gt;&lt;&lt;notiPapers&gt;&gt;&lt;&lt;audio &quot;rustlingPaper&quot; volume 0.7 play&gt;&gt;&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;set $papers12 to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;run memorize(&#39;papers12&#39;, $papers12)&gt;&gt; At first glance they seem kind of random, but with futher inspection you can feel some &#39;&#39;recesses&#39;&#39; on &#39;&#39;two of the papers&#39;&#39;, indicating that something was written on top of them. You wonder if there is a way to read what was written on them.&lt;&lt;/timed&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
 	&lt;&lt;else&gt;&gt;\
 		The papers are still scattered in the table. You look at the pencil in your posession. You think you can use the graphite to reveal what&#39;s written on them, but there&#39;s not enough of it to use on the papers of interest.
 
 		&#39;&#39;Which paper will you use the pencil on?&#39;&#39;
         
-		&lt;li&gt;The paper with grooves that feel like &lt;&lt;link[[figures|Blueprint]]&gt;&gt;&lt;&lt;audio &quot;graphite&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\
-        &lt;li&gt;The paper with grooves that feel like &lt;&lt;link[[letters|Journal]]&gt;&gt;&lt;&lt;audio &quot;graphite&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\
+		&lt;li&gt;The paper with recesses that feel like &lt;&lt;link[[figures|Blueprint]]&gt;&gt;&lt;&lt;audio &quot;graphite&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\
+        &lt;li&gt;The paper with recesses that feel like &lt;&lt;link[[letters|Journal]]&gt;&gt;&lt;&lt;audio &quot;graphite&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\
     &lt;&lt;/if&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 
@@ -1496,11 +1496,11 @@ A big gash the right of your torso that almost looks like a giant scratch, you d
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $button is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Missing button&#39;&#39;&lt;/li&gt;\
-There is now an empty socket from where a button fell off, next to the door. It seems to have the wires that made it function cut.
+There is now an empty socket from where a button fell off, next to the door. It seems to have the wires that made it function were cut.
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $movementFrontCell is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Movement?&#39;&#39;&lt;/li&gt;\
-Or at least you thought you saw some movement in the opposite cell that you can see from your door&#39;s window.
+Or at least you thought you saw some movement in the opposite room that you can see from your door&#39;s window.
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $calendar is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Calendar&#39;&#39;&lt;/li&gt;\
@@ -1512,7 +1512,7 @@ It sits on your right wrist. It confirmed that today is the 28th of October.
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $papers is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Papers on desk&#39;&#39;&lt;/li&gt;\
-There seems to be some type of &#39;&#39;grooves&#39;&#39; on some of the papers scattered about in the &#39;&#39;desk&#39;&#39;.
+There seems to be some type of &#39;&#39;recesses&#39;&#39; on some of the papers scattered about on the &#39;&#39;desk&#39;&#39;.
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $scribbles is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Scribblings&#39;&#39;&lt;/li&gt;\
@@ -1532,7 +1532,7 @@ The paper has a drawing of the toilet unit on it, there seems to be some arrows 
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $pamphlet is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Pamphlet&#39;&#39;&lt;/li&gt;\
-Seems like it was supposed to be somewhere visible. It lists guidelines on how to use the &quot;Moon cell&quot;. You think it refers to the cell your are in.
+Seems like it was supposed to be somewhere visible. It lists guidelines on how to use the &quot;Moon cell&quot;. You think it refers to the room you are in.
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $fairyTale is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Fairy Tale book&#39;&#39;&lt;/li&gt;\
@@ -1546,7 +1546,7 @@ If there is a way for you to deal with the bars, you think you can squeeze yours
 &lt;h3&gt;Items descriptions:&lt;/h3&gt;\
 &lt;&lt;if $paperRoll is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Toilet Paper&#39;&#39;&lt;/li&gt;\
-If needed the cardboard roll could be taken out from the toilet paper roll.
+If needed, the cardboard roll could be taken out from the toilet paper roll.
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $pencil is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Pencil&#39;&#39;&lt;/li&gt;\
@@ -1654,7 +1654,7 @@ Looking under the bed you see the steel railings and the space where the railing
 &lt;center&gt;&lt;&lt;link [[Step Back|Bed]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="36" name="Window Exit" tags="Ending" position="2800,1500" size="100,100">&lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You descent the rope&lt;/h2&gt;\
-&lt;&lt;timed 1s t8n&gt;&gt;And with a grunt, your feet land on the ground, right next to the broken window of your cell. You look up and look around you for a moment, in search of movement or stepping sounds. After confirming so, you take a deep breath, choose a direction and start heading that way. &lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 1s t8n&gt;&gt;And with a grunt, your feet land on the ground, right next to the broken window of your room. You look up and look around you for a moment, in search of movement or stepping sounds. After confirming so, you take a deep breath, choose a direction and start heading that way. &lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 3s t8n&gt;&gt;First, you start walking through the forest, then jogging and then running, your heading towards your freedom afterall, this nightmare is almost over, if only you could reach a town... &lt;&lt;/timed&gt;&gt;
 
@@ -1677,12 +1677,12 @@ It is longer that you thought.
 
 It extends and culminates in the steel bar gate that you saw previously through the small window, but now there&#39;s a static &lt;span style=&quot;color:red&quot;&gt;red&lt;/span&gt; light turned on at the end of the corridor, there&#39;s no sound but you know that someone has been alerted and now your time is ticking&lt;&lt;/linkappend&gt;&gt;
 
-And for the last time, your eyes turn to the &lt;&lt;linkappend &quot;front cell door.&quot; t8n&gt;&gt;
+And for the last time, your eyes turn to the &lt;&lt;linkappend &quot;front room&#39;s door.&quot; t8n&gt;&gt;
 
 But this time, a couple of eyes look back...
 
-&lt;center&gt;&lt;li&gt;Approach &lt;&lt;link [[the door of the cell.|Front cell]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/center&gt;
-&lt;center&gt;&lt;li&gt;You don&#39;t care, &lt;&lt;link [[run for the gate.|Steel gate]]&gt;&gt;&lt;&lt;audio &quot;runningAway&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/center&gt;&lt;&lt;/linkappend&gt;&gt;\
+&lt;center&gt;&lt;li&gt;Approach &lt;&lt;link [[the door of the room.|Front cell]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/center&gt;
+&lt;center&gt;&lt;li&gt;You don&#39;t care. &lt;&lt;link [[Run for the gate.|Steel gate]]&gt;&gt;&lt;&lt;audio &quot;runningAway&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/center&gt;&lt;&lt;/linkappend&gt;&gt;\
 </tw-passagedata><tw-passagedata pid="38" name="Captured" tags="Ending" position="900,1200" size="100,100">&lt;&lt;Ending2&gt;&gt;\
 &lt;&lt;Autoscroll&gt;&gt;\
 &lt;&lt;AchCaptured&gt;&gt;\
@@ -1756,7 +1756,7 @@ Dumbfounded, you prepare yourself for the next step:
 &lt;/div&gt;&lt;/center&gt;\
 &lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Front cell" tags="Ending" position="200,1200" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/doorWindowFront.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The eyes belong to a person&lt;/h2&gt;\
-They look surprised; you are too. The eyes frown and a hand appears inside the small frame the window provides, pointing back to your room.
+They look surprised and so are you. The eyes frown and a hand appears inside the small frame the window provides, pointing back to your room.
 
 You don&#39;t understand or have time for this, you need to leave before your captors notice you are not in your room anymore.
 
@@ -1787,7 +1787,7 @@ You don&#39;t know this person, they could very well be an accomplice of your ca
 
 &lt;&lt;timed 26s t8n&gt;&gt;&lt;center&gt;&#39;&#39;[[Then, everything goes black|Captured]]&#39;&#39;&lt;/center&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="Corridor right" tags="Ending" position="600,1100" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/Exit.png&quot;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h2&gt;You run. . .&lt;/h2&gt;&lt;/center&gt;\
-&lt;&lt;timed 5ms t8n&gt;&gt;It seems like the corridor enlongates itself while passing by more sets of cells, seems neverending, but you are focused on the end of the corridor&#39;s exit light sign.
+&lt;&lt;timed 5ms t8n&gt;&gt;It seems like the corridor enlongates itself while passing by more sets of rooms, seems neverending, but you are focused on the end of the corridor&#39;s exit light sign.
 
 It feels like it&#39;s taking you ages to reach the end, but before you know it, you are in front of the exit door. You stop to catch some air, your lungs hurt from running and your throat burns from breathing hard, but you steel yourself and open the door.
 
@@ -1812,7 +1812,7 @@ You close the door behind you and turn around to look at the other room through 
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;center&gt;&lt;h2&gt;Huh?&lt;/h2&gt;&lt;/center&gt;\
-&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;center&gt;//The cell looked like it was supose to retain you inside, be secure, but somehow you are here, now, outside. //&lt;/center&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
+&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms&gt;&gt;&lt;center&gt;//The room looked like it was supose to retain you inside, be secure, but somehow you are here, now, outside. //&lt;/center&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/timed&gt;&gt;\
 
 &lt;&lt;timed 8s t8n&gt;&gt;You stop in your tracks when this realization hits you. You try to retrace why that train of thought came to mind, but there&#39;s not enough time for you to fully understand it, you start hearing the sound of footsteps aproaching you, surrounding you, but how?&lt;&lt;/timed&gt;&gt;
 
@@ -1906,19 +1906,19 @@ You are a little unsettled by the passage.&lt;&lt;/linkreplace&gt;&gt;
 
 &lt;center&gt;&lt;&lt;link [[Go Back|Drawer One]]&gt;&gt;&lt;&lt;audio &quot;book&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\
 </tw-passagedata><tw-passagedata pid="50" name="Some exposure" tags="Ending" position="400,1175" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/doorWindowFront.png&quot;&gt;&lt;/center&gt;\
-&lt;h2&gt;You walk closer to the cell window&lt;/h2&gt;\
+&lt;h2&gt;You walk closer to the room&#39;s window&lt;/h2&gt;\
 The eyes looking at you seem a little relieved and holds the paper a little bit closer for you to read.
 
 &lt;&lt;if $pamphlet is true&gt;&gt;\
-It looks like the pamphlet that you discovered in your cell, but you can&#39;t read it because is in another language so, you can&#39;t be sure it says the same as the one in your cell. It has the same estructure and font and almost the same length, but still is in another language.
+It looks like the pamphlet that you discovered in your room, but you can&#39;t read it because is in another language so, you can&#39;t be sure it says the same as the one in your room. It has the same estructure and font and almost the same length, but still is in another language.
 
 You frown and the eyes look at you understandingly. They walk away and mouth something you don&#39;t quite understand, but then you&#39;ll see them tug on their shirt collar and a wide scar reveals itself. It looks quite like your wound, just that their&#39;s looks already healed.
 
-&lt;&lt;linkappend &quot;So, putting everything together:&quot; t8n&gt;&gt; it seems that the eyes are in a cell similar to yours, have a similar looking pamphlet to yours, and have a scar that looks similar to your wound, they also seemed to be telling you to &#39;&#39;stay&#39;&#39; in the cell at the beginning of this exchange, and they seem to be ok with staying inside the cell, so you could assume that they are trying to tell that it is ok to stay in the cell.
+&lt;&lt;linkappend &quot;So, putting everything together:&quot; t8n&gt;&gt; it seems that the eyes are in a room similar to yours, have a similar looking pamphlet to yours, and have a scar that looks similar to your wound. They also seemed to be telling you to &#39;&#39;stay&#39;&#39; in the room at the beginning of this exchange, and they seem to be doing ok staying inside the room, so you could assume that they are trying to tell that it is ok to stay in the room.
 
 You still have doubts about it, &lt;&lt;linkappend &quot;but. . .&quot; t8n&gt;&gt;
 
-&lt;li&gt;&lt;&lt;link [[They might be trying to help, so you head back to the cell.|Back in cell]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\
+&lt;li&gt;&lt;&lt;link [[They might be trying to help, so you head back to the room.|Back in cell]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\
 
 &lt;li&gt;&lt;&lt;link [[You don&#39;t buy it, run to the steel bar gate.|Steel gate]]&gt;&gt;&lt;&lt;audio &quot;runningAway&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;\&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;
 
@@ -2148,7 +2148,6 @@ Wasting no time, you hear a couple of clicks and the door opens. The person appr
 Before they move away, the force of your grip tightens on their clothes, which makes them stop on their tracks and look back at you.
 
 Now that someone is here, it&#39;s time for some questions that they must have the answers to.
-
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Stayed until morning&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;&lt;&lt;/type&gt;&gt;
 &lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="76" name="Achievements" tags="System" position="500,700" size="100,100">&lt;&lt;if UIBar.unstow()&gt;&gt;&lt;&lt;script&gt;&gt;UIBar.stow();&lt;&lt;/script&gt;&gt;&lt;&lt;/if&gt;&gt;\
 &lt;center&gt;&lt;h2&gt;[img[Img/AchievementsTitle.png]]&lt;/h2&gt;&lt;/center&gt;\
