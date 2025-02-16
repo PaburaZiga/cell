@@ -1028,6 +1028,7 @@ You take the sheets.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;set $notes to true&gt;&gt;
 &lt;&lt;set $button to false&gt;&gt;
 &lt;&lt;set $pencilIsUsed to false&gt;&gt;
+&lt;&lt;set $tookPencil to false&gt;&gt;
 
 /*Para que el pasaje de Wound se abra y cierre*/
 &lt;&lt;set $ToiletVisited to false&gt;&gt;\
@@ -1430,7 +1431,7 @@ Looking to the right of the desk there are some &lt;&lt;linkappend &quot;scribbl
     &lt;&lt;/if&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 
-&lt;&lt;if $pencil is false&gt;&gt;\
+&lt;&lt;if $tookPencil is false&gt;&gt;\
 The second drawer is &lt;&lt;link [[open|Drawer Two]]&gt;&gt;&lt;&lt;audio &quot;openDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;.
 &lt;&lt;else&gt;&gt;\
 You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
@@ -1453,7 +1454,7 @@ You&#39;ve taken all the contents of the &#39;&#39;second drawer&#39;&#39;.
 
 		&lt;&lt;linkreplace &quot;Keep looking.&quot;&gt;&gt;&lt;&lt;notiPapers&gt;&gt;&lt;&lt;audio &quot;rustlingPaper&quot; volume 0.7 play&gt;&gt;&lt;&lt;timed 5ms t8n&gt;&gt;&lt;&lt;set $papers12 to true&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;run memorize(&#39;papers12&#39;, $papers12)&gt;&gt; At first glance they seem kind of random, but with futher inspection you can feel some &#39;&#39;grooves&#39;&#39; on &#39;&#39;two of the papers&#39;&#39;, indicating that something was written on top of them. You wonder if there is a way to read what was written on them.&lt;&lt;/timed&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
 	&lt;&lt;else&gt;&gt;\
-		The papers are still scattered in the table. You look at the pencil in your posession: there&#39;s not enough graphite for the two papers of interest.
+		The papers are still scattered in the table. You look at the pencil in your posession. You think you can use the graphite to reveal what&#39;s written on them, but there&#39;s not enough of it to use on the papers of interest.
 
 		&#39;&#39;Which paper will you use the pencil on?&#39;&#39;
         
@@ -1823,7 +1824,7 @@ You close the door behind you and turn around to look at the other room through 
 
 &lt;&lt;timed 18s t8n&gt;&gt;You hear him click his tongue, but his tone is jovial.
 
-&gt;&gt;//&lt;span style=&quot;color:red&quot;&gt;-&quot;You are gonna be a great asset for us, but for now, let us go cut the chase.&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
+&gt;&gt;//&lt;span style=&quot;color:red&quot;&gt;-&quot;You are gonna be a great asset for us, but for now, let us cut to the chase.&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
 
 &lt;&lt;timed 22s t8n&gt;&gt;You are about to ask what does he mean, but even before you can open your mouth you feel the powerful impact of a punch in your gut and [[everything goes black.|Wreak Havok]]&lt;&lt;/timed&gt;&gt;
 </tw-passagedata><tw-passagedata pid="46" name="Wreak Havok" tags="Ending" position="2900,1200" size="100,100">&lt;&lt;Ending1&gt;&gt;\
@@ -1998,6 +1999,7 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;set $notes to false&gt;&gt;\
 &lt;&lt;set $scribbles to false&gt;&gt;\
 &lt;&lt;set $pencilIsUsed to false&gt;&gt;\
+&lt;&lt;set $tookPencil to false&gt;&gt;\
 &lt;&lt;set $ToiletVisited to false&gt;&gt;\
 &lt;&lt;set $DeskVisited to false&gt;&gt;\
 &lt;&lt;set $BedVisited to false&gt;&gt;\
