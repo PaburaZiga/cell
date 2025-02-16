@@ -1029,6 +1029,7 @@ You take the sheets.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;set $button to false&gt;&gt;
 &lt;&lt;set $pencilIsUsed to false&gt;&gt;
 &lt;&lt;set $tookPencil to false&gt;&gt;
+&lt;&lt;set $DrawerOneVisited to false&gt;&gt;\
 
 /*Para que el pasaje de Wound se abra y cierre*/
 &lt;&lt;set $ToiletVisited to false&gt;&gt;\
@@ -1421,12 +1422,12 @@ Looking to the right of the desk there are some &lt;&lt;linkappend &quot;scribbl
 &lt;&lt;if $steelRail is false&gt;&gt;\
 	You start from &lt;&lt;linkappend &quot;the first one.&quot; t8n&gt;&gt;&lt;&lt;audio &quot;lockedDrawer&quot; volume 0.7 play&gt;&gt; It doesn&#39;t budge, seems to be blocked by something but it does slide a little. Maybe if you wedge something into the edge and push, you might be able to open it. &lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;else&gt;&gt;\
-	&lt;&lt;if not hasVisited(&quot;Drawer One&quot;)&gt;&gt;\
+	&lt;&lt;if $DrawerOneVisited is false and $steelRail is true&gt;&gt;\
     	You see the width of the edges of the drawer and look at the railing that you have. It seems that the flatten end is the right size to force open the drawer.
         
         &lt;&lt;linkreplace &quot;Use the flatten end railing to open the first drawer?&quot; t8n&gt;&gt;&lt;&lt;audio &quot;metalRailing&quot; volume 0.7 play&gt;&gt;Using the railing as a crowbar and all the weight of your body, you succesfully &lt;&lt;link [[open the first drawer|Drawer One]]&gt;&gt; but you can see that there is a crack forming on metal&lt;&lt;audio &quot;openDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;.&lt;&lt;/linkreplace&gt;&gt;\
 
-    &lt;&lt;else&gt;&gt;\
+    &lt;&lt;elseif $DrawerOneVisited is true&gt;&gt;\
     	Open the &lt;&lt;link [[first drawer|Drawer One]]&gt;&gt;&lt;&lt;audio &quot;openDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;.
     &lt;&lt;/if&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
@@ -1584,7 +1585,8 @@ There nothing much here, just an old unsharpened pencil.
 Nothing else to see or take here.
 
 &lt;&lt;/if&gt;&gt;\
-&lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="30" name="Drawer One" tags="Desk" position="2300,1500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/DrawerOne.png&quot;&gt;&lt;/center&gt;\
+&lt;center&gt;&lt;&lt;link [[Step Back|Drawers]]&gt;&gt;&lt;&lt;audio &quot;closeDrawer&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="30" name="Drawer One" tags="Desk" position="2300,1500" size="100,100">&lt;&lt;set $DrawerOneVisited to true&gt;&gt;\
+&lt;center&gt;&lt;img src = &quot;Img/DrawerOne.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;You slide open de drawer&lt;/h2&gt;\
 There seems to be a &lt;&lt;link [[pamphlet|Pamphlet]]&gt;&gt;&lt;&lt;audio &quot;pamphlet&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt; of some sort and there&#39;s also a &lt;&lt;link [[book|Fairy tale Book]]&gt;&gt;&lt;&lt;audio &quot;book&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt; that you find familiar.
 
@@ -2003,7 +2005,8 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;set $ToiletVisited to false&gt;&gt;\
 &lt;&lt;set $DeskVisited to false&gt;&gt;\
 &lt;&lt;set $BedVisited to false&gt;&gt;\
-&lt;&lt;set $WoundVisited to false&gt;&gt;\</tw-passagedata><tw-passagedata pid="53" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
+&lt;&lt;set $WoundVisited to false&gt;&gt;\
+&lt;&lt;set $DrawerOneVisited to false&gt;&gt;\</tw-passagedata><tw-passagedata pid="53" name="StoryDisplayTitle" tags="Data" position="200,600" size="100,100">CELL
 </tw-passagedata><tw-passagedata pid="54" name="notiTinyPaper" tags="widget nobr" position="100,100" size="100,100">&lt;&lt;widget &quot;notiTinyPaper&quot;&gt;&gt;
 	&lt;&lt;if $ListaNotificaciones[0] is false&gt;&gt;
     	&lt;&lt;notify&gt;&gt;Note Added&lt;&lt;/notify&gt;&gt;
