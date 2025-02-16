@@ -856,7 +856,7 @@ A simple sink and toilet unit is placed against the [[wall|Wall]]. It seems to b
 &lt;&lt;if visited(&quot;Beginning&quot;) &gt;= 2&gt;&gt;\
 	&lt;center&gt;&#39;&#39;&lt;&lt;link [[Skip|Door]]&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; stop&gt;&gt;&lt;&lt;/link&gt;&gt;&#39;&#39;&lt;/center&gt;
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;Your vision is blurry, making you blink a couple of times. 
+&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 time 1s loop play&gt;&gt;&lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;Your vision is blurry, making you blink a couple of times. 
 
 An unfamiliar ceiling welcomes you. 
 
@@ -1047,15 +1047,15 @@ You take the sheets.&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;set $endingAch4 = recall(&#39;endingAch4&#39;, false)&gt;&gt;/*Stayed until morning*/
 
 /*Para el Ach. de Seeing Red*/
-&lt;&lt;set $WreakHavokRed  = recall(&#39;WreakHavokRed&#39;, false)&gt;&gt;\
-&lt;&lt;set $AbductionRed   = recall(&#39;AbductionRed&#39;, false)&gt;&gt;\
-&lt;&lt;set $DoorExitRed  = recall(&#39;DoorExitRed&#39;, false)&gt;&gt;\
-&lt;&lt;set $NotesRed  = recall(&#39;NotesRed&#39;, false)&gt;&gt;\
-&lt;&lt;set $WoundRed  = recall(&#39;WoundRed&#39;, false)&gt;&gt;\
+&lt;&lt;set $WreakHavokRed = recall(&#39;WreakHavokRed&#39;, false)&gt;&gt;\
+&lt;&lt;set $AbductionRed = recall(&#39;AbductionRed&#39;, false)&gt;&gt;\
+&lt;&lt;set $DoorExitRed = recall(&#39;DoorExitRed&#39;, false)&gt;&gt;\
+&lt;&lt;set $NotesRed = recall(&#39;NotesRed&#39;, false)&gt;&gt;\
+&lt;&lt;set $WoundRed = recall(&#39;WoundRed&#39;, false)&gt;&gt;\
 
 /*Para Ach. SecondThoughts*/
 &lt;&lt;set $BackInCellAch = recall(&#39;BackInCellAch&#39;, false)&gt;&gt;\
-&lt;&lt;set $StayInCellAch  = recall(&#39;StayInCellAch&#39;, false)&gt;&gt;\
+&lt;&lt;set $StayInCellAch = recall(&#39;StayInCellAch&#39;, false)&gt;&gt;\
 
 /*cada variable representa un item del inventario para el Achievement &quot;Caught &#39;em All&quot; */
     &lt;&lt;set $paperRoll0 = recall(&#39;paperRoll0&#39;, false)&gt;&gt;\
@@ -1156,8 +1156,7 @@ AUDIO
 &lt;&lt;cacheaudio &quot;whiteNoise&quot; &quot;audio/white_noise.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;railingBreak&quot; &quot;audio/breaking_railing.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;nightAmbience&quot; &quot;audio/night-ambience.mp3&quot;&gt;&gt;\
-&lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
-&lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
+&lt;&lt;cacheaudio &quot;typewriter&quot; &quot;C:/Twine_Proyectos/Cell/audio/typing_typewriter.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;pliers&quot; &quot;audio/pliers.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;button-hover&quot; &quot;audio/button-hover.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1500,700" size="100,100">&lt;&lt;set $WoundVisited to true&gt;&gt;\
 &lt;&lt;set $WoundRed to true&gt;&gt;&lt;&lt;run memorize(&#39;WoundRed&#39;, $WoundRed)&gt;&gt;\
@@ -1688,6 +1687,7 @@ But this time, a couple of eyes look back...
 &lt;&lt;Autoscroll&gt;&gt;\
 &lt;&lt;AchCaptured&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
+&lt;&lt;AchCompleitionist&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Ceiling.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;&#39;&#39;An unfamiliar ceiling welcomes you again.&#39;&#39;&lt;/h2&gt;\
 &lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;It takes you a moment, but you recognize it. 
@@ -1829,9 +1829,10 @@ You close the door behind you and turn around to look at the other room through 
 &lt;&lt;timed 22s t8n&gt;&gt;You are about to ask what does he mean, but even before you can open your mouth you feel the powerful impact of a punch in your gut and [[everything goes black.|Wreak Havok]]&lt;&lt;/timed&gt;&gt;
 </tw-passagedata><tw-passagedata pid="46" name="Wreak Havok" tags="Ending" position="2900,1200" size="100,100">&lt;&lt;Ending1&gt;&gt;\
 &lt;&lt;Autoscroll&gt;&gt;\
-&lt;&lt;set $WreakHavokRed to false&gt;&gt;&lt;&lt;run memorize(&#39;WreakHavokRed&#39;, $WreakHavokRed)&gt;&gt;\
+&lt;&lt;set $WreakHavokRed to true&gt;&gt;&lt;&lt;run memorize(&#39;WreakHavokRed&#39;, $WreakHavokRed)&gt;&gt;\
 &lt;&lt;AchSeeingRed&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
+&lt;&lt;AchCompleitionist&gt;&gt;\
 &lt;h2&gt;You wake up&lt;/h2&gt;\
 &lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;But this is different than last time. 
 
@@ -2109,6 +2110,7 @@ If you wish to help me create more stories like this, feel free to visit my ko-f
 &lt;&lt;Autoscroll&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;&lt;AchTouchingGrass&gt;&gt;\
+&lt;&lt;AchCompleitionist&gt;&gt;\
 &lt;&lt;audio &quot;nightAmbience&quot; volume 0.7 loop play&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Outside.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;The forest greets you like an old friend. &lt;/h2&gt;\
@@ -2131,6 +2133,7 @@ And everything goes to black. . .
 &lt;&lt;script&gt;&gt;$(document).on(&#39;:typingstop&#39;, function (ev) { SimpleAudio.stop(&quot;typewriter&quot;) }); &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="75" name="Stayed until morning" tags="Ending" position="400,1400" size="100,100">&lt;&lt;Ending4&gt;&gt;\
 &lt;&lt;AchAllEndings&gt;&gt;\
 &lt;&lt;Autoscroll&gt;&gt;\
+&lt;&lt;AchCompleitionist&gt;&gt;\
 &lt;center&gt;&lt;img src = &quot;Img/Ceiling.png&quot;&gt;&lt;/center&gt;\
 &lt;h2&gt;&#39;&#39;That unfamiliar ceiling welcomes you again.&#39;&#39;&lt;/h2&gt;\
 &lt;&lt;type 60ms skipkey &quot;Enter&quot;&gt;&gt;&lt;&lt;audio &quot;typewriter&quot; volume 0.7 loop play&gt;&gt;Struggling to sit on the bed, pain runs through your body and a strong smell of iron emanates from you. You look down at yourself, and all you see are tattered clothes and blood.
@@ -2166,7 +2169,7 @@ Now that someone is here, it&#39;s time for some questions that they must have t
 ----
 	&lt;&lt;if $SetToEscapeAch is true&gt;&gt;
 &lt;li&gt;&#39;&#39;Set to Escape&#39;&#39;&lt;/li&gt;
-//Time to go!// - First time getting all tools to escape through the window.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
+//Time to go// - First time getting all tools to escape through the window.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 	&lt;&lt;if $UnderYourNoseAch is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Right under your nose&#39;&#39;&lt;/li&gt;
@@ -2327,7 +2330,7 @@ Found all achievements and endings.&lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&
 &lt;&lt;/widget&gt;&gt;
 </tw-passagedata><tw-passagedata pid="88" name="Ach. Compleitionist" tags="widget nobr" position="1600,100" size="100,100">&lt;&lt;widget &quot;AchCompleitionist&quot;&gt;&gt;
 	&lt;&lt;if $SetToEscapeAch is true and $AllEndingsAch is true and $UnderYourNoseAch is true and $TouchingGrassAch is true and $LittleBladderAch is true and $SecondThoughtsAch is true and $OnlyWeaponAch is true and $CaughtEmAllAch is true and $SeeingRedAch is true and $CapturedAch is true and $CompleitionistAch is false&gt;&gt;
-    	&lt;&lt;notify&gt;&gt;Achievement Unlocked&lt;&lt;/notify&gt;&gt;
+    	&lt;&lt;notify 3s&gt;&gt;All Achievements Unlocked&lt;&lt;/notify&gt;&gt;
         &lt;&lt;set $CompleitionistAch to true&gt;&gt;
         &lt;&lt;run memorize(&#39;CompleitionistAch&#39;, $CompleitionistAch)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
