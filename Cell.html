@@ -1278,9 +1278,9 @@ To the &lt;&lt;linkappend &quot;left&quot; t8n&gt;&gt; there&#39;s the other end
 &lt;&lt;if $stool is false&gt;&gt;\
 You try to balance yourself by stepping on the edge of the toilet unit, but it is a little too far for you to look outside the window. Maybe having something to step on from right underneath it will work.
 &lt;&lt;elseif $stool is true&gt;&gt;\
-	You take the stool from the desk and place it right below the window. Stepping on it, you look up and now you are able to see that the window is barred with metal bars and that the glass from the window seems very thick, even then, you are able to see the outside more clearly.
+	You take the stool from the desk and place it right below the window. Stepping on it, you look up and now you are able to see that the bars on the window look like metal, also, the glass from the window seems very thick, even then, you are able to see the outside more clearly.
 
-	It is dark outside and it seems that this place is surrounded by a forest because of the large trees that block your sight. The sky looks to be heavily clouded, but there is still some light the filters through the &lt;&lt;linkappend &quot;clouds&quot; t8n&gt;&gt;.
+	It is dark outside and it seems that this place is surrounded by a forest. There are some large trees that block your sight. The sky looks to be heavily clouded, but there is still some light the filters through the &lt;&lt;linkappend &quot;clouds&quot; t8n&gt;&gt;.
 		&lt;&lt;if $brokenWindow is false&gt;&gt;\
         
 	You try the bars and they are well afixed to the frame but at the same time they feel and sound hollow.
@@ -1292,7 +1292,6 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
     	&lt;&lt;/if&gt;&gt;\
     &lt;&lt;/linkappend&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-
 &lt;&lt;if $stool is true and $paperRoll is true and $pieceMirror is true and $hackSawBlade is true and $bedSheet is true and $brokenWindow is true&gt;&gt;\
     
     You prepare your materials.&lt;&lt;AchSetToEscape&gt;&gt;
@@ -1315,7 +1314,7 @@ You try to balance yourself by stepping on the edge of the toilet unit, but it i
 &lt;&lt;/if&gt;&gt;\
 &lt;h2&gt;You can&#39;t see yourself clearly&lt;/h2&gt;\
 &lt;&lt;if $pieceMirror is false&gt;&gt;\
-Two cracks travel all the length of the mirror from one corner to the other with some other minor cracks around them. Some small pieces are missing, more than likely they&#39;ve fallen off.  You could slip a finger and detach the large piece of the mirror that the two cracks create.
+Two cracks travel all the length of the mirror from one corner to the other with some other minor cracks around them. Some small pieces are missing; more than likely they&#39;ve fallen off.  You could slip a finger and detach the large piece of the mirror that the two cracks create.
 
 	&lt;&lt;linkreplace &quot;Take the piece of mirror?&quot; t8n&gt;&gt;&lt;&lt;set $pieceMirror to true&gt;&gt;You take the piece of mirror with you.&lt;&lt;notiPieceMirror&gt;&gt;&lt;&lt;set $pieceMirror2 to true&gt;&gt;&lt;&lt;run memorize(&#39;pieceMirror2&#39;, $pieceMirror2)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;&lt;&lt;run UIBar.update()&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;else&gt;&gt;\
@@ -1323,7 +1322,7 @@ There is a huge piece of mirror missing. You&#39;ve taken it with you.
 &lt;&lt;/if&gt;&gt;\
 
 &lt;center&gt;&lt;&lt;link [[Step Back.|Wall]]&gt;&gt;&lt;&lt;audio &quot;stepback&quot; volume 0.7 play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/center&gt;\</tw-passagedata><tw-passagedata pid="20" name="Gap" tags="Toilet" position="2600,500" size="100,100">&lt;center&gt;&lt;img src = &quot;Img/closeUpToilet.png&quot;&gt;&lt;/center&gt;\
-&lt;h2&gt;You put your head against the wall&lt;/h2&gt;\
+&lt;h2&gt;You put the side of your head against the wall&lt;/h2&gt;\
 &lt;&lt;if $blueprint is false&gt;&gt;\
 You can see a place that can be open to do maintance on the toilet unit, but a tool is required to open it, there are also some scratch marks on the wall beside it.
 
@@ -1408,7 +1407,7 @@ You open the faucet to check if the water flows, and almost instantly you feel t
 You put your weight on the desk and it seems to give a little, but remains well bolted to the wall.
 
 &lt;&lt;if $stool is false&gt;&gt;\
-	You look &lt;&lt;linkreplace &quot;under the desk.&quot; t8n&gt;&gt;&lt;&lt;set $stool to true&gt;&gt;&lt;&lt;set $stool11 to true&gt;&gt;&lt;&lt;run memorize(&#39;stool11&#39;, $stool11)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;There&#39;s a &#39;&#39;stool&#39;&#39; tucked right underneath the desk, you could have missed if you didn&#39;t look for it, looks fairly new, just like everything else in this place.&lt;&lt;notiStool&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+	You look &lt;&lt;linkappend &quot;under the desk.&quot; t8n&gt;&gt;&lt;&lt;set $stool to true&gt;&gt;&lt;&lt;set $stool11 to true&gt;&gt;&lt;&lt;run memorize(&#39;stool11&#39;, $stool11)&gt;&gt;&lt;&lt;AchCaughtEmAll&gt;&gt;There&#39;s a &#39;&#39;stool&#39;&#39; tucked right underneath the desk, you could have missed if you didn&#39;t look for it, looks fairly new, just like everything else in this place.&lt;&lt;notiStool&gt;&gt;&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;else&gt;&gt;\
 	You can see a &#39;&#39;stool&#39;&#39; under the desk now.
 &lt;&lt;/if&gt;&gt;\
