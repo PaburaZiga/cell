@@ -630,16 +630,20 @@ var actualizarColores = function () {
 // Añadir el selector de color en los ajustes
 Setting.addList("colorOption", {
     label	: "Change color of red words",
-  	desc	: "For easy readability or colorblindness",
+  	desc	: "For better readability",
     list	: colorNames,
     onInit	: actualizarColores,
-    onChange: actualizarColores,
-  	default	: "Red"
+    onChange: actualizarColores
 });
 
-$(document).on(':passagedisplay', function (ev) {
+$(document).on(':passagestart', function (ev) {
     actualizarColores();
 });
+/*
+ Ejecutar al cargar el juego por primera vez
+$(document).ready(function () {
+    actualizarColores();
+});*/
 
 //////////////////////////////////////
 
