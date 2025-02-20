@@ -233,10 +233,10 @@ img {
    font-size: 25px;
  }
 
-/*desaparece el item del UIBar que decía "Saves"
+/*desaparece el item del UIBar que decía "Saves"*/
 #menu-item-saves {
 	display:none;
-}*/
+}
 
 
 /*desaparece el item del UIBar que decía "Restart"
@@ -368,15 +368,15 @@ img {
 /* end notify.min.css */
 
 /*Para cambiar colores de las palabras en rojo*/
-.color.red {
+.red {
     color: red;
 }
 
-.color.orange {
+.orange {
     color: #d55e00;
 }
 
-.color.bluegreen {
+.bluegreen {
     color: #009e73;
 }
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">//La barra izquierda se mantine guardada 
@@ -607,8 +607,9 @@ default  : "Medium"
 ////////////////////////////////////
 
 //Para cambiar color de las palabras rojas
+/*
 var colorNames = ["Red", "Orange", "Blue Green"]
-var actualizarColores = function () {
+var updateColors = function () {
    
   var $color = $(".color");
    
@@ -632,19 +633,24 @@ Setting.addList("colorOption", {
     label	: "Change color of red words",
   	desc	: "For better readability",
     list	: colorNames,
-    onInit	: actualizarColores,
-    onChange: actualizarColores
+    onInit	: function () { 
+      updateColors(); 
+    },
+    onChange: function () { 
+      updateColors(); 
+    },
+    default : "Red"
 });
 
-$(document).on(':passagestart', function (ev) {
-    actualizarColores();
-});
-/*
- Ejecutar al cargar el juego por primera vez
-$(document).ready(function () {
-    actualizarColores();
+$(document).on(':passagedisplay', function (ev) {
+    updateColors();
 });*/
-
+/*
+ //Ejecutar al cargar el juego por primera vez
+$(document).ready(function () {
+    updateColors();
+});
+*/
 //////////////////////////////////////
 
 /*Toggle para Underline*/
@@ -675,7 +681,23 @@ Setting.addToggle("linkUnderline", {
 
 ///////////////////////////////////////////////
 
+// Setting up a volume control for the settings property 'masterVolume' w/ callback
+var settingMasterVolumeHandler = function () {
+	SimpleAudio.volume(settings.masterVolume / 10);
+};
+Setting.addRange("masterVolume", {
+	label    : "Master volume.",
+	min      : 0,
+	max      : 10,
+	step     : 1,
+	onInit   : settingMasterVolumeHandler,
+	onChange : settingMasterVolumeHandler
+}); // default value not defined, so max value (10) is used
+
+//////////////////////////////////////////////
+
 // Setting up a mute control for the settings property 'masterMute' w/ callback
+/*
 function masterMuteHandler() {
     SimpleAudio.mute(settings["masterMute"]);
 }
@@ -685,7 +707,8 @@ Setting.addToggle("masterMute", {
   	default	 : false,
     onInit   : masterMuteHandler,
     onChange : masterMuteHandler,
-}); 
+});
+*/
 // default value not defined, so false is used
 
 ///////////////////////////////////////////////
@@ -1308,7 +1331,7 @@ AUDIO
 &lt;&lt;cacheaudio &quot;whiteNoise&quot; &quot;audio/white_noise.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;railingBreak&quot; &quot;audio/breaking_railing.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;nightAmbience&quot; &quot;audio/night-ambience.mp3&quot;&gt;&gt;\
-&lt;&lt;cacheaudio &quot;typewriter&quot; &quot;C:/Twine_Proyectos/Cell/audio/typing_typewriter.mp3&quot;&gt;&gt;\
+&lt;&lt;cacheaudio &quot;typewriter&quot; &quot;audio/typing_typewriter.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;pliers&quot; &quot;audio/pliers.mp3&quot;&gt;&gt;\
 &lt;&lt;cacheaudio &quot;button-hover&quot; &quot;audio/button-hover.mp3&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Wound" tags="Door" position="1500,700" size="100,100">&lt;&lt;set $WoundVisited to true&gt;&gt;\
 &lt;&lt;set $WoundRed to true&gt;&gt;&lt;&lt;run memorize(&#39;WoundRed&#39;, $WoundRed)&gt;&gt;\
@@ -1320,11 +1343,12 @@ You feel a burning sensation on the right side of your &lt;&lt;linkappend &quot;
 
 Lifting your shirt and lightly touching the place, you are met with a big gash that almost looks like a giant scratch, it also seems to be made quite recently. You don&#39;t really remember how you got it.
 
-And now that you think about it, you don&#39;t really remember how you came here. All you do remember is trying to enter your car after work and hearing some noises behind you, turning around to see what made those noises and then, what you saw, was the silhouette of a person and something &lt;span class=&quot;color&quot;&gt;red&lt;/span&gt;, after that, nothing.
+And now that you think about it, you don&#39;t really remember how you came here. All you do remember is trying to enter your car after work and hearing some noises behind you, turning around to see what made those noises and then, what you saw, was the silhouette of a person and something &lt;span class=&quot;red&quot;&gt;red&lt;/span&gt;, after that, nothing.
 
 You shake your head in confusion and pain. 
 &lt;h3&gt;&lt;center&gt;[[It hurts, but you gotta keep calm|Door]]&lt;/center&gt;&lt;/h3&gt;\
-&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Look around the door" tags="Door" position="1300,1100" size="100,100">&lt;&lt;if $button is false&gt;&gt;\
+&lt;&lt;/linkappend&gt;&gt;\
+</tw-passagedata><tw-passagedata pid="12" name="Look around the door" tags="Door" position="1300,1100" size="100,100">&lt;&lt;if $button is false&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor.png&quot;&gt;&lt;/center&gt;\
 &lt;&lt;else&gt;&gt;\
 	&lt;center&gt;&lt;img src = &quot;Img/closeUpDoor2.png&quot;&gt;&lt;/center&gt;\
@@ -1642,7 +1666,7 @@ The stool found near the desk is sturdy enough to withstand your weight and ligh
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $WoundVisited is true&gt;&gt;\
 &lt;li&gt;&#39;&#39;Wound&#39;&#39;&lt;/li&gt;\
-A big gash the right of your torso that almost looks like a giant scratch, you don&#39;t remember how you got it, but the silhouette of a person and the color &lt;span class=&quot;color&quot;&gt;red&lt;/span&gt; comes to mind.
+A big gash the right of your torso that almost looks like a giant scratch, you don&#39;t remember how you got it, but the silhouette of a person and the color &lt;span class=&quot;red&quot;&gt;red&lt;/span&gt; comes to mind.
 &lt;&lt;set $NotesRed to true&gt;&gt;&lt;&lt;run memorize(&#39;NotesRed&#39;, $NotesRed)&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 &lt;&lt;if $button is true&gt;&gt;\
@@ -1826,7 +1850,7 @@ To your &lt;&lt;linkappend &quot;right&quot; t8n&gt;&gt; you can now see more cl
 
 It is longer that you thought. 
 
-It extends and culminates in the steel bar gate that you saw previously through the small window, but now there&#39;s a static &lt;span class=&quot;color&quot;&gt;red&lt;/span&gt; light turned on at the end of the corridor, there&#39;s no sound but you know that someone has been alerted and now your time is ticking&lt;&lt;/linkappend&gt;&gt;
+It extends and culminates in the steel bar gate that you saw previously through the small window, but now there&#39;s a static &lt;span class=&quot;red&quot;&gt;red&lt;/span&gt; light turned on at the end of the corridor, there&#39;s no sound but you know that someone has been alerted and now your time is ticking&lt;&lt;/linkappend&gt;&gt;
 
 And for the last time, your eyes turn to the &lt;&lt;linkappend &quot;front room&#39;s door.&quot; t8n&gt;&gt;
 
@@ -1967,13 +1991,13 @@ You close the door behind you and turn around to look at the other room through 
 
 &lt;&lt;timed 11s t8n&gt;&gt;A voice of a man interrupts your thoughts.
 
-&gt;&gt;//&lt;span class=&quot;color&quot;&gt;-&quot;Hey there, you gave us quite a work out, huh?&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
+&gt;&gt;//&lt;span class=&quot;red&quot;&gt;-&quot;Hey there, you gave us quite a work out, huh?&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
 
 &lt;&lt;timed 14s t8n&gt;&gt;You step back, but almost in a blink of an eye, he is right beside you, now with a bunch of people you didn&#39;t even see before, all around you.&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 18s t8n&gt;&gt;You hear him click his tongue, but his tone is jovial.
 
-&gt;&gt;//&lt;span class=&quot;color&quot;&gt;-&quot;You are gonna be a great asset for us, but for now, let us cut to the chase.&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
+&gt;&gt;//&lt;span class=&quot;red&quot;&gt;-&quot;You are gonna be a great asset for us, but for now, let us cut to the chase.&quot;&lt;/span&gt;//&lt;&lt;/timed&gt;&gt;\
 
 &lt;&lt;timed 22s t8n&gt;&gt;You are about to ask what does he mean, but even before you can open your mouth you feel the powerful impact of a punch in your gut and [[everything goes black.|Wreak Havok]]&lt;&lt;/timed&gt;&gt;
 </tw-passagedata><tw-passagedata pid="46" name="Wreak Havok" tags="Ending" position="2900,1200" size="100,100">&lt;&lt;Ending1&gt;&gt;\
@@ -1988,7 +2012,7 @@ There is no unfamiliar ceiling gretting you, just the cold, hard ground of the f
 
 The first thing you notice is the taste of dirt and blood in you mouth, the pain in your stomach, then the raging headache settling at the back of your head. You try to move, but soon realize that your hands are bound behind you back, as well as the weight of someone sitting on top of you, holding you in place. Panic starts seeping in, your heartbeat gets loud and your breathing begins to quicken, making it hard for you to hear and understand what is going on.
 
-Still, some words slip past the loud sounds of your panic. You hear a &lt;span class=&quot;color&quot;&gt;familiar voice&lt;/span&gt; and something about a &#39;&#39;bond tonight&#39;&#39;, an &#39;&#39;initiation&#39;&#39; and the &#39;&#39;&quot;children of the moon&quot;&#39;&#39;.
+Still, some words slip past the loud sounds of your panic. You hear a &lt;span class=&quot;red&quot;&gt;familiar voice&lt;/span&gt; and something about a &#39;&#39;bond tonight&#39;&#39;, an &#39;&#39;initiation&#39;&#39; and the &#39;&#39;&quot;children of the moon&quot;&#39;&#39;.
 
 While they talk, you start to feel an itch spread all over your body that quickly turns into searing pain. You start to struggle underneath the weight of you captor, making them realize the state you are in and almost as if waiting for this, they stand up, and move to the side with a chuckle.
 
@@ -1996,7 +2020,7 @@ There was a window of opportunity for you to escape, but the pain is relentless 
 
 You look up to the sky and the presence of the full moon turns the pain even more unbearable. With strength you didn&#39;t know you had, you break the bounds on your hands and bring them to your face in a vain attempt to stop the pain, but thats when you notice that hair has began to sprout from under your skin, tearing it apart.
 
-The last thing you remember is the familiar silhouette of a person, the color &lt;span class=&quot;color&quot;&gt;red&lt;/span&gt; and the desperate screams of people.
+The last thing you remember is the familiar silhouette of a person, the color &lt;span class=&quot;red&quot;&gt;red&lt;/span&gt; and the desperate screams of people.
 
 Then everything goes black.
 &lt;h3&gt;&lt;center&gt;[[Ending &quot;Forced Enlistment&quot;|Credits]]&lt;/center&gt;&lt;/h3&gt;\
@@ -2344,7 +2368,7 @@ Now that someone is here, it&#39;s time for some questions that they must have t
 ----
 	&lt;&lt;if $SeeingRedAch is true&gt;&gt;
 &lt;li&gt;&#39;&#39;Seeing Red&#39;&#39;&lt;/li&gt;
-//&quot;I&#39;ve seen this color before...&quot;// - Visited all the passages with &lt;span class=&quot;color&quot;&gt;red&lt;/span&gt; words in them. &lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
+//&quot;I&#39;ve seen this color before...&quot;// - Visited all the passages with &lt;span class=&quot;red&quot;&gt;red&lt;/span&gt; words in them. &lt;&lt;else&gt;&gt;&lt;li&gt;???&lt;/li&gt;&lt;&lt;/if&gt;&gt;
 ----
 	&lt;&lt;if $CaughtEmAllAch is true&gt;&gt;
 &lt;li&gt;&#39;&#39;Got &#39;em All&#39;&#39;&lt;/li&gt;
